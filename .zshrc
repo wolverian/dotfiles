@@ -1,25 +1,14 @@
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.oh-my-zsh
-unsetopt correct_all
+setopt promptsubst
+autoload -U promptinit
+promptinit
 
-# Set to the name theme to load.
-# Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="kennethreitz"
+autoload -U compinit
+compinit
 
-# Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-export VIM_APP_DIR="~/Code/programs/macvim/src/MacVim/build/Release"
+# Unbreak history
+export HISTSIZE=100000
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
 
 export RUBYOPT=rubygems
 
@@ -29,7 +18,7 @@ alias vi=vim
 
 export WTF_REPO_PATH="~/Code/shell/data/"
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
@@ -41,10 +30,18 @@ export NODE_PATH='.:/usr/local/lib/node'
 export EDITOR='vim'
 export LESSEDIT='vim'
 
-# python path
-# export PYTHONPATH="/Users/antti/Code/programs/dingus:/Users/antti/Code/programs/pystache"
-
-export PATH=/Developer/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/local/nmh/bin:/usr/local/share/npm/bin:/usr/local/lib/php/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/Cellar/chicken/4.6.0/bin:$PATH
+# homebrew override
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+# xcode
+export PATH=$PATH:/Developer/usr/bin
+# npm
+export PATH=$PATH:/usr/local/share/npm/bin
+# PHP
+export PATH=$PATH:/usr/local/lib/php/bin
+# Python
+export PATH=$PATH:/usr/local/Cellar/python/2.7.1/bin
+# chicken
+export PATH=$PATH:/usr/local/Cellar/chicken/4.6.0/bin
 
 # alias t="~/Code/shell/todo.sh"
 alias ls="ls -l"
