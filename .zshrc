@@ -16,17 +16,10 @@ export RUBYOPT=rubygems
 # "vim" will pick up from /usr/local/bin
 alias vi=vim
 
-export WTF_REPO_PATH="~/Code/shell/data/"
-
-#source $ZSH/oh-my-zsh.sh
-
 export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
 
-# Customize to your needs...
-export NODE_PATH='.:/usr/local/lib/node'
-
-# don't fork
+# of course
 export EDITOR='vim'
 export LESSEDIT='vim'
 
@@ -43,7 +36,9 @@ export PATH=$PATH:/usr/local/Cellar/python/2.7.1/bin
 # chicken
 export PATH=$PATH:/usr/local/Cellar/chicken/4.6.0/bin
 
-# alias t="~/Code/shell/todo.sh"
+# node lib path
+export NODE_PATH='.:/usr/local/lib/node'
+
 alias ls="ls -l"
 alias la="ls -la"
 
@@ -54,8 +49,5 @@ alias g="git"
 alias s="svn"
 alias sup="svn up --ignore-externals"
 alias sst="svn st --ignore-externals"
-
-# taskwarrior
-alias t=task
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
