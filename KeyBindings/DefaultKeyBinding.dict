@@ -1,4 +1,5 @@
 /* ~/Library/KeyBindings/DefaultKeyBinding.dict */
 {
     "^w" = "deleteWordBackward:";
+    "^b" = "moveWordBackward:";
 }
