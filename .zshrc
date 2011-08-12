@@ -53,4 +53,8 @@ alias s="svn"
 alias sup="svn up --ignore-externals"
 alias sst="svn st --ignore-externals"
 
+alias t=tmux
+
+alias d="dirs -v"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
