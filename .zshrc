@@ -13,6 +13,9 @@ export HISTSIZE=100000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
 
+PROMPT=$'\e[0;32m%m\e[0m:%c%# '
+RPROMPT='%*'
+
 export RUBYOPT=rubygems
 
 # replace system vi (which itself is a symlink to system vim) with homebrew vim
