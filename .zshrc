@@ -13,6 +13,9 @@ export HISTSIZE=100000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
 
+# emacs bindings, -v for vi
+bindkey -e
+
 PS1="%{%F{green}%}%m%{%f%}:%c%# "
 
 export RUBYOPT=rubygems
