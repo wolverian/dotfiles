@@ -2,6 +2,7 @@
 	name = Antti Holvikari
 	email = anttih@gmail.com
 [diff]
+    renamelimit = 4000
 [color]
     ui = auto
 	status = auto
