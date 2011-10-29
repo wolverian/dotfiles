@@ -47,6 +47,8 @@ export PATH=$PATH:/usr/local/Cellar/chicken/4.6.0/bin
 # node lib path
 export NODE_PATH='.:/usr/local/lib/node'
 
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
+
 alias ls="ls -l"
 alias la="ls -la"
 
