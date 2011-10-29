@@ -7,21 +7,12 @@
 [submodule ".vim/bundle/markdown"]
 	path = .vim/bundle/markdown
 	url = git://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/vim-git"]
 	path = .vim/bundle/vim-git
 	url = git://github.com/tpope/vim-git.git
-[submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
-	url = http://github.com/kchmck/vim-coffee-script.git
 [submodule ".vim/bundle/solarized"]
 	path = .vim/bundle/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/VimClojure"]
-	path = .vim/bundle/VimClojure
-	url = https://github.com/vim-scripts/VimClojure.git
 [submodule ".vim/bundle/Command-T"]
 	path = .vim/bundle/Command-T
 	url = https://github.com/wincent/Command-T.git
@@ -31,3 +22,12 @@
 [submodule ".vim/bundle/vim-orgmode"]
 	path = .vim/bundle/vim-orgmode
 	url = https://github.com/jceb/vim-orgmode.git
+[submodule ".vim/bundle/surround"]
+	path = .vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/coffee-script"]
+	path = .vim/bundle/coffee-script
+	url = http://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/clojure"]
+	path = .vim/bundle/clojure
+	url = https://github.com/vim-scripts/VimClojure.git
