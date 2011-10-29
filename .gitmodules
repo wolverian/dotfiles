@@ -1,3 +1,33 @@
-[submodule "vimfiles"]
-	path = vimfiles
-	url = git@github.com:anttih/vimfiles.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git://github.com/tsaleh/vim-supertab.git
+[submodule ".vim/bundle/markdown"]
+	path = .vim/bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/vim-git"]
+	path = .vim/bundle/vim-git
+	url = git://github.com/tpope/vim-git.git
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = http://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/solarized"]
+	path = .vim/bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/VimClojure"]
+	path = .vim/bundle/VimClojure
+	url = https://github.com/vim-scripts/VimClojure.git
+[submodule ".vim/bundle/Command-T"]
+	path = .vim/bundle/Command-T
+	url = https://github.com/wincent/Command-T.git
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/vim-orgmode"]
+	path = .vim/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
