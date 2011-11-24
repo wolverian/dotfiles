@@ -16,7 +16,7 @@ export SAVEHIST=$HISTSIZE
 # emacs bindings, -v for vi
 bindkey -e
 
-PS1="%{%F{green}%}%m%{%f%}:%c%# "
+PS1="%{%F{green}%}%m%{%f%} %c %{%F{yellow}%}→%{%f%} "
 
 export RUBYOPT=rubygems
 
