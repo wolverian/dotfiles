@@ -1,1 +1,1 @@
-../bundle/vim-task/ftdetect/task.vim
+autocmd BufNewFile,BufRead *.todo setfiletype task
