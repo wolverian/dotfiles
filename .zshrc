@@ -41,8 +41,6 @@ export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/usr/local/lib/php/bin
 # Python
 export PATH=$PATH:/usr/local/Cellar/python/2.7.1/bin
-# chicken
-export PATH=$PATH:/usr/local/Cellar/chicken/4.6.0/bin
 
 # node lib path
 export NODE_PATH='.:/usr/local/lib/node'
