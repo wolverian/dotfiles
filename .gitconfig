@@ -1,25 +1,26 @@
 [user]
-	name = Antti Holvikari
-	email = anttih@gmail.com
+    name = Antti Holvikari
+    email = anttih@gmail.com
 [diff]
     renamelimit = 4000
 [color]
     ui = auto
-	status = auto
-	diff = auto
-	branch = auto
+    status = auto
+    diff = auto
+    branch = auto
 [alias]
     amend = commit --amend
-	s = status
-	b = branch
-	c = commit -v
-	co = checkout
-	ai = add --interactive
+    s = status
+    b = branch
+    c = commit -v
+    co = checkout
+    a = add
+    ai = add --interactive
     aa = add --all
     dc = diff --cached
-    l = log --graph --abbrev-commit --date=relative 
+    l = log --graph --abbrev-commit --date=relative
     r = !git l -20
-[merge]
-	tool = opendiff
 [format]
     pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+[core]
+    excludesfile = ~/.gitignore
