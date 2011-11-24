@@ -13,6 +13,7 @@
     s = status
     b = branch
     c = commit -v
+    cm = commit -m
     co = checkout
     a = add
     ai = add --interactive
