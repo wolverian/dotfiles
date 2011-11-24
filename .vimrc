@@ -205,7 +205,7 @@ hi low_complexity ctermbg=green ctermfg=green
 hi medium_complexity ctermbg=yellow ctermfg=yellow
 hi high_complexity ctermbg=red ctermfg=red
 
-set wildignore=*.class
+set wildignore=*.o,*.class
 
 let g:CommandTMaxFiles=25000
 noremap <leader>e :CommandT<cr>
