@@ -21,6 +21,10 @@
     dc = diff --cached
     l = log --graph --abbrev-commit --date=relative
     r = !git l -20
+    today = shortlog --since='12 hours ago'
+    yesterday = shortlog --since='25 hours ago' --until='12 hours ago'
+    sc = svn dcommit
+    sr = svn rebase
 [format]
     pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
 [core]
