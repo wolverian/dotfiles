@@ -19,7 +19,7 @@ set softtabstop=4
 set tabstop=4
 set shiftwidth=4
 
-autocmd FileType ruby,haml,eruby,yaml,coffee set ai sw=2 sts=2 tabstop=4 et
+autocmd FileType ruby,haml,eruby,yaml,javascript,coffee set ai sw=2 sts=2 tabstop=2 et
 
 set cmdheight=1
 
