@@ -30,6 +30,7 @@ export LSCOLORS=DxGxcxdxCxegedabagacad
 # of course
 export EDITOR='vim'
 export LESSEDIT='vim'
+export PAGER="/bin/zsh -c \"col -b -x | view -c 'set ft=man' -c 'nmap q :q<cr>' -c 'set nonumber' - \""
 
 # homebrew override
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
