@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/clojure"]
 	path = .vim/bundle/clojure
 	url = https://github.com/vim-scripts/VimClojure.git
+[submodule ".mutt/mutt-colors-solarized"]
+	path = .mutt/mutt-colors-solarized
+	url = https://github.com/altercation/mutt-colors-solarized.git
