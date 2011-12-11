@@ -27,8 +27,8 @@ export RUBYOPT=rubygems
 # "vim" will pick up from /usr/local/bin
 alias vi=vim
 
-export CLICOLOR=1
-export LSCOLORS=DxGxcxdxCxegedabagacad
+LS_COLORS='no=00:fi=00:di=01;34:ln=01;36';
+export LS_COLORS
 
 # of course
 export EDITOR='vim'
@@ -51,8 +51,8 @@ export NODE_PATH='.:/usr/local/lib/node'
 
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 
-alias ls="ls -l"
-alias la="ls -la"
+alias ls="ls -l --color=auto"
+alias la="ls -la --color=auto"
 
 # Git
 alias g="git"
