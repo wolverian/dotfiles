@@ -5,6 +5,9 @@ promptinit
 autoload -U compinit
 compinit
 
+autoload -U colors
+colors
+
 ## case-insensitive (all),partial-word and then substring completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
@@ -16,7 +19,7 @@ export SAVEHIST=$HISTSIZE
 # emacs bindings, -v for vi
 bindkey -e
 
-PS1="%{%F{green}%}%m%{%f%} %c %{%F{yellow}%}→%{%f%} "
+PS1="%{$fg[green]%}%m%{$reset_color%} %c %{$fg[yellow]%}→%{$reset_color%} "
 
 export RUBYOPT=rubygems
 
