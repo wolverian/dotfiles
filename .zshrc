@@ -51,8 +51,8 @@ export NODE_PATH='.:/usr/local/lib/node'
 
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 
-alias ls="ls -l --color=auto"
-alias la="ls -la --color=auto"
+alias ls="ls -l"
+alias la="ls -la"
 
 # Git
 alias g="git"
