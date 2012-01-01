@@ -191,13 +191,8 @@ noremap P gP
 noremap gp p 
 noremap gP P
 
-function! Send_to_tmux(text)
-    let escaped_text = substitute(shellescape(a:text), "\\\\\n", "\n", "g")
-    call system("tmux send-keys -t 1 " . escaped_text . " 'Enter'")
-endfunction
-
-nmap ,s 99[(vab"ry:call Send_to_tmux(@r)<cr>
-vmap <cr> "ry:call Send_to_tmux(@r)<cr>
+nmap <cr> 99[(vab"ry:call Send_to_Tmux(@r . "\n")<cr>
+vmap <cr> "ry:call Send_to_Tmux(@r)<cr>
 
 " ruby cyclomatic complexity
 let g:rubycomplexity_enable_at_startup=0
