@@ -214,5 +214,8 @@ map ,w vabs)a
 let vimclojure#HighlightBuiltins = 1
 let vimclojure#ParenRainbow = 1
 
+" em is ugly in solarized
+hi htmlItalic cterm=none ctermbg=none
+
 " Compile coffeescript on save
 autocmd BufWritePost,FileWritePost *.coffee :silent !coffee -c --bare <afile>
