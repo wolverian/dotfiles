@@ -141,7 +141,7 @@ set backspace=indent,eol,start
 "set list
 set lcs=tab:▸\ ,eol:¬
 
-set number
+set nonumber
 set numberwidth=3
 
 filetype plugin on
