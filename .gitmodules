@@ -36,4 +36,4 @@
 	url = https://github.com/altercation/mutt-colors-solarized.git
 [submodule ".vim/bundle/tslime"]
 	path = .vim/bundle/tslime
-	url = https://github.com/evhan/tslime.vim.git
+	url = https://github.com/anttih/tslime.vim.git
