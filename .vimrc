@@ -194,9 +194,6 @@ noremap P gP
 noremap gp p 
 noremap gP P
 
-nmap <cr> 99[(vab"ry:call Send_to_Tmux(@r . "\n")<cr>
-vmap <cr> "ry:call Send_to_Tmux(@r)<cr>
-
 " ruby cyclomatic complexity
 let g:rubycomplexity_enable_at_startup=0
 hi low_complexity ctermbg=green ctermfg=green
