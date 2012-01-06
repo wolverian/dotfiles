@@ -141,6 +141,9 @@ set backspace=indent,eol,start
 "set list
 set lcs=tab:▸\ ,eol:¬
 
+" nicer split borders
+set fillchars=vert:│
+
 set nonumber
 set numberwidth=3
 
@@ -216,6 +219,8 @@ let vimclojure#ParenRainbow = 1
 
 " em is ugly in solarized
 hi htmlItalic cterm=none ctermbg=none
+
+hi VertSplit ctermbg=none
 
 " Compile coffeescript on save
 autocmd BufWritePost,FileWritePost *.coffee :silent !coffee -c --bare <afile>
