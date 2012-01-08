@@ -69,4 +69,8 @@ alias d="dirs -v"
 
 alias irc="tmux rename-window irc; ssh mannerheim -t 'tmux at'"
 
+export TODO=~/.todo.txt
+function todo() { if [ $# -eq "0" ]; then cat $TODO; else echo "• $@" >> $TODO; fi }
+function todone() { sed -i -e "/$*/d" $TODO; }
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
