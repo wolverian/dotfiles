@@ -115,6 +115,7 @@ alias irc="tmux rename-window irc; ssh mannerheim -t 'tmux at'"
 export TODO=~/.todo.txt
 function todo() { if [ $# -eq "0" ]; then cat $TODO; else echo "• $@" >> $TODO; fi }
 function todone() { sed -i -e "/$*/d" $TODO; }
+function toedit() { vi $TODO; }
 
 eval `gdircolors ~/.dir_colors`
 
