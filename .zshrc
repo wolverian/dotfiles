@@ -15,6 +15,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 export HISTSIZE=100000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
+export LANG=fi_FI.UTF-8
 
 # emacs bindings, -v for vi
 bindkey -e
