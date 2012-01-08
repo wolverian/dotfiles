@@ -20,7 +20,52 @@ export LANG=fi_FI.UTF-8
 # emacs bindings, -v for vi
 bindkey -e
 
-PS1="%{$fg[green]%}%m%{$reset_color%} %c %{$fg[yellow]%}→%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(parse_git_dirty)${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
+parse_git_dirty () {
+    gitstat=$(git status 2>/dev/null | grep '\(# Untracked\|# Changes\|# Changed but not updated:\)')
+
+    if [[ $(echo ${gitstat} | grep -c "^# Changes to be committed:$") > 0 ]]; then
+        echo -n "$ZSH_THEME_GIT_PROMPT_DIRTY"
+    fi
+
+    if [[ $(echo ${gitstat} | grep -c "^\(# Untracked files:\|# Changed but not updated:\|# Changes not staged for commit:\)$") > 0 ]]; then
+        echo -n "$ZSH_THEME_GIT_PROMPT_UNTRACKED"
+    fi 
+
+    if [[ $(echo ${gitstat} | grep -v '^$' | wc -l | tr -d ' ') == 0 ]]; then
+        echo -n "$ZSH_THEME_GIT_PROMPT_CLEAN"
+    fi
+}
+
+# Checks if there are commits ahead from remote
+function git_prompt_ahead() {
+    if $(echo "$(git log origin/$(current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
+        echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
+    fi
+}
+
+
+# Will return the current branch name
+# Usage example: git pull origin $(current_branch)
+#
+function current_branch() {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo ${ref#refs/heads/}
+}
+
+PROMPT='
+%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~%{$reset_color%}$(git_prompt_info)
+%{$fg[yellow]%}>%{$reset_color%} '
 
 export RUBYOPT=rubygems
 
