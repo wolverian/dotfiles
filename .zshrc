@@ -28,9 +28,6 @@ export RUBYOPT=rubygems
 # "vim" will pick up from /usr/local/bin
 alias vi=vim
 
-LS_COLORS='no=00:fi=00:di=01;34:ln=01;36';
-export LS_COLORS
-
 # of course
 export EDITOR='vim'
 export LESSEDIT='vim'
@@ -52,7 +49,8 @@ export NODE_PATH='.:/usr/local/lib/node'
 
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 
-alias ls="ls -l"
+# requires GNU ls
+alias ls="ls --color=auto -l"
 alias la="ls -la"
 
 # Git
@@ -72,5 +70,7 @@ alias irc="tmux rename-window irc; ssh mannerheim -t 'tmux at'"
 export TODO=~/.todo.txt
 function todo() { if [ $# -eq "0" ]; then cat $TODO; else echo "• $@" >> $TODO; fi }
 function todone() { sed -i -e "/$*/d" $TODO; }
+
+eval `gdircolors ~/.dir_colors`
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.

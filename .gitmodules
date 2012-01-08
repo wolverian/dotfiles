@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/tslime"]
 	path = .vim/bundle/tslime
 	url = https://github.com/anttih/tslime.vim.git
+[submodule "dircolors-solarized"]
+	path = dircolors-solarized
+	url = git://github.com/huyz/dircolors-solarized.git
