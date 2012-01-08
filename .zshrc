@@ -63,8 +63,13 @@ function current_branch() {
     echo ${ref#refs/heads/}
 }
 
+function current_jobs() {
+    JOBS=`jobs | cut -c6- | sed 's/^+ /A /' | sort -r | head -2 | cut -d' ' -f 4- | tr '\n' ',' | sed 's/,$//;s/,/, /'`
+    if [[ "$JOBS" != "" ]]; then echo "with %{$fg[blue]%}$JOBS%{$reset_color%}"; fi
+}
+
 PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~%{$reset_color%}$(git_prompt_info)
+%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~%{$reset_color%}$(git_prompt_info) $(current_jobs)
 %{$fg[yellow]%}>%{$reset_color%} '
 
 export RUBYOPT=rubygems
