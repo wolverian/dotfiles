@@ -10,7 +10,7 @@
     branch = auto
 [alias]
     amend = commit --amend
-    s = status
+    s = status --short
     b = branch
     c = commit -v
     cm = commit -m
