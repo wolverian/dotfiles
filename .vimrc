@@ -127,5 +127,6 @@ let vimclojure#ParenRainbow = 1
 
 " em is ugly in solarized
 hi htmlItalic cterm=none ctermbg=none
+let g:html_indent_tags = 'p'
 
 hi VertSplit ctermbg=none
