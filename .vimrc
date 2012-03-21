@@ -113,6 +113,9 @@ noremap <C-CR> :call Toggle_task_status()<CR>
 map ,w vabs)a
 
 map <leader><space> :noh<cr>
+
+" make it right
+map Y y$
 " VimClojure
 let vimclojure#HighlightBuiltins = 1
 let vimclojure#ParenRainbow = 1
