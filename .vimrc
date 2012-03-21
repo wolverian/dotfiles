@@ -112,6 +112,7 @@ noremap <C-CR> :call Toggle_task_status()<CR>
 " wrap current sexpr and insert proc name
 map ,w vabs)a
 
+map <leader><space> :noh<cr>
 " VimClojure
 let vimclojure#HighlightBuiltins = 1
 let vimclojure#ParenRainbow = 1
