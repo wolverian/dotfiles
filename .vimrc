@@ -116,6 +116,11 @@ map <leader><space> :noh<cr>
 
 " make it right
 map Y y$
+
+" grepping
+set grepprg=ack
+map ,g :execute " grep " . expand("<cword>") . " " <bar> cwindow<CR>
+
 " VimClojure
 let vimclojure#HighlightBuiltins = 1
 let vimclojure#ParenRainbow = 1
