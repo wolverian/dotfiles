@@ -194,12 +194,6 @@ noremap P gP
 noremap gp p 
 noremap gP P
 
-" ruby cyclomatic complexity
-let g:rubycomplexity_enable_at_startup=0
-hi low_complexity ctermbg=green ctermfg=green
-hi medium_complexity ctermbg=yellow ctermfg=yellow
-hi high_complexity ctermbg=red ctermfg=red
-
 set wildignore=*.o,*.class
 
 let g:CommandTMaxFiles=25000
