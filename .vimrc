@@ -181,6 +181,8 @@ augroup mkd
     autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
 augroup END
 
+autocmd BufRead *.k set ft=scheme
+
 " make quickfix occupy the full width
 botright cwindow
 
