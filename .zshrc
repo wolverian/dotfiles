@@ -83,22 +83,6 @@ export EDITOR='vim'
 export LESSEDIT='vim'
 export PAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man' -c 'nmap q :q<cr>' -c 'set nonumber' - \""
 
-# homebrew override
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-# xcode
-export PATH=$PATH:/Developer/usr/bin
-# npm
-export PATH=$PATH:/usr/local/share/npm/bin
-# PHP
-export PATH=$PATH:/usr/local/lib/php/bin
-# Python
-export PATH=$PATH:/usr/local/Cellar/python/2.7.1/bin
-
-# node lib path
-export NODE_PATH='.:/usr/local/lib/node'
-
-export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
-
 # requires GNU ls
 alias ls="ls --color=auto -l"
 alias la="ls -la"
@@ -124,4 +108,3 @@ function toedit() { vi $TODO; }
 
 eval `gdircolors ~/.dir_colors`
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
