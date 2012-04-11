@@ -20,6 +20,24 @@ export LANG=en_US.UTF-8
 # emacs bindings, -v for vi
 bindkey -e
 
+export RUBYOPT=rubygems
+
+# of course
+export EDITOR='vim'
+export LESSEDIT='vim'
+export PAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man' -c 'nmap q :q<cr>' -c 'set nonumber' - \""
+
+alias vi=vim
+alias ls="ls --color=auto -l" # requires GNU ls
+alias la="ls -la"
+alias g="git"
+alias s="svn"
+alias sup="svn up --ignore-externals"
+alias sst="svn st --ignore-externals"
+alias t=tmux
+alias d="dirs -v"
+alias irc="tmux rename-window irc; ssh mannerheim -t 'tmux at'"
+
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}"
@@ -72,39 +90,14 @@ PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~%{$reset_color%}$(git_prompt_info) $(current_jobs)
 %{$fg[yellow]%}>%{$reset_color%} '
 
-export RUBYOPT=rubygems
 
-# replace system vi (which itself is a symlink to system vim) with homebrew vim
-# "vim" will pick up from /usr/local/bin
-alias vi=vim
-
-# of course
-export EDITOR='vim'
-export LESSEDIT='vim'
-export PAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man' -c 'nmap q :q<cr>' -c 'set nonumber' - \""
-
-# requires GNU ls
-alias ls="ls --color=auto -l"
-alias la="ls -la"
-
-# Git
-alias g="git"
-
-# Subversion
-alias s="svn"
-alias sup="svn up --ignore-externals"
-alias sst="svn st --ignore-externals"
-
-alias t=tmux
-
-alias d="dirs -v"
-
-alias irc="tmux rename-window irc; ssh mannerheim -t 'tmux at'"
-
+# todo system
 export TODO=~/.todo.txt
 function todo() { if [ $# -eq "0" ]; then cat $TODO; else echo "• $@" >> $TODO; fi }
 function todone() { sed -i -e "/$*/d" $TODO; }
 function toedit() { vi $TODO; }
 
 eval `gdircolors ~/.dir_colors`
+
+source ~/scripts/path.sh
 
