@@ -161,6 +161,16 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
 " This came from Gary Bernhardt:
 " https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 set winwidth=84
