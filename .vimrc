@@ -70,7 +70,7 @@ augroup vimrcEx
     autocmd FileType ruby,javascript,coffee set ai sw=2 sts=2 tabstop=2 et
     autocmd! BufRead,BufNewFile *.mkd setfiletype mkd
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
-    autocmd BufRead *.k set ft=scheme
+    autocmd BufRead,BufNewFile *.k set ft=scheme
 augroup END
 
 " this is better than \
