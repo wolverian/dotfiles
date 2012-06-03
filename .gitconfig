@@ -19,6 +19,7 @@
     a = add
     ai = add --interactive
     aa = add --all
+    d = diff
     dc = diff --cached
     l = log --graph --abbrev-commit --date=relative
     r = !git l -20
