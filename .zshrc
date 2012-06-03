@@ -90,6 +90,13 @@ PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~%{$reset_color%}$(git_prompt_info) $(current_jobs)
 %{$fg[yellow]%}>%{$reset_color%} '
 
+acd() {
+  if [ x$1 = x ]; then
+    echo "Usage: acd <pattern>"
+    return 1
+  fi
+  cd "$(qf $1 | sed 1q)"
+}
 
 # todo system
 export TODO=~/.todo.txt
@@ -97,7 +104,9 @@ function todo() { if [ $# -eq "0" ]; then cat $TODO; else echo "• $@" >> $TODO
 function todone() { sed -i -e "/$*/d" $TODO; }
 function toedit() { vi $TODO; }
 
-eval `gdircolors ~/.dir_colors`
+eval `dircolors ~/.dir_colors`
 
-source ~/scripts/path.sh
+PATH=~/bin:$PATH
+export PATH
+source ~/bin/path.sh
 
