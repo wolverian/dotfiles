@@ -36,7 +36,7 @@ alias sup="svn up --ignore-externals"
 alias sst="svn st --ignore-externals"
 alias t=tmux
 alias d="dirs -v"
-alias irc="tmux rename-window irc; ssh mannerheim -t 'tmux at'"
+alias irc="tmux rename-window irc; ssh -e '[' mannerheim -t 'tmux at'"
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
