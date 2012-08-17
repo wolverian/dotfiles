@@ -46,7 +46,7 @@ set winminheight=5
 set winheight=999
 set cursorline
 set ofu=syntaxcomplete#Complete
-set wildignore=*.o,*.class
+set wildignore=*.o,*.class,*.png,*.jar
 
 set statusline=\ "
 set statusline+=%f\ " file name
