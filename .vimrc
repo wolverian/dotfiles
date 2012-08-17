@@ -71,6 +71,7 @@ augroup vimrcEx
     autocmd! BufRead,BufNewFile *.mkd setfiletype mkd
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
     autocmd BufRead,BufNewFile *.k set ft=scheme
+    autocmd BufRead,BufNewFile *.rkt set ft=scheme
 augroup END
 
 " this is better than \
