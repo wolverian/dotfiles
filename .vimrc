@@ -7,9 +7,9 @@ set binary noeol
 set nocompatible
 set noesckeys
 set expandtab
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 set cmdheight=1
 set showtabline=1
 set splitbelow
