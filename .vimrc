@@ -46,7 +46,7 @@ set winminheight=5
 set winheight=999
 set cursorline
 set ofu=syntaxcomplete#Complete
-set wildignore=*.o,*.class,*.png,*.jar
+set wildignore=*.o,*.class,*.png,*.jar,*.pyc,lib/*,target/*,project/*,bin/redo*
 
 set statusline=\ "
 set statusline+=%f\ " file name
