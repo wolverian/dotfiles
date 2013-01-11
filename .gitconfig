@@ -3,6 +3,8 @@
     email = anttih@gmail.com
 [diff]
     renamelimit = 4000
+[branch]
+	autosetuprebase = always
 [color]
     ui = auto
     status = auto
