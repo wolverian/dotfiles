@@ -34,3 +34,5 @@
 [core]
     excludesfile = ~/.gitignore
     pager = less
+[push]
+    default = simple
