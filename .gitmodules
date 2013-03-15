@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-ls"]
 	path = .vim/bundle/vim-ls
 	url = https://github.com/gkz/vim-ls.git
+[submodule ".vim/bundle/vim-racket"]
+	path = .vim/bundle/vim-racket
+	url = git://github.com/wlangstroth/vim-racket.git
