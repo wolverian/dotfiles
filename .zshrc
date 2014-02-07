@@ -38,7 +38,6 @@ alias sup="svn up --ignore-externals"
 alias sst="svn st --ignore-externals"
 alias t=tmux
 alias d="dirs -v"
-alias irc="tmux rename-window irc; ssh -e '[' paasikivi -t 'tmux at'"
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -84,15 +83,10 @@ acd() {
   cd "$(qf $1 | sed 1q)"
 }
 
-# todo system
-export TODO=~/.todo.txt
-function todo() { if [ $# -eq "0" ]; then cat $TODO; else echo "• $@" >> $TODO; fi }
-function todone() { sed -i -e "/$*/d" $TODO; }
-function toedit() { vi $TODO; }
+remove_merged_branches () {
+  git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+}
 
-eval `dircolors ~/.dir_colors`
+eval `gdircolors ~/.dir_colors`
 
-PATH=~/bin:$PATH
-export PATH
 source ~/bin/path.sh
-
