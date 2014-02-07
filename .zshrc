@@ -15,12 +15,14 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 export HISTSIZE=100000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
-export LANG=en_US.UTF-8
+export LANG=fi_FI.UTF-8
+export LC_TYPE="en_US.UTF-8"
 
 # emacs bindings, -v for vi
 bindkey -e
 
 export RUBYOPT=rubygems
+export RBENV_ROOT=/usr/local/var/rbenv
 
 # of course
 export EDITOR='vim'
