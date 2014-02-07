@@ -46,7 +46,7 @@ set winminheight=5
 set winheight=999
 set cursorline
 set ofu=syntaxcomplete#Complete
-set wildignore=*.o,*.class,*.png,*.jar,*.pyc,lib/*,target/*,project/*,bin/redo*
+set wildignore=*.o,*.class,*.png,*.jar,*.pyc,lib/*,target/*,project/*,bin/redo*/,node_modules/*
 
 set statusline=\ "
 set statusline+=%f\ " file name
@@ -67,11 +67,10 @@ filetype plugin on
 
 augroup vimrcEx
     autocmd!
-    autocmd FileType ruby,javascript,coffee set ai sw=2 sts=2 tabstop=2 et
     autocmd! BufRead,BufNewFile *.mkd setfiletype mkd
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
     autocmd BufRead,BufNewFile *.k set ft=scheme
-    autocmd BufRead,BufNewFile *.rkt set ft=scheme
+    autocmd! BufWritePost *.coffee :silent !coffee -c --map % 
 augroup END
 
 " this is better than \
