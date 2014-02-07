@@ -301,17 +301,5 @@ if version >= 508 || !exists("did_python_syn_inits")
   delcommand HiLink
 endif
 
-" GRB BEGIN: highlight more errors
-syn match pythonError	 "^\s*def\s\+\w\+(.*)\s*$" display
-syn match pythonError	 "^\s*class\s\+\w\+(.*)\s*$" display
-syn match pythonError	 "^\s*except\s*$" display
-syn match pythonError	 "^\s*finally\s*$" display
-syn match pythonError	 "^\s*try\s*$" display
-syn match pythonError	 "^\s*except\s.*[^\:]$" display
-syn match pythonError	 "[;]$" display
-syn match pythonError    ".\%>79v" display
-syn keyword pythonError         do
-" GRB END
-
 let b:current_syntax = "python"
 
