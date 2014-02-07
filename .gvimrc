@@ -3,7 +3,7 @@
 colorscheme solarized
 set background=dark
 
-set guifont=Inconsolata-dz:h13
+set guifont=Source\ Code\ Pro:h15
 
 set antialias
 
