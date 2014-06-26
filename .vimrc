@@ -11,6 +11,7 @@ let g:syntastic_error_symbol = '⬤ '
 let g:syntastic_style_error_symbol = '⬤ '
 let g:syntastic_warning_symbol = '⬤ '
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 
 " do NOT put a carriage return at the end of the last line! if you are programming
 " for the web the default will cause http headers to be sent. that's bad.
