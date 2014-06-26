@@ -3,7 +3,7 @@
 colorscheme solarized
 set background=dark
 
-set guifont=Source\ Code\ Pro:h15
+set guifont=Source\ Code\ Pro\ for\ Powerline:h15
 
 set antialias
 
