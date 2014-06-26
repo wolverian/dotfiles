@@ -1,5 +1,16 @@
 
-call pathogen#runtime_append_all_bundles() 
+execute pathogen#infect()
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:bufferline_echo = 0
+let g:airline#extensions#tmuxline#enabled = 0
+
+let g:syntastic_error_symbol = '⬤ '
+let g:syntastic_style_error_symbol = '⬤ '
+let g:syntastic_warning_symbol = '⬤ '
+let g:syntastic_auto_loc_list = 1
 
 " do NOT put a carriage return at the end of the last line! if you are programming
 " for the web the default will cause http headers to be sent. that's bad.
@@ -56,6 +67,9 @@ set statusline+=]
 " set statusline+=%{fugitive#statusline()}
 set statusline+=%h%1*%m%r%w%0* " flag
 set statusline+=%= " right align
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
 
 syntax on
@@ -130,3 +144,8 @@ hi htmlItalic cterm=none ctermbg=none
 let g:html_indent_tags = 'p'
 
 hi VertSplit ctermbg=none
+
+hi SignColumn ctermbg=black
+hi SyntasticErrorSign ctermbg=black ctermfg=DarkRed
+hi SyntasticWarningSign ctermbg=black ctermfg=DarkMagenta
+hi SyntasticStyleErrorSign ctermbg=black ctermfg=DarkCyan
