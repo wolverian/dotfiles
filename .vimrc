@@ -1,3 +1,6 @@
+" vim:set ts=2 sts=2 sw=2 expandtab:
+
+autocmd!
 
 execute pathogen#infect()
 
@@ -15,19 +18,19 @@ let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 
 " do NOT put a carriage return at the end of the last line! if you are programming
 " for the web the default will cause http headers to be sent. that's bad.
-set binary noeol
 set nocompatible
 set noesckeys
 set expandtab
-set softtabstop=2
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set cmdheight=1
 set showtabline=1
 set splitbelow
 set splitright
-set autoread
 set wildmenu
+set wildmode=longest,list
+set wildignore=*.o,*.class,*.png,*.jar,*.pyc,lib/*,target/*,project/*,bin/redo*/,node_modules/*
 set autoindent
 set formatoptions=tcqorM
 set formatprg=par\ -w79
@@ -58,7 +61,10 @@ set winminheight=5
 set winheight=999
 set cursorline
 set ofu=syntaxcomplete#Complete
-set wildignore=*.o,*.class,*.png,*.jar,*.pyc,lib/*,target/*,project/*,bin/redo*/,node_modules/*
+set nojoinspaces
+set foldmethod=manual
+set nofoldenable
+set autoread
 
 set statusline=\ "
 set statusline+=%f\ " file name
@@ -78,7 +84,6 @@ scriptencoding utf-8
 
 " enable filetype-specific indenting and plugins
 filetype plugin indent on
-filetype plugin on
 
 augroup vimrcEx
     autocmd!
@@ -119,6 +124,9 @@ noremap p gp
 noremap P gP
 noremap gp p
 noremap gP P
+
+imap <c-c> <esc>
+nnoremap <leader><leader> <c-^>
 
 let g:CommandTMaxFiles=25000
 noremap <leader>e :CommandT<cr>
