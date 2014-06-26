@@ -85,7 +85,8 @@ augroup vimrcEx
     autocmd! BufRead,BufNewFile *.mkd setfiletype mkd
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
     autocmd BufRead,BufNewFile *.k set ft=scheme
-    autocmd! BufWritePost *.coffee :silent !coffee -c --map % 
+    autocmd BufRead,BufNewFile *.rkt set lisp
+    autocmd! BufWritePost *.coffee :silent !coffee -c --map %
 augroup END
 
 " this is better than \
@@ -116,7 +117,7 @@ botright cwindow
 " leave cursor after the pasted text
 noremap p gp
 noremap P gP
-noremap gp p 
+noremap gp p
 noremap gP P
 
 let g:CommandTMaxFiles=25000
