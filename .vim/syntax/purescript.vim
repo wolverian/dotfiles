@@ -33,6 +33,7 @@ syn match purescriptLineComment "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$"
 syn match purescriptChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
 syn match purescriptBacktick "`[A-Za-z][A-Za-z0-9_]*`"
 syn region purescriptString start=+"+ skip=+\\\\\|\\"+ end=+"+
+syn region purescriptMultilineString start=+"""+ end=+"""+
 syn region purescriptBlockComment start="{-" end="-}" contains=purescriptBlockComment
 
 highlight def link purescriptModuleStartLabel purescriptStructure
@@ -52,6 +53,7 @@ highlight def link purescriptTypedef Typedef
 highlight def link purescriptLineComment Comment
 highlight def link purescriptBlockComment Comment
 highlight def link purescriptString String
+highlight def link purescriptMultilineString String
 highlight def link purescriptChar String
 highlight def link purescriptBacktick Operator
 
