@@ -4,18 +4,6 @@ autocmd!
 
 execute pathogen#infect()
 
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:bufferline_echo = 0
-let g:airline#extensions#tmuxline#enabled = 0
-
-let g:syntastic_error_symbol = '⬤ '
-let g:syntastic_style_error_symbol = '⬤ '
-let g:syntastic_warning_symbol = '⬤ '
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
-
 " do NOT put a carriage return at the end of the last line! if you are programming
 " for the web the default will cause http headers to be sent. that's bad.
 set nocompatible
@@ -91,7 +79,8 @@ augroup vimrcEx
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
     autocmd BufRead,BufNewFile *.k set ft=scheme
     autocmd BufRead,BufNewFile *.rkt set lisp
-    autocmd! BufWritePost *.coffee :silent !coffee -c --map %
+    " autocmd! BufWritePost *.coffee :silent !coffee -c --map %
+    " au BufEnter *.hs compiler ghc
 augroup END
 
 " this is better than \
@@ -128,10 +117,11 @@ noremap gP P
 imap <c-c> <esc>
 nnoremap <leader><leader> <c-^>
 
-let g:CommandTMaxFiles=25000
-noremap <leader>e :CommandT<cr>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard | grep -v node_modules']
 
-noremap <C-CR> :call Toggle_task_status()<CR>
+map <leader>e :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
 
 " wrap current sexpr and insert proc name
 map ,w vabs)a
@@ -155,7 +145,19 @@ let g:html_indent_tags = 'p'
 
 hi VertSplit ctermbg=none
 
-hi SignColumn ctermbg=black
-hi SyntasticErrorSign ctermbg=black ctermfg=DarkRed
-hi SyntasticWarningSign ctermbg=black ctermfg=DarkMagenta
-hi SyntasticStyleErrorSign ctermbg=black ctermfg=DarkCyan
+" Syntastic
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_auto_jump = 2
+let g:syntastic_error_symbol = ' '
+let g:syntastic_style_error_symbol = ' '
+let g:syntastic_warning_symbol = ' '
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['haskell'], 'passive_filetypes': [] }
+
+hi SignColumn ctermbg=none guibg=NONE
+hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=DarkRed
+hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=DarkMagenta
+hi SyntasticStyleErrorSign ctermbg=none ctermfg=DarkCyan guibg=NONE guifg=DarkCyan
+
