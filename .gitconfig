@@ -21,6 +21,7 @@
     a = add
     ai = add --interactive
     aa = add --all
+    au = add -u
     d = diff
     dc = diff --cached
     l = log --graph --abbrev-commit --date=relative
@@ -29,6 +30,7 @@
     yesterday = shortlog --since='25 hours ago' --until='12 hours ago'
     sc = svn dcommit
     sr = svn rebase
+    cleanup = "!git branch --merged master | grep -v \"\\* master\" | xargs -n 1 git branch -d ; git remote prune origin"
 [format]
     pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
 [core]
@@ -40,3 +42,5 @@
     default = simple
 [credential]
 	helper = osxkeychain
+[rerere]
+	enabled = true
