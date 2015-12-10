@@ -43,13 +43,13 @@ set nonumber
 set numberwidth=3
 set gdefault
 set t_Co=256
-set winwidth=84
+set winwidth=110
 set winheight=5
 set winminheight=5
 set winheight=999
 set cursorline
 set ofu=syntaxcomplete#Complete
-set nojoinspaces
+"set nojoinspaces
 set foldmethod=manual
 set nofoldenable
 set autoread
@@ -85,6 +85,8 @@ augroup END
 
 " this is better than \
 let mapleader = ","
+
+let g:netrw_liststyle = 3
 
 let g:solarized_termcolors=16
 color solarized
