@@ -157,6 +157,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['haskell'], 'passive_filetypes': [] }
 
+" Purescript
+let g:purescript_indent_if = 0
+let g:purescript_indent_case = 0
+let g:purescript_indent_let = 0
+let g:purescript_indent_where = 0
+let g:purescript_indent_do = 0
+
 hi SignColumn ctermbg=none guibg=NONE
 hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=DarkRed
 hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=DarkMagenta
