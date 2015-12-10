@@ -80,7 +80,7 @@ let s:cyan = { "gui": "#56B6C2", "cterm": "38", "cterm16": "6"} " Alternate cter
 
 let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
 
-let s:black = { "gui": "#282C34", "cterm": "235", "cterm16": "0" }
+let s:black = { "gui": "#282C34", "cterm": "235", "cterm16": "NONE" }
 let s:visual_black = { "gui": "NONE", "cterm": "NONE", "cterm16": s:black.cterm16 } " Black out selected text in 16-color visual mode
 
 let s:comment_grey = { "gui": "#5C6670", "cterm": "59", "cterm16": "15" }
@@ -158,7 +158,7 @@ call s:h("MatchParen", {}) " The character under the cursor or just before it, i
 call s:h("ModeMsg", {}) " 'showmode' message (e.g., "-- INSERT --")
 call s:h("MoreMsg", {}) " more-prompt
 call s:h("NonText", { "fg": s:special_grey }) " '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
-call s:h("Normal", { "fg": s:white }) " normal text
+call s:h("Normal", { "fg": s:white, "bg": s:black }) " normal text
 call s:h("Pmenu", {}) " Popup menu: normal item.
 call s:h("PmenuSel", { "bg": s:visual_grey }) " Popup menu: selected item.
 call s:h("PmenuSbar", { "bg": s:visual_grey }) " Popup menu: scrollbar.
