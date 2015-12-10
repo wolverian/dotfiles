@@ -87,7 +87,8 @@ augroup END
 let mapleader = ","
 
 let g:solarized_termcolors=16
-color solarized
+let g:onedark_termcolors=16
+color onedark
 
 " easier window switching
 map <C-h> <C-w>h
