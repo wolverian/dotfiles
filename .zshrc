@@ -72,8 +72,8 @@ function current_jobs() {
 }
 
 PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~%{$reset_color%}$(git_prompt_info) $(current_jobs)
-%{$fg[yellow]%}>%{$reset_color%} '
+%{$fg[green]%}%~%{$reset_color%}$(git_prompt_info) $(current_jobs)
+%{$fg[yellow]%}λ%{$reset_color%} '
 
 acd() {
   if [ x$1 = x ]; then
