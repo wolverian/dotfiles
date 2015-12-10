@@ -29,8 +29,7 @@ export EDITOR='vim'
 export LESSEDIT='vim'
 export PAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man' -c 'nmap q :q<cr>' -c 'set nonumber' - \""
 
-alias vi=vim
-alias ls="ls --color=auto -l" # requires GNU ls
+alias vi=nvim
 alias la="ls -la"
 alias g="git"
 alias s="svn"
@@ -87,6 +86,5 @@ remove_merged_branches () {
   git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
 }
 
-eval `gdircolors ~/.dir_colors`
 
 source ~/bin/path.sh

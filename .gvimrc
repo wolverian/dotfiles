@@ -1,9 +1,9 @@
 
 " a custom 'cobalt' theme
-colorscheme solarized
+colorscheme onedark
 set background=dark
 
-set guifont=Source\ Code\ Pro\ for\ Powerline:h15
+set guifont=Source\ Code\ Pro:h14
 
 set antialias
 
