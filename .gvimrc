@@ -1,6 +1,5 @@
 
-" a custom 'cobalt' theme
-colorscheme onedark
+colorscheme solarized
 set background=dark
 
 set guifont=Source\ Code\ Pro:h14
