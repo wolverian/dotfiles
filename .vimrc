@@ -2,7 +2,18 @@
 
 autocmd!
 
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/syntastic'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-surround'
+Plug 'itchyny/lightline.vim'
+
+call plug#end()
+"execute pathogen#infect()
 
 " do NOT put a carriage return at the end of the last line! if you are programming
 " for the web the default will cause http headers to be sent. that's bad.
@@ -90,7 +101,7 @@ let g:netrw_liststyle = 3
 
 let g:solarized_termcolors=16
 let g:onedark_termcolors=16
-color onedark
+color solarized
 
 " easier window switching
 map <C-h> <C-w>h
@@ -171,3 +182,6 @@ hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=DarkRed
 hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=DarkMagenta
 hi SyntasticStyleErrorSign ctermbg=none ctermfg=DarkCyan guibg=NONE guifg=DarkCyan
 
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
