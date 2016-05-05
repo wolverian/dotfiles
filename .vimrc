@@ -11,6 +11,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
+Plug 'rking/ag.vim'
+Plug 'guns/vim-clojure-static'
+Plug 'frigoeu/psc-ide-vim'
 
 call plug#end()
 "execute pathogen#infect()
@@ -160,8 +163,8 @@ hi VertSplit ctermbg=none
 " Syntastic
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_jump = 2
-let g:syntastic_error_symbol = ' '
-let g:syntastic_style_error_symbol = ' '
+let g:syntastic_error_symbol = '✖︎'
+let g:syntastic_style_error_symbol = '✖︎'
 let g:syntastic_warning_symbol = ' '
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_always_populate_loc_list = 1
@@ -174,6 +177,10 @@ let g:purescript_indent_case = 0
 let g:purescript_indent_let = 0
 let g:purescript_indent_where = 0
 let g:purescript_indent_do = 0
+
+let g:psc_ide_syntastic_mode = 1
+
+au FileType purescript nmap <leader>t :PSCIDEtype<CR>
 
 hi SignColumn ctermbg=none guibg=NONE
 hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=DarkRed
