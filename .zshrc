@@ -71,7 +71,7 @@ function current_jobs() {
 }
 
 PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg[green]%}%~%{$reset_color%}$(git_prompt_info) $(current_jobs)
+%{$fg[green]%}%~%{$reset_color%}$(git_prompt_info) $(current_jobs)
 %{$fg[yellow]%}>%{$reset_color%} '
 
 acd() {
@@ -85,6 +85,5 @@ acd() {
 remove_merged_branches () {
   git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
 }
-
 
 source ~/bin/path.sh
