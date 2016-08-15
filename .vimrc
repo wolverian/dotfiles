@@ -11,12 +11,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
+Plug 'https://github.com/rking/ag.vim.git'
+Plug 'kana/vim-smartinput'
+Plug 'vimoutliner/vimoutliner'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 "execute pathogen#infect()
 
 " do NOT put a carriage return at the end of the last line! if you are programming
 " for the web the default will cause http headers to be sent. that's bad.
+language en_US
 set nocompatible
 set noesckeys
 set expandtab
@@ -39,7 +46,7 @@ set noswapfile
 set hidden
 set tw=79
 set laststatus=2
-set background=dark
+set background=light
 set incsearch
 set hls
 set vb
@@ -90,6 +97,7 @@ augroup vimrcEx
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
     autocmd BufRead,BufNewFile *.k set ft=scheme
     autocmd BufRead,BufNewFile *.rkt set lisp
+    autocmd BufRead,BufNewFile *.otl set tabstop=2
     " autocmd! BufWritePost *.coffee :silent !coffee -c --map %
     " au BufEnter *.hs compiler ghc
 augroup END
@@ -134,8 +142,11 @@ nnoremap <leader><leader> <c-^>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard | grep -v node_modules']
 
+let g:ag_working_path_mode="r"
+
 map <leader>e :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
+map <leader>t :CtrlPTag<cr>
 
 " wrap current sexpr and insert proc name
 map ,w vabs)a
@@ -145,18 +156,19 @@ map <leader><space> :noh<cr>
 " make it right
 map Y y$
 
-" grepping
-set grepprg=ack
-map ,g :execute " grep " . expand("<cword>") . " " <bar> cwindow<CR>
-
 " VimClojure
 let vimclojure#HighlightBuiltins = 1
 let vimclojure#ParenRainbow = 1
 
 " em is ugly in solarized
 hi htmlItalic cterm=none ctermbg=none
+hi Special guifg=#839496
 let g:html_indent_tags = 'p'
 
+hi SignColumn ctermbg=none guibg=NONE
+hi IncSearch ctermfg=2
+hi Search ctermfg=5 guifg=magenta guibg=white
+hi Visual ctermfg=49 ctermbg=black
 hi VertSplit ctermbg=none
 
 " Syntastic
@@ -177,7 +189,9 @@ let g:purescript_indent_let = 0
 let g:purescript_indent_where = 0
 let g:purescript_indent_do = 0
 
-hi SignColumn ctermbg=none guibg=NONE
+" Allow JSX in .js files
+let g:jsx_ext_required = 0
+
 hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=DarkRed
 hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=DarkMagenta
 hi SyntasticStyleErrorSign ctermbg=none ctermfg=DarkCyan guibg=NONE guifg=DarkCyan
