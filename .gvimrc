@@ -1,8 +1,8 @@
 
 colorscheme solarized
-set background=dark
+set background=light
 
-set guifont=Source\ Code\ Pro:h14
+set guifont=PragmataPro\ Mono:h15
 
 set antialias
 
