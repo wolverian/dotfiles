@@ -14,12 +14,18 @@ Plug 'itchyny/lightline.vim'
 Plug 'rking/ag.vim'
 Plug 'guns/vim-clojure-static'
 Plug 'frigoeu/psc-ide-vim'
+Plug 'kana/vim-smartinput'
+Plug 'vimoutliner/vimoutliner'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 "execute pathogen#infect()
 
 " do NOT put a carriage return at the end of the last line! if you are programming
 " for the web the default will cause http headers to be sent. that's bad.
+language en_US
 set nocompatible
 set noesckeys
 set expandtab
@@ -57,13 +63,13 @@ set nonumber
 set numberwidth=3
 set gdefault
 set t_Co=256
-set winwidth=84
+set winwidth=110
 set winheight=5
 set winminheight=5
 set winheight=999
 set cursorline
 set ofu=syntaxcomplete#Complete
-set nojoinspaces
+"set nojoinspaces
 set foldmethod=manual
 set nofoldenable
 set autoread
@@ -93,12 +99,15 @@ augroup vimrcEx
     autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
     autocmd BufRead,BufNewFile *.k set ft=scheme
     autocmd BufRead,BufNewFile *.rkt set lisp
+    autocmd BufRead,BufNewFile *.otl set tabstop=2
     " autocmd! BufWritePost *.coffee :silent !coffee -c --map %
     " au BufEnter *.hs compiler ghc
 augroup END
 
 " this is better than \
 let mapleader = ","
+
+let g:netrw_liststyle = 3
 
 let g:solarized_termcolors=16
 let g:onedark_termcolors=16
@@ -135,8 +144,11 @@ nnoremap <leader><leader> <c-^>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard | grep -v node_modules']
 
+let g:ag_working_path_mode="r"
+
 map <leader>e :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
+map <leader>t :CtrlPTag<cr>
 
 " wrap current sexpr and insert proc name
 map ,w vabs)a
@@ -146,18 +158,19 @@ map <leader><space> :noh<cr>
 " make it right
 map Y y$
 
-" grepping
-set grepprg=ack
-map ,g :execute " grep " . expand("<cword>") . " " <bar> cwindow<CR>
-
 " VimClojure
 let vimclojure#HighlightBuiltins = 1
 let vimclojure#ParenRainbow = 1
 
 " em is ugly in solarized
 hi htmlItalic cterm=none ctermbg=none
+hi Special guifg=#839496
 let g:html_indent_tags = 'p'
 
+hi SignColumn ctermbg=none guibg=NONE
+hi IncSearch ctermfg=2
+hi Search ctermfg=5 guifg=magenta guibg=white
+hi Visual ctermfg=49 ctermbg=black
 hi VertSplit ctermbg=none
 
 " Syntastic
@@ -184,6 +197,10 @@ let g:psc_ide_syntastic_mode = 1
 au FileType purescript nmap <leader>t :PSCIDEtype<CR>
 
 hi SignColumn ctermbg=none guibg=NONE
+
+" Allow JSX in .js files
+let g:jsx_ext_required = 0
+
 hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=DarkRed
 hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=DarkMagenta
 hi SyntasticStyleErrorSign ctermbg=none ctermfg=DarkCyan guibg=NONE guifg=DarkCyan
@@ -191,3 +208,10 @@ hi SyntasticStyleErrorSign ctermbg=none ctermfg=DarkCyan guibg=NONE guifg=DarkCy
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ }
+
+let g:lightline.active = {
+        \ 'left': [ [ 'mode', 'paste' ],
+        \           [ 'readonly', 'relativepath', 'modified' ] ],
+        \ 'right': [ [ 'lineinfo' ],
+        \            [ 'percent' ],
+        \            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
