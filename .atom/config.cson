@@ -1,0 +1,43 @@
+"*":
+  "character-table":
+    enableCharacterMnemonics: true
+  core:
+    audioBeep: false
+    disabledPackages: [
+      "atom-neovim"
+      "term2"
+      "ex-mode"
+    ]
+    projectHome: "/Users/antti/code"
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
+  editor:
+    fontFamily: "PragmataPro"
+    fontSize: 15
+    invisibles: {}
+    lineHeight: 1.3
+    preferredLineLength: 100
+    showLineNumbers: false
+  "exception-reporting":
+    userId: "895ae608-2d39-43c7-95f3-f30fb3b2255a"
+  "fuzzy-finder":
+    searchAllPanes: true
+  "git-plus":
+    includeStagedDiff: false
+    splitPane: "Right"
+    verboseCommits: true
+    wordDiff: false
+  "ide-purescript":
+    pscIdeExe: "/Users/antti/.local/bin/psc-ide-client"
+    pscIdeServerExe: "/Users/antti/.local/bin/psc-ide-server"
+  linter:
+    errorPanelHeight: 73
+  tabs:
+    enableVcsColoring: true
+  term2:
+    cursorBlink: false
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false

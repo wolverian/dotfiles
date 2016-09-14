@@ -1,0 +1,6 @@
+'atom-text-editor.vim-mode:not(.insert-mode)':
+  '/': 'find-and-replace:show'
+
+'.find-and-replace':
+  'ctrl-[': 'core:cancel'
+  'ctrl-c': 'core:cancel'
