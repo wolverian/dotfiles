@@ -42,7 +42,7 @@ set noswapfile
 set hidden
 set tw=79
 set laststatus=2
-set background=dark
+set background=light
 set incsearch
 set hls
 set vb
@@ -163,13 +163,14 @@ hi VertSplit ctermbg=none
 " Syntastic
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_jump = 2
-let g:syntastic_error_symbol = '✖︎'
-let g:syntastic_style_error_symbol = '✖︎'
-let g:syntastic_warning_symbol = ' '
+let g:syntastic_error_symbol = '✖︎ '
+let g:syntastic_style_error_symbol = '✖︎ '
+let g:syntastic_style_warning_symbol = '• '
+let g:syntastic_warning_symbol = '• '
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['haskell'], 'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['haskell', 'purescript'], 'passive_filetypes': [] }
 
 " Purescript
 let g:purescript_indent_if = 0
