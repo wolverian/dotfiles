@@ -1,5 +1,5 @@
-colorscheme solarized
-set background=light
+colorscheme onedark
+set background=dark
 
 set guifont=PragmataPro\ Mono:h15
 
@@ -11,3 +11,8 @@ set go=
 set guicursor=n:blinkon0
 
 hi VertSplit guibg=NONE guifg=#839496
+hi SignColumn guibg=NONE
+
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ }

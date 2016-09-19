@@ -19,6 +19,7 @@ Plug 'vimoutliner/vimoutliner'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'mxw/vim-jsx'
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 "execute pathogen#infect()
@@ -176,8 +177,8 @@ hi VertSplit ctermbg=none
 " Syntastic
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_jump = 2
-let g:syntastic_error_symbol = '✖︎ '
-let g:syntastic_style_error_symbol = '✖︎ '
+let g:syntastic_error_symbol = '• '
+let g:syntastic_style_error_symbol = '• '
 let g:syntastic_style_warning_symbol = '• '
 let g:syntastic_warning_symbol = '• '
 let g:syntastic_auto_loc_list = 2
