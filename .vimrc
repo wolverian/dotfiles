@@ -10,7 +10,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
-Plug 'itchyny/lightline.vim'
 Plug 'rking/ag.vim'
 Plug 'guns/vim-clojure-static'
 Plug 'frigoeu/psc-ide-vim'
@@ -20,6 +19,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'mxw/vim-jsx'
 Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
+Plug 'raichoo/purescript-vim'
+Plug 'tpope/vim-flagship'
+Plug 'tpope/vim-obsession'
 
 call plug#end()
 "execute pathogen#infect()
@@ -76,7 +79,8 @@ set nofoldenable
 set autoread
 
 set statusline=\ "
-set statusline+=%f\ " file name
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=\ %f\ " file name
 set statusline+=[
 set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
 set statusline+=]
@@ -84,9 +88,8 @@ set statusline+=]
 set statusline+=%h%1*%m%r%w%0* " flag
 set statusline+=%= " right align
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
+set statusline+=%-14.(line %l column %c%V%) " offset
 
 syntax on
 scriptencoding utf-8
@@ -94,24 +97,14 @@ scriptencoding utf-8
 " enable filetype-specific indenting and plugins
 filetype plugin indent on
 
-augroup vimrcEx
-    autocmd!
-    autocmd! BufRead,BufNewFile *.mkd setfiletype mkd
-    autocmd BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:&gt;
-    autocmd BufRead,BufNewFile *.k set ft=scheme
-    autocmd BufRead,BufNewFile *.rkt set lisp
-    autocmd BufRead,BufNewFile *.otl set tabstop=2
-    " autocmd! BufWritePost *.coffee :silent !coffee -c --map %
-    " au BufEnter *.hs compiler ghc
-augroup END
-
 " this is better than \
 let mapleader = ","
 
 let g:netrw_liststyle = 3
 
 let g:solarized_termcolors=16
-let g:onedark_termcolors=16
+
+let g:syntastic_stl_format = "[Errors: %e, warnings: %w]"
 color solarized
 
 " easier window switching
@@ -174,13 +167,17 @@ hi Search ctermfg=5 guifg=magenta guibg=white
 hi Visual ctermfg=49 ctermbg=black
 hi VertSplit ctermbg=none
 
+hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=red
+hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=yellow
+hi SyntasticStyleErrorSign ctermbg=none ctermfg=DarkCyan guibg=NONE guifg=Cyan
+
 " Syntastic
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_jump = 2
-let g:syntastic_error_symbol = '• '
-let g:syntastic_style_error_symbol = '• '
-let g:syntastic_style_warning_symbol = '• '
-let g:syntastic_warning_symbol = '• '
+let g:syntastic_error_symbol = '•'
+let g:syntastic_style_error_symbol = '•'
+let g:syntastic_style_warning_symbol = '•'
+let g:syntastic_warning_symbol = '•'
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
@@ -197,22 +194,5 @@ let g:psc_ide_syntastic_mode = 1
 
 au FileType purescript nmap <leader>t :PSCIDEtype<CR>
 
-hi SignColumn ctermbg=none guibg=NONE
-
 " Allow JSX in .js files
 let g:jsx_ext_required = 0
-
-hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=DarkRed
-hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=DarkMagenta
-hi SyntasticStyleErrorSign ctermbg=none ctermfg=DarkCyan guibg=NONE guifg=DarkCyan
-
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
-
-let g:lightline.active = {
-        \ 'left': [ [ 'mode', 'paste' ],
-        \           [ 'readonly', 'relativepath', 'modified' ] ],
-        \ 'right': [ [ 'lineinfo' ],
-        \            [ 'percent' ],
-        \            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
