@@ -181,7 +181,8 @@ let g:syntastic_warning_symbol = '•'
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['haskell', 'purescript'], 'passive_filetypes': [] }
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['haskell', 'purescript', 'javascript'], 'passive_filetypes': [] }
 
 " Purescript
 let g:purescript_indent_if = 0
