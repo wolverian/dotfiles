@@ -9,8 +9,6 @@ set go=
 " disable cursor blinking in normal mode
 set guicursor=n:blinkon0
 
-colorscheme one
-
 hi SignColumn ctermbg=none guibg=NONE
 hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=red
 hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=yellow

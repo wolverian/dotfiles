@@ -21,7 +21,7 @@ Plug 'mxw/vim-jsx'
 Plug 'joshdick/onedark.vim'
 Plug 'anttih/vim-one'
 Plug 'raichoo/purescript-vim'
-Plug 'tpope/vim-flagship'
+" Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-obsession'
 
 call plug#end()
@@ -52,7 +52,7 @@ set noswapfile
 set hidden
 set tw=79
 set laststatus=2
-set background=light
+set background=dark
 set incsearch
 set hls
 set vb
@@ -75,18 +75,15 @@ set foldmethod=manual
 set nofoldenable
 set autoread
 
-set statusline=\ "
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=\ %f\ " file name
-set statusline+=[
-set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
-set statusline+=]
-" set statusline+=%{fugitive#statusline()}
-set statusline+=%h%1*%m%r%w%0* " flag
+set statusline+=%f " file name
+set statusline+=%h%1*%m%r%w%0*\ " flag
+set statusline+=%l:%c
+set statusline+=\ %{SyntasticStatuslineFlag()}
 set statusline+=%= " right align
 set statusline+=%#warningmsg#
 set statusline+=%*
-set statusline+=%-14.(line %l column %c%V%) " offset
+set statusline+=%{fugitive#head()}\ 
+set statusline+=%{strlen(&ft)?&ft:'none'}" filetype
 
 syntax on
 scriptencoding utf-8
@@ -101,8 +98,8 @@ let g:netrw_liststyle = 3
 
 let g:solarized_termcolors=16
 
-let g:syntastic_stl_format = "[Errors: %e, warnings: %w]"
-color solarized
+let g:syntastic_stl_format='[Errors: %e, warnings: %w]'
+colorscheme one
 
 " easier window switching
 map <C-h> <C-w>h
@@ -163,6 +160,8 @@ hi IncSearch ctermfg=2
 hi Search ctermfg=5 guifg=magenta guibg=white
 hi Visual ctermfg=49 ctermbg=black
 hi VertSplit ctermbg=none
+
+" hi StatusLine guibg=#abb2bf guifg=#282c34
 
 hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=red
 hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=yellow
