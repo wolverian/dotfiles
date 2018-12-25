@@ -28,15 +28,19 @@ export RBENV_ROOT=/usr/local/var/rbenv
 export EDITOR='vim'
 export LESSEDIT='vim'
 export PAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man' -c 'nmap q :q<cr>' -c 'set nonumber' - \""
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 alias vi=nvim
-alias la="ls -la"
+alias la="fd"
 alias g="git"
 alias s="svn"
 alias sup="svn up --ignore-externals"
 alias sst="svn st --ignore-externals"
-alias t=tmux
+alias t="tmux"
 alias d="dirs -v"
+alias json-pretty="pbpaste | python -m json.tool | pbcopy"
+alias git=hub
+
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -83,7 +87,9 @@ acd() {
 }
 
 remove_merged_branches () {
-  git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+  git branch --merged | egrep -v "(^\*|master|dev|production)" | xargs git branch -d
 }
 
 source ~/bin/path.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

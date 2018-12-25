@@ -4,33 +4,47 @@ autocmd!
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'altercation/vim-colors-solarized'
-Plug 'scrooloose/syntastic'
-Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-flagship'
+Plug 'tpope/vim-unimpaired'
 Plug 'rking/ag.vim'
-Plug 'guns/vim-clojure-static'
 Plug 'frigoeu/psc-ide-vim'
 Plug 'kana/vim-smartinput'
 Plug 'vimoutliner/vimoutliner'
 Plug 'pangloss/vim-javascript'
-Plug 'scrooloose/nerdtree'
 Plug 'mxw/vim-jsx'
-Plug 'joshdick/onedark.vim'
-Plug 'anttih/vim-one'
-Plug 'raichoo/purescript-vim'
-" Plug 'tpope/vim-flagship'
-Plug 'tpope/vim-obsession'
+Plug 'purescript-contrib/purescript-vim'
+Plug 'leafgarland/typescript-vim'
+" Plug 'chriskempson/base16-vim'
+" Plug 'nelstrom/vim-markdown-folding'
+Plug 'Quramy/tsuquyomi'
+Plug 'idris-hackers/idris-vim'
+" Plug 'rakr/vim-one'
+" Plug 'joshdick/onedark.vim'
+" Plug 'arcticicestudio/nord-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'vmchale/dhall-vim'
+Plug 'cocopon/iceberg.vim'
+Plug 'junegunn/fzf', { 'dir': '~/Code/projects/fzf', 'do': './install --all' }
 
 call plug#end()
-"execute pathogen#infect()
 
 " do NOT put a carriage return at the end of the last line! if you are programming
 " for the web the default will cause http headers to be sent. that's bad.
 language en_US
+" allow project local configuration
+set exrc
+set completeopt=menu
 set nocompatible
+filetype off
 set noesckeys
 set expandtab
 set tabstop=2
@@ -40,66 +54,49 @@ set cmdheight=1
 set showtabline=1
 set splitbelow
 set splitright
-set wildmenu
-set wildmode=longest,list
-set wildignore=*.o,*.class,*.png,*.jar,*.pyc,lib/*,target/*,project/*,bin/redo*/,node_modules/*
-set autoindent
-set formatoptions=tcqorM
-set formatprg=par\ -w79
+set formatoptions=tcqorMj
 set nobackup
 set nowritebackup
 set noswapfile
 set hidden
-set tw=79
-set laststatus=2
+set textwidth=0
 set background=dark
-set incsearch
 set hls
 set vb
 set showmatch
 set ignorecase
 set smartcase
-set scrolloff=3
-set backspace=indent,eol,start
-set lcs=tab:▸\ ,eol:¬
-set fillchars=vert:│
-set nonumber
+set number
 set numberwidth=3
 set gdefault
-set t_Co=256
-set winwidth=110
 set cursorline
+set noshowmode
 set ofu=syntaxcomplete#Complete
-"set nojoinspaces
-set foldmethod=manual
-set nofoldenable
-set autoread
+set path=$PWD/**
+set encoding=utf-8
+set termguicolors
 
-set statusline+=%f " file name
-set statusline+=%h%1*%m%r%w%0*\ " flag
-set statusline+=%l:%c
-set statusline+=\ %{SyntasticStatuslineFlag()}
-set statusline+=%= " right align
-set statusline+=%#warningmsg#
-set statusline+=%*
-set statusline+=%{fugitive#head()}\ 
-set statusline+=%{strlen(&ft)?&ft:'none'}" filetype
+" These are needed for 256 colors to work in tmux,
+" I don't know why.
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-syntax on
-scriptencoding utf-8
+let g:lightline = {
+      \ 'colorscheme': 'iceberg',
+      \ }
 
-" enable filetype-specific indenting and plugins
-filetype plugin indent on
+" make quickfix occupy the full width
+botright cwindow
+botright lwindow
 
-" this is better than \
-let mapleader = ","
+syntax enable
+colorscheme iceberg
 
-let g:netrw_liststyle = 3
+" 
+" Mappings
+"
 
-let g:solarized_termcolors=16
-
-let g:syntastic_stl_format='[Errors: %e, warnings: %w]'
-colorscheme one
+let mapleader = " "
 
 " easier window switching
 map <C-h> <C-w>h
@@ -107,89 +104,51 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-
-" make quickfix occupy the full width
-botright cwindow
-
-" leave cursor after the pasted text
-noremap p gp
-noremap P gP
-noremap gp p
-noremap gP P
-
 imap <c-c> <esc>
-nnoremap <leader><leader> <c-^>
+nnoremap <leader><tab> <c-^>
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard | grep -v node_modules']
-
-let g:ag_working_path_mode="r"
-
-map <leader>e :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
-map <leader>t :CtrlPTag<cr>
-
-" wrap current sexpr and insert proc name
-map ,w vabs)a
+nnoremap <C-p> :FZF<cr>
 
 map <leader><space> :noh<cr>
 
 " make it right
 map Y y$
 
-" VimClojure
-let vimclojure#HighlightBuiltins = 1
-let vimclojure#ParenRainbow = 1
+let g:tablabel =
+      \ "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}"
 
-" em is ugly in solarized
-hi htmlItalic cterm=none ctermbg=none
-hi Special guifg=#839496
-let g:html_indent_tags = 'p'
 
-hi SignColumn ctermbg=none guibg=NONE
-hi IncSearch ctermfg=2
-hi Search ctermfg=5 guifg=magenta guibg=white
-hi Visual ctermfg=49 ctermbg=black
-hi VertSplit ctermbg=none
-
-" hi StatusLine guibg=#abb2bf guifg=#282c34
-
-hi SyntasticErrorSign ctermbg=none ctermfg=DarkRed guibg=NONE guifg=red
-hi SyntasticWarningSign ctermbg=none ctermfg=DarkMagenta guibg=NONE guifg=yellow
-hi SyntasticStyleErrorSign ctermbg=none ctermfg=DarkCyan guibg=NONE guifg=Cyan
-
-" Syntastic
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_auto_jump = 2
-let g:syntastic_error_symbol = '•'
-let g:syntastic_style_error_symbol = '•'
-let g:syntastic_style_warning_symbol = '•'
-let g:syntastic_warning_symbol = '•'
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['haskell', 'purescript', 'javascript'], 'passive_filetypes': [] }
+let g:netrw_liststyle = 0
+let g:netrw_list_hide =''
 
 " Purescript
+let g:psc_ide_syntastic_mode = 0
 let g:purescript_indent_if = 0
 let g:purescript_indent_case = 0
 let g:purescript_indent_let = 0
 let g:purescript_indent_where = 0
 let g:purescript_indent_do = 0
 
-let g:psc_ide_syntastic_mode = 1
-
-au FileType purescript nmap <leader>t :PSCIDEtype<CR>
-
 " Allow JSX in .js files
 let g:jsx_ext_required = 0
+
+
+nm <buffer> <silent> <leader>t :<C-U>echo PSCIDEtype(PSCIDEgetKeyword(), v:true)<CR>
+nm <buffer> <silent> <leader>s :<C-U>call PSCIDEapplySuggestion()<CR>
+nm <buffer> <silent> <leader>a :<C-U>call PSCIDEaddTypeAnnotation()<CR>
+nm <buffer> <silent> <leader>i :<C-U>call PSCIDEimportIdentifier(PSCIDEgetKeyword())<CR>
+nm <buffer> <silent> <leader>r :<C-U>call PSCIDEload()<CR>
+nm <buffer> <silent> <leader>p :<C-U>call PSCIDEpursuit(PSCIDEgetKeyword())<CR>
+nm <buffer> <silent> <leader>qa :<C-U>call PSCIDEaddImportQualifications()<CR>
+nm <buffer> <silent> ]d :<C-U>call PSCIDEgoToDefinition("", PSCIDEgetKeyword())<CR>
+
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+
+command! Vcopen vertical copen|normal <C-W>=
+
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+filetype plugin indent on
+
+set secure
