@@ -15,21 +15,18 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-unimpaired'
-Plug 'rking/ag.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'mileszs/ack.vim'
 Plug 'frigoeu/psc-ide-vim'
-Plug 'kana/vim-smartinput'
+Plug 'cohama/lexima.vim'
 Plug 'vimoutliner/vimoutliner'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
-" Plug 'chriskempson/base16-vim'
-" Plug 'nelstrom/vim-markdown-folding'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'Quramy/tsuquyomi'
 Plug 'idris-hackers/idris-vim'
-" Plug 'rakr/vim-one'
-" Plug 'joshdick/onedark.vim'
-" Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
@@ -66,7 +63,7 @@ set vb
 set showmatch
 set ignorecase
 set smartcase
-set number
+set nonumber
 set numberwidth=3
 set gdefault
 set cursorline
@@ -85,6 +82,13 @@ let g:lightline = {
       \ 'colorscheme': 'iceberg',
       \ }
 
+" Do not highlight trailing whitespace.
+" This will still remove the whitespace on save.
+let g:better_whitespace_enabled = 0
+
+" Strip trailing whitespace for all filetypes
+let g:strip_whitespace_on_save = 1
+
 " make quickfix occupy the full width
 botright cwindow
 botright lwindow
@@ -92,7 +96,7 @@ botright lwindow
 syntax enable
 colorscheme iceberg
 
-" 
+"
 " Mappings
 "
 
@@ -107,9 +111,13 @@ map <C-l> <C-w>l
 imap <c-c> <esc>
 nnoremap <leader><tab> <c-^>
 
-nnoremap <C-p> :FZF<cr>
+nnoremap <silent> <leader>f :FZF<cr>
 
 map <leader><space> :noh<cr>
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " make it right
 map Y y$
@@ -144,6 +152,8 @@ nm <buffer> <silent> ]d :<C-U>call PSCIDEgoToDefinition("", PSCIDEgetKeyword())<
 
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
+autocmd WinEnter * set number
+autocmd WinLeave * set nonumber
 
 command! Vcopen vertical copen|normal <C-W>=
 
