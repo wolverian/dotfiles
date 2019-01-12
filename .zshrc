@@ -1,4 +1,5 @@
 setopt promptsubst
+setopt PROMPT_SUBST
 autoload -U promptinit
 promptinit
 
@@ -7,6 +8,16 @@ compinit
 
 autoload -U colors
 colors
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr "%F{green} ●%f" # default 'S'
+zstyle ':vcs_info:*' unstagedstr "%F{red} ●%f" # default 'U'
+zstyle ':vcs_info:*' use-simple true
+# zstyle ':vcs_info:git+set-message:*' hooks git-untracked
+zstyle ':vcs_info:git*:*' formats '[%b%m%c%u] ' # default ' (%s)-[%b]%c%u-'
+zstyle ':vcs_info:git*:*' actionformats '[%b|%a%m%c%u] ' # default ' (%s)-[%b|%a]%c%u-'
 
 ## case-insensitive (all),partial-word and then substring completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -41,50 +52,16 @@ alias d="dirs -v"
 alias json-pretty="pbpaste | python -m json.tool | pbcopy"
 alias git=hub
 
-
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(parse_git_dirty)${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
-parse_git_dirty () {
-    gitstat=$(git status 2>/dev/null | grep '\(# Untracked\|# Changes\|# Changed but not updated:\)')
-
-    if [[ $(echo ${gitstat} | grep -c "^# Changes to be committed:$") > 0 ]]; then
-        echo -n "$ZSH_THEME_GIT_PROMPT_DIRTY"
-    fi
-
-    if [[ $(echo ${gitstat} | grep -c "^\(# Untracked files:\|# Changed but not updated:\|# Changes not staged for commit:\)$") > 0 ]]; then
-        echo -n "$ZSH_THEME_GIT_PROMPT_UNTRACKED"
-    fi 
-
-    if [[ $(echo ${gitstat} | grep -v '^$' | wc -l | tr -d ' ') == 0 ]]; then
-        echo -n "$ZSH_THEME_GIT_PROMPT_CLEAN"
-    fi
-}
-
 function current_jobs() {
     JOBS=`jobs | cut -c6- | sed 's/^+ /A /' | sort -r | head -2 | cut -d' ' -f 4- | tr '\n' ',' | sed 's/,$//;s/,/, /'`
     if [[ "$JOBS" != "" ]]; then echo "with %{$fg[blue]%}$JOBS%{$reset_color%}"; fi
 }
 
-PROMPT='
-%{$fg[green]%}%~%{$reset_color%}$(git_prompt_info) $(current_jobs)
-%{$fg[yellow]%}λ%{$reset_color%} '
+precmd () { vcs_info }
 
-acd() {
-  if [ x$1 = x ]; then
-    echo "Usage: acd <pattern>"
-    return 1
-  fi
-  cd "$(qf $1 | sed 1q)"
-}
+PS1='
+%F{green}%~%f%F{yellow}%(1j. ●.)%f ${vcs_info_msg_0_}
+%F{yellow}λ%f '
 
 remove_merged_branches () {
   git branch --merged | egrep -v "(^\*|master|dev|production)" | xargs git branch -d
