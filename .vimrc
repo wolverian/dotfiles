@@ -15,15 +15,18 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-unimpaired'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'junegunn/goyo.vim'
 Plug 'mileszs/ack.vim'
 Plug 'frigoeu/psc-ide-vim'
 Plug 'cohama/lexima.vim'
+" Plug 'townk/vim-autoclose'
 Plug 'vimoutliner/vimoutliner'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'ruanyl/vim-fixmyjs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Quramy/tsuquyomi'
 Plug 'idris-hackers/idris-vim'
@@ -31,6 +34,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'junegunn/fzf', { 'dir': '~/Code/projects/fzf', 'do': './install --all' }
+Plug 'mmai/vim-markdown-wiki'
 
 call plug#end()
 
@@ -80,6 +84,10 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 let g:lightline = {
       \ 'colorscheme': 'iceberg',
+			\ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'relativepath', 'modified', 'helloworld' ] ]
+      \ },
       \ }
 
 " Do not highlight trailing whitespace.
@@ -87,7 +95,9 @@ let g:lightline = {
 let g:better_whitespace_enabled = 0
 
 " Strip trailing whitespace for all filetypes
-let g:strip_whitespace_on_save = 1
+let g:strip_whitespace_on_save = 0
+" Do not ask
+let g:strip_whitespace_confirm = 0
 
 " make quickfix occupy the full width
 botright cwindow
@@ -140,6 +150,10 @@ let g:purescript_indent_do = 0
 " Allow JSX in .js files
 let g:jsx_ext_required = 0
 
+
+" Typescript
+let g:tsuquyomi_semicolon_import=0
+let g:fixmyjs_engine = 'tslint'
 
 nm <buffer> <silent> <leader>t :<C-U>echo PSCIDEtype(PSCIDEgetKeyword(), v:true)<CR>
 nm <buffer> <silent> <leader>s :<C-U>call PSCIDEapplySuggestion()<CR>

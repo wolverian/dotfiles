@@ -36,12 +36,13 @@ export RUBYOPT=rubygems
 export RBENV_ROOT=/usr/local/var/rbenv
 
 # of course
-export EDITOR='vim'
-export LESSEDIT='vim'
-export PAGER="/bin/sh -c \"col -b -x | vim -R -c 'set ft=man' -c 'nmap q :q<cr>' -c 'set nonumber' - \""
+export EDITOR='nvim'
+export LESSEDIT='nvim'
+export PAGER="/bin/sh -c \"col -b -x | nvim -R -c 'set ft=man' -c 'nmap q :q<cr>' -c 'set nonumber' - \""
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 alias vi=nvim
+alias vim=nvim
 alias la="fd"
 alias g="git"
 alias s="svn"
@@ -51,10 +52,18 @@ alias t="tmux"
 alias d="dirs -v"
 alias json-pretty="pbpaste | python -m json.tool | pbcopy"
 alias git=hub
+alias notes="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/notes && vim"
+alias clock="tty-clock -c -f %d.%m.%Y"
+alias pp="mpc toggle"
+alias clock="tty-clock -c -f %d.%m.%Y"
 
-function current_jobs() {
-    JOBS=`jobs | cut -c6- | sed 's/^+ /A /' | sort -r | head -2 | cut -d' ' -f 4- | tr '\n' ',' | sed 's/,$//;s/,/, /'`
-    if [[ "$JOBS" != "" ]]; then echo "with %{$fg[blue]%}$JOBS%{$reset_color%}"; fi
+# play an album
+pa() {
+  files=$(~/bin/album)
+  if [[ $? == 0 ]]; then
+    mpc clear
+    echo $files | mpc add && (mpc play > /dev/null)
+  fi
 }
 
 precmd () { vcs_info }
