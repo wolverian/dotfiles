@@ -17,7 +17,7 @@ Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-unimpaired'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'junegunn/goyo.vim'
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 Plug 'frigoeu/psc-ide-vim'
 Plug 'cohama/lexima.vim'
 " Plug 'townk/vim-autoclose'
@@ -26,15 +26,25 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
+" Plug 'HerringtonDarkholme/yats.vim'
 Plug 'ruanyl/vim-fixmyjs'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'Quramy/tsuquyomi'
+" Plug 'Quramy/tsuquyomi'
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'idris-hackers/idris-vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'junegunn/fzf', { 'dir': '~/Code/projects/fzf', 'do': './install --all' }
 Plug 'mmai/vim-markdown-wiki'
+Plug 'alx741/vim-hindent'
+Plug 'jremmen/vim-ripgrep'
+Plug 'udalov/kotlin-vim'
+" Plug 'natebosch/vim-lsc'
+" Plug 'autozimu/LanguageClient-neovim', {
+"   \ 'branch': 'next',
+"   \ 'do': 'bash install.sh',
+"   \ }
 
 call plug#end()
 
@@ -46,7 +56,6 @@ set exrc
 set completeopt=menu
 set nocompatible
 filetype off
-set noesckeys
 set expandtab
 set tabstop=2
 set softtabstop=2
@@ -72,23 +81,16 @@ set numberwidth=3
 set gdefault
 set cursorline
 set noshowmode
-set ofu=syntaxcomplete#Complete
+" set ofu=syntaxcomplete#Complete
 set path=$PWD/**
 set encoding=utf-8
 set termguicolors
+set statusline=%f
 
 " These are needed for 256 colors to work in tmux,
 " I don't know why.
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-let g:lightline = {
-      \ 'colorscheme': 'iceberg',
-			\ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'relativepath', 'modified', 'helloworld' ] ]
-      \ },
-      \ }
 
 " Do not highlight trailing whitespace.
 " This will still remove the whitespace on save.
@@ -125,10 +127,6 @@ nnoremap <silent> <leader>f :FZF<cr>
 
 map <leader><space> :noh<cr>
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
 " make it right
 map Y y$
 
@@ -150,13 +148,35 @@ let g:purescript_indent_do = 0
 " Allow JSX in .js files
 let g:jsx_ext_required = 0
 
+let g:LanguageClient_serverCommands = {
+    \ 'typescript': ['./node_modules/.bin/tsserver'],
+    \ 'javascript': ['./node_modules/.bin/tsserver']
+    \ }
+
+" let g:LanguageClient_devel = 1
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_loggingFile = 'LanguageClient.log'
+let g:LanguageClient_serverStderr = 'LanguageServer.log'
+let g:LanguageClient_selectionUI = 'location-list'
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" hindent
+let g:hindent_on_save = 1
+let g:hindent_command = "cabal new-exec hindent"
 
 " Typescript
-let g:tsuquyomi_semicolon_import=0
-let g:fixmyjs_engine = 'tslint'
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>s :w<cr>
+let g:fixmyjs_engine = 'eslint'
 
 nm <buffer> <silent> <leader>t :<C-U>echo PSCIDEtype(PSCIDEgetKeyword(), v:true)<CR>
-nm <buffer> <silent> <leader>s :<C-U>call PSCIDEapplySuggestion()<CR>
+" nm <buffer> <silent> <leader>s :<C-U>call PSCIDEapplySuggestion()<CR>
 nm <buffer> <silent> <leader>a :<C-U>call PSCIDEaddTypeAnnotation()<CR>
 nm <buffer> <silent> <leader>i :<C-U>call PSCIDEimportIdentifier(PSCIDEgetKeyword())<CR>
 nm <buffer> <silent> <leader>r :<C-U>call PSCIDEload()<CR>
@@ -169,10 +189,8 @@ autocmd InsertEnter,WinLeave * set nocursorline
 autocmd WinEnter * set number
 autocmd WinLeave * set nonumber
 
-command! Vcopen vertical copen|normal <C-W>=
-
-autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
-
 filetype plugin indent on
+
+command! Vcopen vertical copen|normal <C-W>=
 
 set secure
