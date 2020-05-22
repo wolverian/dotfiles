@@ -51,16 +51,6 @@
     "when": "inQuickOpen"
   },
   {
-      "key": "ctrl+h",
-      "command": "workbench.action.previousPanelView",
-      "when": "panelFocus"
-  },
-  {
-      "key": "ctrl+l",
-      "command": "workbench.action.nextPanelView",
-      "when": "panelFocus"
-  },
-  {
       "key": "ctrl+k",
       "command": "workbench.action.navigateUp"
   },
@@ -70,10 +60,26 @@
   },
   {
       "key": "ctrl+h",
+      // "key": "ctrl+w h",
       "command": "workbench.action.navigateLeft"
   },
   {
       "key": "ctrl+l",
       "command": "workbench.action.navigateRight"
+  },
+  {
+      "key": "ctrl+h",
+      // "key": "ctrl+w h",
+      "command": "workbench.action.previousPanelView",
+      "when": "panelFocus"
+  },
+  {
+      "key": "ctrl+l",
+      "command": "workbench.action.nextPanelView",
+      "when": "panelFocus"
+  },
+  {
+    "key": "cmd+s",
+    "command": "-workbench.action.files.save"
   }
 ]

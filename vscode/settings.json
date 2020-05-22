@@ -1,12 +1,29 @@
-// Place your settings in this file to overwrite the default settings
 {
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
+    "editor.lineHeight": 16,
     "editor.fontFamily": "PragmataPro Liga",
-    "editor.lineHeight": 18,
     "editor.cursorBlinking": "solid",
     "editor.roundedSelection": false,
     "editor.codeLens": false,
     "editor.hideCursorInOverviewRuler": true,
+    "editor.glyphMargin": false,
+    "editor.suggestSelection": "first",
+    "editor.lineNumbers": "off",
+    "editor.snippetSuggestions": "none",
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.scrollBeyondLastLine": true,
+    "editor.minimap.enabled": false,
+    "editor.minimap.showSlider": "mouseover",
+    "editor.minimap.renderCharacters": false,
+    "editor.folding": false,
+    "editor.wordWrapColumn": 100,
+    "editor.overviewRulerBorder": false,
+    "editor.rulers": [],
+    "editor.fontLigatures": true,
+    "editor.occurrencesHighlight": false,
+    "editor.renderIndentGuides": false,
+    "editor.acceptSuggestionOnEnter": "on",
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "files.trimTrailingWhitespace": true,
     "git.autofetch": false,
@@ -18,7 +35,7 @@
     "vim.incsearch": true,
     "vim.normalModeKeyBindings": [
         {
-            "before": ["<Esc>"],
+            "before": ["leader", "leader"],
             "after": [],
             "commands": [
                 {
@@ -30,6 +47,10 @@
         {
           "before": ["leader", "<tab>"],
           "commands": ["workbench.action.previousEditor"]
+        },
+        {
+          "before": ["leader", "s"],
+          "commands": ["workbench.action.files.save"]
         },
         // {
         //   "before": ["<C-j>"],
@@ -61,24 +82,12 @@
         }
     ],
     "workbench.statusBar.visible": true,
-    "editor.scrollBeyondLastLine": true,
-    "editor.minimap.enabled": false,
-    "editor.minimap.showSlider": "mouseover",
-    "editor.minimap.renderCharacters": false,
-    "editor.suggestFontSize": 16,
-    "editor.folding": false,
     "diffEditor.renderIndicators": false,
     "git.enabled": true,
-    "editor.fontLigatures": true,
-    "editor.occurrencesHighlight": false,
     "explorer.openEditors.visible": 0,
-    "terminal.integrated.fontSize": 15,
-    "workbench.editor.showTabs": false,
-    "editor.renderIndentGuides": true,
-    "workbench.fontAliasing": "default",
+    "terminal.integrated.fontSize": 14,
+    "workbench.fontAliasing": "auto",
     "typescript.tsserver.log": "verbose",
-    "tslint.ignoreDefinitionFiles": false,
-    "editor.acceptSuggestionOnEnter": "on",
     "haskell.ghcMod.check": "onSave",
     "window.title": "${activeEditorMedium}${separator}${rootName}",
     "search.exclude": {
@@ -106,11 +115,8 @@
         "list.activeSelectionBackground": "#4f5564",
         "tab.activeBorder": "#5caddb"
     },
-    "workbench.iconTheme": "material-icon-theme",
     "markdown.preview.fontFamily": "Georgia, serif",
     "markdown.preview.fontSize": 18,
-    "editor.overviewRulerBorder": false,
-    "editor.rulers": [],
     "window.zoomLevel": 1,
     "workbench.startupEditor": "none",
     "gitlens.currentLine.enabled": false,
@@ -124,7 +130,6 @@
     "terminal.external.osxExec": "iTerm2.app",
     "purescript.addPscPackageSources": true,
     "purescript.polling": true,
-    "tslint.run": "onSave",
     "eslint.run": "onSave",
     "editor.quickSuggestions": {
         "other": true,
@@ -132,27 +137,19 @@
         "strings": false
     },
     "typescript.validate.enable": true,
-    "editor.snippetSuggestions": "none",
-    "editor.tabSize": 2,
-    "editor.detectIndentation": false,
     "emmet.excludeLanguages": [
       "tsx"
     ],
-    "editor.wordWrapColumn": 100,
     "problems.decorations.enabled": false,
     "problems.autoReveal": false,
     "window.openFoldersInNewWindow": "on",
     "window.openFilesInNewWindow": "on",
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "workbench.activityBar.visible": false,
     "workbench.editor.limit.enabled": true,
     "workbench.enableExperiments": false,
     "explorer.autoReveal": false,
-    "editor.lineNumbers": "off",
     "scm.diffDecorationsGutterVisibility": "hover",
     "scm.diffDecorations": "none",
     "debug.console.closeOnEnd": true,
@@ -165,8 +162,10 @@
     "workbench.editor.limit.perEditorGroup": true,
     "workbench.editor.limit.value": 5,
     "workbench.editor.revealIfOpen": true,
-    "workbench.editor.showIcons": false,
-    "workbench.editor.tabCloseButton": "off",
     "css.completion.completePropertyWithSemicolon": false,
-    "editor.glyphMargin": false
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "editor.suggest.maxVisibleSuggestions": 15
   }
