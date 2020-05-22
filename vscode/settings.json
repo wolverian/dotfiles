@@ -1,0 +1,172 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.fontSize": 16,
+    "editor.fontFamily": "PragmataPro Liga",
+    "editor.lineHeight": 18,
+    "editor.cursorBlinking": "solid",
+    "editor.roundedSelection": false,
+    "editor.codeLens": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": false,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.statusBarColorControl": false,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.leader": "<space>",
+    "vim.incsearch": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<Esc>"],
+            "after": [],
+            "commands": [
+                {
+                    "command": ":noh",
+                    "args": []
+                }
+            ]
+        },
+        {
+          "before": ["leader", "<tab>"],
+          "commands": ["workbench.action.previousEditor"]
+        },
+        // {
+        //   "before": ["<C-j>"],
+        //   "after": ["<C-w>", "j"]
+        // },
+        // {
+        //   "before": ["<C-k>"],
+        //   "after": ["<C-w>", "k"]
+        // },
+        // {
+        //   "before": ["<C-h>"],
+        //   "after": ["<C-w>", "h"]
+        // },
+        // {
+        //   "before": ["<C-l>"],
+        //   "after": ["<C-w>", "l"]
+        // },
+        {
+          "before": ["[", "q"],
+          "commands": ["editor.action.marker.nextInFiles"]
+        },
+        {
+          "before": ["]", "q"],
+          "commands": ["editor.action.marker.prevInFiles"]
+        },
+        {
+          "before": ["leader", "f"],
+          "commands": ["workbench.action.quickOpen"],
+        }
+    ],
+    "workbench.statusBar.visible": true,
+    "editor.scrollBeyondLastLine": true,
+    "editor.minimap.enabled": false,
+    "editor.minimap.showSlider": "mouseover",
+    "editor.minimap.renderCharacters": false,
+    "editor.suggestFontSize": 16,
+    "editor.folding": false,
+    "diffEditor.renderIndicators": false,
+    "git.enabled": true,
+    "editor.fontLigatures": true,
+    "editor.occurrencesHighlight": false,
+    "explorer.openEditors.visible": 0,
+    "terminal.integrated.fontSize": 15,
+    "workbench.editor.showTabs": false,
+    "editor.renderIndentGuides": true,
+    "workbench.fontAliasing": "default",
+    "typescript.tsserver.log": "verbose",
+    "tslint.ignoreDefinitionFiles": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "haskell.ghcMod.check": "onSave",
+    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/.psc-package": true,
+        "**/output": true
+    },
+    "workbench.colorTheme": "Iceberg",
+    "workbench.editor.enablePreview": false,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": true,
+        "suppressShowKeyBindingsNotice": true,
+        "suppressUpdateNotice": true,
+        "suppressWelcomeNotice": false
+    },
+    "workbench.colorCustomizations": {
+        "list.activeSelectionForeground": "#fff",
+        "list.activeSelectionBackground": "#4f5564",
+        "tab.activeBorder": "#5caddb"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "markdown.preview.fontFamily": "Georgia, serif",
+    "markdown.preview.fontSize": 18,
+    "editor.overviewRulerBorder": false,
+    "editor.rulers": [],
+    "window.zoomLevel": 1,
+    "workbench.startupEditor": "none",
+    "gitlens.currentLine.enabled": false,
+    "editor.renderLineHighlight": "line",
+    "editor.matchBrackets": "never",
+    "gitlens.keymap": "chorded",
+    "editor.selectionHighlight": false,
+    "purescript.addNpmPath": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "breadcrumbs.enabled": false,
+    "terminal.external.osxExec": "iTerm2.app",
+    "purescript.addPscPackageSources": true,
+    "purescript.polling": true,
+    "tslint.run": "onSave",
+    "eslint.run": "onSave",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "typescript.validate.enable": true,
+    "editor.snippetSuggestions": "none",
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "emmet.excludeLanguages": [
+      "tsx"
+    ],
+    "editor.wordWrapColumn": 100,
+    "problems.decorations.enabled": false,
+    "problems.autoReveal": false,
+    "window.openFoldersInNewWindow": "on",
+    "window.openFilesInNewWindow": "on",
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.activityBar.visible": false,
+    "workbench.editor.limit.enabled": true,
+    "workbench.enableExperiments": false,
+    "explorer.autoReveal": false,
+    "editor.lineNumbers": "off",
+    "scm.diffDecorationsGutterVisibility": "hover",
+    "scm.diffDecorations": "none",
+    "debug.console.closeOnEnd": true,
+    "debug.showInlineBreakpointCandidates": false,
+    "debug.showInStatusBar": "never",
+    "debug.toolBarLocation": "hidden",
+    "gitlens.advanced.telemetry.enabled": false,
+    "workbench.editor.closeEmptyGroups": false,
+    "workbench.editor.closeOnFileDelete": true,
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.limit.value": 5,
+    "workbench.editor.revealIfOpen": true,
+    "workbench.editor.showIcons": false,
+    "workbench.editor.tabCloseButton": "off",
+    "css.completion.completePropertyWithSemicolon": false,
+    "editor.glyphMargin": false
+  }

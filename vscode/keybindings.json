@@ -1,0 +1,79 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  // {
+  //   "key": "ctrl+p",
+  //   "command": "editor.action.triggerSuggest",
+  //   "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+  // },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "closeFindWidget",
+    "when": "findWidgetVisible"
+  },
+  // {
+  //   "key": "ctrl+[",
+  //   "command": "closeParameterHints",
+  //   "when": "parameterHintsVisible"
+  // },
+  {
+    "key": "ctrl+[",
+    "command": "closeMarkersNavigation",
+    "when": "editorFocus && markersNavigationVisible"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "closeReplaceInFilesWidget",
+    "when": "replaceInputBoxFocus && searchViewletVisible"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "leaveEditorMessage",
+    "when": "messageVisible"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "closeAccessibilityHelp",
+    "when": "accessibilityHelpWidgetVisible && editorFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "search.action.cancel",
+    "when": "listFocus && searchViewletVisible && inputFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen"
+  },
+  {
+      "key": "ctrl+h",
+      "command": "workbench.action.previousPanelView",
+      "when": "panelFocus"
+  },
+  {
+      "key": "ctrl+l",
+      "command": "workbench.action.nextPanelView",
+      "when": "panelFocus"
+  },
+  {
+      "key": "ctrl+k",
+      "command": "workbench.action.navigateUp"
+  },
+  {
+      "key": "ctrl+j",
+      "command": "workbench.action.navigateDown"
+  },
+  {
+      "key": "ctrl+h",
+      "command": "workbench.action.navigateLeft"
+  },
+  {
+      "key": "ctrl+l",
+      "command": "workbench.action.navigateRight"
+  }
+]
