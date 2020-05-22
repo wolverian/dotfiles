@@ -40,7 +40,8 @@ Plug 'mmai/vim-markdown-wiki'
 Plug 'alx741/vim-hindent'
 Plug 'jremmen/vim-ripgrep'
 Plug 'udalov/kotlin-vim'
-" Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc'
+
 " Plug 'autozimu/LanguageClient-neovim', {
 "   \ 'branch': 'next',
 "   \ 'do': 'bash install.sh',
@@ -101,9 +102,11 @@ let g:strip_whitespace_on_save = 0
 " Do not ask
 let g:strip_whitespace_confirm = 0
 
+let g:lsc_server_commands = {'typescript': 'localhost:7000'}
+
 " make quickfix occupy the full width
-botright cwindow
-botright lwindow
+" botright cwindow
+" botright lwindow
 
 syntax enable
 colorscheme iceberg
