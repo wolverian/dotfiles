@@ -75,3 +75,5 @@ remove_merged_branches () {
 source ~/bin/path.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(direnv hook zsh)"

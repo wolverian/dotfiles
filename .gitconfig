@@ -1,6 +1,6 @@
 [user]
 	name = Antti Holvikari
-	email = antti.holvikari@reaktor.com
+	email = antti@anttih.com
 [diff]
     renamelimit = 4000
 [branch]
@@ -34,8 +34,7 @@
 [format]
     pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
 [core]
-	excludesfile = /Users/aholvika/.gitignore_global
-    pager = less
+  pager = less
 [http]
       sslVerify = false
 [push]
@@ -51,5 +50,3 @@
 [pager]
 	diff = diff-so-fancy | less --tabs=4 -RFX
 	show = diff-so-fancy | less --tabs=4 -RFX
-[commit]
-	template = /Users/aholvika/.stCommitMsg
