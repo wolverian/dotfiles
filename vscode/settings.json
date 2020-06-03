@@ -1,6 +1,6 @@
 {
     "editor.fontSize": 14,
-    "editor.lineHeight": 16,
+    "editor.lineHeight": 15,
     "editor.fontFamily": "PragmataPro Liga",
     "editor.cursorBlinking": "solid",
     "editor.roundedSelection": false,
@@ -167,5 +167,23 @@
     "eslint.format.enable": true,
     "eslint.lintTask.enable": true,
     "eslint.alwaysShowStatus": true,
-    "editor.suggest.maxVisibleSuggestions": 15
+    "editor.suggest.maxVisibleSuggestions": 15,
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true
+    },
+    "java.semanticHighlighting.enabled": true,
+    "search.useGlobalIgnoreFiles": true,
+    "[typescript]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "editor.parameterHints.enabled": false,
+    "[javascript]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    }
   }

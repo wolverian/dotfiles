@@ -21,6 +21,30 @@
   //   "when": "parameterHintsVisible"
   // },
   {
+    "key": "ctrl+a shift+5",
+    "command": "workbench.action.splitEditorRight"
+  },
+  {
+    "key": "ctrl+a n",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "cmd+shift+]",
+    "command": "-workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+a p",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "cmd+shift+[",
+    "command": "-workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+a ;",
+    "command": "workbench.action.openNextRecentlyUsedEditor"
+  },
+  {
     "key": "ctrl+[",
     "command": "closeMarkersNavigation",
     "when": "editorFocus && markersNavigationVisible"
@@ -51,30 +75,28 @@
     "when": "inQuickOpen"
   },
   {
-      "key": "ctrl+k",
+      "key": "ctrl+a k",
       "command": "workbench.action.navigateUp"
   },
   {
-      "key": "ctrl+j",
+      "key": "ctrl+a j",
       "command": "workbench.action.navigateDown"
   },
   {
-      "key": "ctrl+h",
-      // "key": "ctrl+w h",
+      "key": "ctrl+a h",
       "command": "workbench.action.navigateLeft"
   },
   {
-      "key": "ctrl+l",
+      "key": "ctrl+a l",
       "command": "workbench.action.navigateRight"
   },
   {
-      "key": "ctrl+h",
-      // "key": "ctrl+w h",
+      "key": "ctrl+a p",
       "command": "workbench.action.previousPanelView",
       "when": "panelFocus"
   },
   {
-      "key": "ctrl+l",
+      "key": "ctrl+a n",
       "command": "workbench.action.nextPanelView",
       "when": "panelFocus"
   },
