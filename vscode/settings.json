@@ -1,6 +1,6 @@
 {
-    "editor.fontSize": 14,
-    "editor.lineHeight": 15,
+    "editor.fontSize": 16,
+    "editor.lineHeight": 16,
     "editor.fontFamily": "PragmataPro Liga",
     "editor.cursorBlinking": "solid",
     "editor.roundedSelection": false,
@@ -78,7 +78,7 @@
         },
         {
           "before": ["leader", "f"],
-          "commands": ["workbench.action.quickOpen"],
+          "commands": ["workbench.action.quickOpen"]
         }
     ],
     "workbench.statusBar.visible": true,
@@ -111,13 +111,17 @@
         "suppressWelcomeNotice": false
     },
     "workbench.colorCustomizations": {
+        "focusBorder":"#5caddb",
         "list.activeSelectionForeground": "#fff",
         "list.activeSelectionBackground": "#4f5564",
-        "tab.activeBorder": "#5caddb"
+        "tab.activeBorder": "#5caddb",
+        "tab.activeBorderTop": "#5caddb",
+        "editorGroup.focusedEmptyBorder":"#6caddb",
+        "panel.border":"#5caddb",
+        "panelTitle.activeBorder": "#ff0000"
     },
     "markdown.preview.fontFamily": "Georgia, serif",
     "markdown.preview.fontSize": 18,
-    "window.zoomLevel": 1,
     "workbench.startupEditor": "none",
     "gitlens.currentLine.enabled": false,
     "editor.renderLineHighlight": "line",
