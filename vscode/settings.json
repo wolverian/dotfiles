@@ -1,6 +1,6 @@
 {
     "editor.fontSize": 16,
-    "editor.lineHeight": 16,
+    "editor.lineHeight": 17,
     "editor.fontFamily": "PragmataPro Liga",
     "editor.cursorBlinking": "solid",
     "editor.roundedSelection": false,
@@ -118,7 +118,7 @@
         "tab.activeBorderTop": "#5caddb",
         "editorGroup.focusedEmptyBorder":"#6caddb",
         "panel.border":"#5caddb",
-        "panelTitle.activeBorder": "#ff0000"
+        "panelTitle.activeBorder": "#5caddb"
     },
     "markdown.preview.fontFamily": "Georgia, serif",
     "markdown.preview.fontSize": 18,
@@ -189,5 +189,8 @@
     "editor.parameterHints.enabled": false,
     "[javascript]": {
       "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    }
+    },
+    "editor.lightbulb.enabled": false,
+    "editor.renderLineHighlightOnlyWhenFocus": true,
+    "editor.suggest.localityBonus": true
   }
