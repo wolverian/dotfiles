@@ -35,7 +35,8 @@ Plug 'idris-hackers/idris-vim'
 " Plug 'itchyny/lightline.vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
-Plug 'junegunn/fzf', { 'dir': '~/Code/projects/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'mmai/vim-markdown-wiki'
 Plug 'alx741/vim-hindent'
 Plug 'jremmen/vim-ripgrep'
@@ -126,7 +127,7 @@ map <C-l> <C-w>l
 imap <c-c> <esc>
 nnoremap <leader><tab> <c-^>
 
-nnoremap <silent> <leader>f :FZF<cr>
+nnoremap <silent> <leader>f :Files<cr>
 
 map <leader><space> :noh<cr>
 
