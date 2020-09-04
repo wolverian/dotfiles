@@ -1,196 +1,233 @@
 {
-    "editor.fontSize": 16,
-    "editor.lineHeight": 17,
-    "editor.fontFamily": "PragmataPro Liga",
-    "editor.cursorBlinking": "solid",
-    "editor.roundedSelection": false,
-    "editor.codeLens": false,
-    "editor.hideCursorInOverviewRuler": true,
-    "editor.glyphMargin": false,
-    "editor.suggestSelection": "first",
-    "editor.lineNumbers": "off",
-    "editor.snippetSuggestions": "none",
-    "editor.tabSize": 2,
-    "editor.detectIndentation": false,
-    "editor.scrollBeyondLastLine": true,
-    "editor.minimap.enabled": false,
-    "editor.minimap.showSlider": "mouseover",
-    "editor.minimap.renderCharacters": false,
-    "editor.folding": false,
-    "editor.wordWrapColumn": 100,
-    "editor.overviewRulerBorder": false,
-    "editor.rulers": [],
-    "editor.fontLigatures": true,
-    "editor.occurrencesHighlight": false,
-    "editor.renderIndentGuides": false,
-    "editor.acceptSuggestionOnEnter": "on",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "files.trimTrailingWhitespace": true,
-    "git.autofetch": false,
-    "vim.useSystemClipboard": true,
-    "vim.hlsearch": true,
-    "vim.statusBarColorControl": false,
-    "vim.neovimPath": "/usr/local/bin/nvim",
-    "vim.leader": "<space>",
-    "vim.incsearch": true,
-    "vim.normalModeKeyBindings": [
+  "editor.fontSize": 19,
+  "editor.lineHeight": 20,
+  "editor.fontFamily": "PragmataPro Liga",
+  "editor.cursorBlinking": "solid",
+  "editor.roundedSelection": false,
+  "editor.codeLens": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.glyphMargin": false,
+  "editor.suggestSelection": "first",
+  "editor.lineNumbers": "off",
+  "editor.snippetSuggestions": "none",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.scrollBeyondLastLine": true,
+  "editor.minimap.enabled": false,
+  "editor.minimap.showSlider": "mouseover",
+  "editor.minimap.renderCharacters": false,
+  "editor.folding": false,
+  "editor.wordWrapColumn": 100,
+  "editor.overviewRulerBorder": false,
+  "editor.rulers": [],
+  "editor.fontLigatures": true,
+  "editor.occurrencesHighlight": false,
+  "editor.renderIndentGuides": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": false,
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.statusBarColorControl": false,
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.leader": "<space>",
+  "vim.incsearch": true,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "leader",
+        "leader"
+      ],
+      "after": [],
+      "commands": [
         {
-            "before": ["leader", "leader"],
-            "after": [],
-            "commands": [
-                {
-                    "command": ":noh",
-                    "args": []
-                }
-            ]
-        },
-        {
-          "before": ["leader", "<tab>"],
-          "commands": ["workbench.action.previousEditor"]
-        },
-        {
-          "before": ["leader", "s"],
-          "commands": ["workbench.action.files.save"]
-        },
-        // {
-        //   "before": ["<C-j>"],
-        //   "after": ["<C-w>", "j"]
-        // },
-        // {
-        //   "before": ["<C-k>"],
-        //   "after": ["<C-w>", "k"]
-        // },
-        // {
-        //   "before": ["<C-h>"],
-        //   "after": ["<C-w>", "h"]
-        // },
-        // {
-        //   "before": ["<C-l>"],
-        //   "after": ["<C-w>", "l"]
-        // },
-        {
-          "before": ["[", "q"],
-          "commands": ["editor.action.marker.nextInFiles"]
-        },
-        {
-          "before": ["]", "q"],
-          "commands": ["editor.action.marker.prevInFiles"]
-        },
-        {
-          "before": ["leader", "f"],
-          "commands": ["workbench.action.quickOpen"]
+          "command": ":noh",
+          "args": []
         }
-    ],
-    "workbench.statusBar.visible": true,
-    "diffEditor.renderIndicators": false,
-    "git.enabled": true,
-    "explorer.openEditors.visible": 0,
-    "terminal.integrated.fontSize": 14,
-    "workbench.fontAliasing": "auto",
-    "typescript.tsserver.log": "verbose",
-    "haskell.ghcMod.check": "onSave",
-    "window.title": "${activeEditorMedium}${separator}${rootName}",
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/bower_components": true,
-        "**/.psc-package": true,
-        "**/output": true
+      ]
     },
-    "workbench.colorTheme": "Iceberg",
-    "workbench.editor.enablePreview": false,
-    "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": true,
-        "suppressShowKeyBindingsNotice": true,
-        "suppressUpdateNotice": true,
-        "suppressWelcomeNotice": false
+    {
+      "before": [
+        "leader",
+        "<tab>"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
     },
-    "workbench.colorCustomizations": {
-        "focusBorder":"#5caddb",
-        "list.activeSelectionForeground": "#fff",
-        "list.activeSelectionBackground": "#4f5564",
-        "tab.activeBorder": "#5caddb",
-        "tab.activeBorderTop": "#5caddb",
-        "editorGroup.focusedEmptyBorder":"#6caddb",
-        "panel.border":"#5caddb",
-        "panelTitle.activeBorder": "#5caddb"
+    {
+      "before": [
+        "leader",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
     },
-    "markdown.preview.fontFamily": "Georgia, serif",
-    "markdown.preview.fontSize": 18,
-    "workbench.startupEditor": "none",
-    "gitlens.currentLine.enabled": false,
-    "editor.renderLineHighlight": "line",
-    "editor.matchBrackets": "never",
-    "gitlens.keymap": "chorded",
-    "editor.selectionHighlight": false,
-    "purescript.addNpmPath": true,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "breadcrumbs.enabled": false,
-    "terminal.external.osxExec": "iTerm2.app",
-    "purescript.addPscPackageSources": true,
-    "purescript.polling": true,
-    "eslint.run": "onSave",
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": false,
-        "strings": false
+    // {
+    //   "before": ["<C-j>"],
+    //   "after": ["<C-w>", "j"]
+    // },
+    // {
+    //   "before": ["<C-k>"],
+    //   "after": ["<C-w>", "k"]
+    // },
+    // {
+    //   "before": ["<C-h>"],
+    //   "after": ["<C-w>", "h"]
+    // },
+    // {
+    //   "before": ["<C-l>"],
+    //   "after": ["<C-w>", "l"]
+    // },
+    {
+      "before": [
+        "[",
+        "q"
+      ],
+      "commands": [
+        "editor.action.marker.nextInFiles"
+      ]
     },
-    "typescript.validate.enable": true,
-    "emmet.excludeLanguages": [
-      "tsx"
-    ],
-    "problems.decorations.enabled": false,
-    "problems.autoReveal": false,
-    "window.openFoldersInNewWindow": "on",
-    "window.openFilesInNewWindow": "on",
-    "gitlens.views.fileHistory.enabled": true,
-    "gitlens.views.lineHistory.enabled": true,
-    "workbench.activityBar.visible": false,
-    "workbench.editor.limit.enabled": true,
-    "workbench.enableExperiments": false,
-    "explorer.autoReveal": false,
-    "scm.diffDecorationsGutterVisibility": "hover",
-    "scm.diffDecorations": "none",
-    "debug.console.closeOnEnd": true,
-    "debug.showInlineBreakpointCandidates": false,
-    "debug.showInStatusBar": "never",
-    "debug.toolBarLocation": "hidden",
-    "gitlens.advanced.telemetry.enabled": false,
-    "workbench.editor.closeEmptyGroups": false,
-    "workbench.editor.closeOnFileDelete": true,
-    "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.limit.value": 5,
-    "workbench.editor.revealIfOpen": true,
-    "css.completion.completePropertyWithSemicolon": false,
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "eslint.format.enable": true,
-    "eslint.lintTask.enable": true,
-    "eslint.alwaysShowStatus": true,
-    "editor.suggest.maxVisibleSuggestions": 15,
-    "files.exclude": {
-      "**/.classpath": true,
-      "**/.project": true,
-      "**/.settings": true,
-      "**/.factorypath": true
+    {
+      "before": [
+        "]",
+        "q"
+      ],
+      "commands": [
+        "editor.action.marker.prevInFiles"
+      ]
     },
-    "java.semanticHighlighting.enabled": true,
-    "search.useGlobalIgnoreFiles": true,
-    "[typescript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[typescriptreact]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "editor.parameterHints.enabled": false,
-    "[javascript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "editor.lightbulb.enabled": false,
-    "editor.renderLineHighlightOnlyWhenFocus": true,
-    "editor.suggest.localityBonus": true
-  }
+    {
+      "before": [
+        "leader",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    }
+  ],
+  "workbench.statusBar.visible": true,
+  "diffEditor.renderIndicators": false,
+  "git.enabled": true,
+  "explorer.openEditors.visible": 0,
+  "terminal.integrated.fontSize": 14,
+  "workbench.fontAliasing": "auto",
+  "typescript.tsserver.log": "verbose",
+  "haskell.ghcMod.check": "onSave",
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.psc-package": true,
+    "**/output": true
+  },
+  "workbench.colorTheme": "Iceberg",
+  "workbench.editor.enablePreview": false,
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": true,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": true,
+    "suppressWelcomeNotice": false
+  },
+  "workbench.colorCustomizations": {
+    "focusBorder": "#5caddb",
+    "list.activeSelectionForeground": "#fff",
+    "list.activeSelectionBackground": "#4f5564",
+    "tab.activeBorder": "#5caddb",
+    "tab.activeBorderTop": "#5caddb",
+    "editorGroup.focusedEmptyBorder": "#6caddb",
+    "panel.border": "#5caddb",
+    "panelTitle.activeBorder": "#5caddb"
+  },
+  "markdown.preview.fontFamily": "Georgia, serif",
+  "markdown.preview.fontSize": 18,
+  "workbench.startupEditor": "none",
+  "gitlens.currentLine.enabled": false,
+  "editor.renderLineHighlight": "line",
+  "editor.matchBrackets": "never",
+  "gitlens.keymap": "chorded",
+  "editor.selectionHighlight": false,
+  "purescript.addNpmPath": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "breadcrumbs.enabled": false,
+  "terminal.external.osxExec": "iTerm2.app",
+  "purescript.addPscPackageSources": true,
+  "purescript.polling": true,
+  "eslint.run": "onSave",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "typescript.validate.enable": true,
+  "emmet.excludeLanguages": [
+    "tsx"
+  ],
+  "problems.decorations.enabled": false,
+  "problems.autoReveal": false,
+  "window.openFoldersInNewWindow": "on",
+  "window.openFilesInNewWindow": "on",
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": true,
+  "workbench.activityBar.visible": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.enableExperiments": false,
+  "explorer.autoReveal": false,
+  "scm.diffDecorationsGutterVisibility": "hover",
+  "scm.diffDecorations": "none",
+  "debug.console.closeOnEnd": true,
+  "debug.showInlineBreakpointCandidates": false,
+  "debug.showInStatusBar": "never",
+  "debug.toolBarLocation": "hidden",
+  "gitlens.advanced.telemetry.enabled": false,
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.value": 5,
+  "workbench.editor.revealIfOpen": true,
+  "css.completion.completePropertyWithSemicolon": false,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "editor.suggest.maxVisibleSuggestions": 15,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "java.semanticHighlighting.enabled": true,
+  "search.useGlobalIgnoreFiles": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.parameterHints.enabled": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.lightbulb.enabled": false,
+  "editor.renderLineHighlightOnlyWhenFocus": true,
+  "editor.suggest.localityBonus": true,
+  "java.home": "/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home",
+  "java.server.launchMode": "Hybrid",
+  "maven.terminal.useJavaHome": true,
+  "[java]": {
+    "editor.defaultFormatter": "richardwillis.vscode-spotless-gradle"
+  },
+  "window.zoomLevel": 0,
+  "C_Cpp.updateChannel": "Insiders",
+  "editor.formatOnSave": true
+}
