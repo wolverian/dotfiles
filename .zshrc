@@ -39,10 +39,13 @@ export RBENV_ROOT=/usr/local/var/rbenv
 # of course
 export EDITOR='nvim'
 export LESSEDIT='nvim'
+export PAGER='bat -p'
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 alias vi=nvim
 alias vim=nvim
+alias v='nvim $(fzf)'
+alias vm='nvim -O $(fzf -m)'
 alias la="fd"
 alias g="git"
 alias t="tmux"
@@ -52,6 +55,8 @@ alias notes="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/notes && vim"
 alias clock="tty-clock -c -f %d.%m.%Y"
 alias pp="mpc toggle"
 alias clock="tty-clock -c -f %d.%m.%Y"
+alias gd="g b | fzf | xargs git b -d"
+alias f='vim $(fzf)'
 
 # play an album
 pa() {
