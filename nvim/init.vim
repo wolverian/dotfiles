@@ -15,24 +15,22 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'junegunn/goyo.vim'
-Plug 'mileszs/ack.vim'
-Plug 'frigoeu/psc-ide-vim'
-Plug 'cohama/lexima.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'ruanyl/vim-fixmyjs'
 Plug 'idris-hackers/idris-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'junegunn/fzf', { 'dir': '~/Code/projects/fzf', 'do': './install --all' }
-Plug 'mmai/vim-markdown-wiki'
 Plug 'tikhomirov/vim-glsl'
 Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'neovim/nvim-lspconfig' 
+
+" Completion
+Plug 'nvim-lua/completion-nvim'
+Plug 'steelsojka/completion-buffers'
 
 call plug#end()
 
@@ -41,7 +39,6 @@ call plug#end()
 language en_US
 " allow project local configuration
 set exrc
-set completeopt=menu
 set nocompatible
 filetype off
 set expandtab
@@ -86,6 +83,7 @@ require'nvim_lsp'.hls.setup{
     languageServerHaskell = {
       hlintOn = true;
       formattingProvider = "ormolu";
+      diagnosticsOnChange = false;
     }
   }
 }
@@ -125,25 +123,28 @@ let g:netrw_list_hide =''
 " Allow JSX in .js files
 let g:jsx_ext_required = 0
 
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gh    <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
 " autocmd WinEnter * set number
 " autocmd WinLeave * set nonumber
 
-" Use LSP omni-completion in haskell files.
-autocmd Filetype haskell setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
 " Auto-format *.hs files prior to saving them
 autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 1000)
 
+" Completion
+autocmd BufEnter * lua require'completion'.on_attach()
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+
+" Populate quickfix from diagnostics
 lua <<EOF
 do
   local method = "textDocument/publishDiagnostics"
@@ -152,8 +153,6 @@ do
     default_callback(err, method, result, client_id)
     if result and result.diagnostics then
       for _, v in ipairs(result.diagnostics) do
-        print(vim.inspect(v))
-        print(vim.inspect(client_id))
         v.bufnr = client_id
         v.lnum = v.range.start.line + 1
         v.col = v.range.start.character + 1
