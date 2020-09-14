@@ -15,18 +15,21 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
-Plug 'junegunn/fzf', { 'dir': '~/Code/projects/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf'
 Plug 'tikhomirov/vim-glsl'
 Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'neovim/nvim-lspconfig' 
+
+" JS and TypeScript
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Completion
 Plug 'nvim-lua/completion-nvim'
@@ -53,7 +56,7 @@ set formatoptions=tcqorMj
 set nobackup
 set nowritebackup
 set noswapfile
-set nohidden
+set hidden
 set textwidth=0
 set background=dark
 set hls
@@ -62,7 +65,7 @@ set showmatch
 set ignorecase
 set smartcase
 set nonumber
-set numberwidth=3
+" set numberwidth=3
 set gdefault
 set cursorline
 set noshowmode
@@ -87,6 +90,7 @@ require'nvim_lsp'.hls.setup{
     }
   }
 }
+require'nvim_lsp'.tsserver.setup{}
 EOF
 
 " make quickfix occupy the full width
@@ -133,11 +137,11 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
-" autocmd WinEnter * set number
-" autocmd WinLeave * set nonumber
 
 " Auto-format *.hs files prior to saving them
 autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 " Completion
 autocmd BufEnter * lua require'completion'.on_attach()
