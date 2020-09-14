@@ -128,7 +128,9 @@ let g:netrw_list_hide =''
 let g:jsx_ext_required = 0
 
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gh    <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> K    <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gh    <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 " nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 " nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
@@ -144,6 +146,11 @@ autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 " Completion
+
+let g:completion_chain_complete_list = [
+  \{'complete_items': ['lsp', 'buffer']}
+\]
+
 autocmd BufEnter * lua require'completion'.on_attach()
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
@@ -151,21 +158,47 @@ set shortmess+=c
 " Populate quickfix from diagnostics
 lua <<EOF
 do
-  local method = "textDocument/publishDiagnostics"
-  local default_callback = vim.lsp.callbacks[method]
-  vim.lsp.callbacks[method] = function(err, method, result, client_id)
-    default_callback(err, method, result, client_id)
-    if result and result.diagnostics then
-      for _, v in ipairs(result.diagnostics) do
-        v.bufnr = client_id
-        v.lnum = v.range.start.line + 1
-        v.col = v.range.start.character + 1
-        v.text = v.message
-      end
-      vim.lsp.util.set_qflist(result.diagnostics)
+  local util = require 'vim.lsp.util'
+  vim.lsp.callbacks['textDocument/publishDiagnostics'] = function(_, _, result,client_id)
+    if not result then return end
+
+    local uri = result.uri
+    local bufnr = vim.uri_to_bufnr(uri)
+
+    if not bufnr then
+      err_message("LSP.publishDiagnostics: Couldn't find buffer for ", uri)
+      return
     end
+
+    if not vim.api.nvim_buf_is_loaded(bufnr) then
+      return
+    end
+
+    util.buf_clear_diagnostics(bufnr)
+
+    for _, diagnostic in ipairs(result.diagnostics) do
+      if diagnostic.severity == nil then
+        diagnostic.severity = protocol.DiagnosticSeverity.Error
+      end
+
+      diagnostic.bufnr = client_id
+      diagnostic.lnum = diagnostic.range.start.line + 1
+      diagnostic.col = diagnostic.range.start.character + 1
+      diagnostic.text = diagnostic.message
+    end
+
+
+    util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
+    util.buf_diagnostics_underline(bufnr, result.diagnostics)
+
+    -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
+    util.set_qflist(result.diagnostics)
+
+    util.buf_diagnostics_signs(bufnr, result.diagnostics)
+    vim.api.nvim_command("doautocmd User LspDiagnosticsChanged")
   end
 end
+
 EOF
 
 filetype plugin indent on
