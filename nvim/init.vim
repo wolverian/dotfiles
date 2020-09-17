@@ -132,6 +132,7 @@ nnoremap <silent> K    <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gh    <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g.    <cmd>lua vim.lsp.buf.code_action()<CR>
 " nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 " nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 " nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
@@ -200,6 +201,9 @@ do
 end
 
 EOF
+
+highlight LspDiagnosticsUnderlineError gui=underline
+highlight LspDiagnosticsUnderlineWarning gui=underline
 
 filetype plugin indent on
 
