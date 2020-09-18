@@ -90,7 +90,6 @@ require'nvim_lsp'.hls.setup{
     }
   }
 }
-require'nvim_lsp'.tsserver.setup{}
 EOF
 
 " make quickfix occupy the full width
@@ -146,6 +145,8 @@ autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
 
+autocmd BufEnter * lua require'lsp_extra'.check_start_ts_lsp()
+
 " Completion
 
 let g:completion_chain_complete_list = [
@@ -156,50 +157,8 @@ autocmd BufEnter * lua require'completion'.on_attach()
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
-" Populate quickfix from diagnostics
 lua <<EOF
-do
-  local util = require 'vim.lsp.util'
-  vim.lsp.callbacks['textDocument/publishDiagnostics'] = function(_, _, result,client_id)
-    if not result then return end
-
-    local uri = result.uri
-    local bufnr = vim.uri_to_bufnr(uri)
-
-    if not bufnr then
-      err_message("LSP.publishDiagnostics: Couldn't find buffer for ", uri)
-      return
-    end
-
-    if not vim.api.nvim_buf_is_loaded(bufnr) then
-      return
-    end
-
-    util.buf_clear_diagnostics(bufnr)
-
-    for _, diagnostic in ipairs(result.diagnostics) do
-      if diagnostic.severity == nil then
-        diagnostic.severity = protocol.DiagnosticSeverity.Error
-      end
-
-      diagnostic.bufnr = client_id
-      diagnostic.lnum = diagnostic.range.start.line + 1
-      diagnostic.col = diagnostic.range.start.character + 1
-      diagnostic.text = diagnostic.message
-    end
-
-
-    util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
-    util.buf_diagnostics_underline(bufnr, result.diagnostics)
-
-    -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
-    util.set_qflist(result.diagnostics)
-
-    util.buf_diagnostics_signs(bufnr, result.diagnostics)
-    vim.api.nvim_command("doautocmd User LspDiagnosticsChanged")
-  end
-end
-
+require'lsp_extra'.register_PublishDiagnostics_callback()
 EOF
 
 highlight LspDiagnosticsUnderlineError gui=underline
