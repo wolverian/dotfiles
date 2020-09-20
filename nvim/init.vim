@@ -25,6 +25,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'neovim/nvim-lspconfig' 
+Plug 'voldikss/vim-floaterm'
 
 " JS and TypeScript
 Plug 'yuezk/vim-js'
@@ -72,7 +73,7 @@ set noshowmode
 set path=$PWD/**
 set encoding=utf-8
 set termguicolors
-set statusline=%f
+set statusline=%f%m\ \(Line\ %l/%L,\ Col\ %c\)
 set signcolumn=yes
 
 " These are needed for 256 colors to work in tmux,
