@@ -20,7 +20,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
@@ -116,7 +117,9 @@ noremap <C-l> <C-w>l
 inoremap <c-c> <esc>
 nnoremap <leader><tab> <c-^>
 nnoremap <silent> <leader>f :FZF<cr>
-nnoremap <silent> <leader>g  :FloatermNew --autoclose=2 lazygit<cr>
+nnoremap <silent> <leader>g :FloatermNew --autoclose=2 lazygit<cr>
+nnoremap <silent> <leader>b :Buffers<cr>
+nnoremap <silent> <leader>/ :Rg<cr>
 
 map <leader><space> :noh<cr>
 nmap <leader>s :w<cr>
