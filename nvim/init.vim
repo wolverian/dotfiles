@@ -27,6 +27,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'neovim/nvim-lspconfig' 
 Plug 'voldikss/vim-floaterm'
 Plug 'mhinz/vim-startify'
+Plug 'norcalli/nvim-colorizer.lua'
 
 " JS and TypeScript
 Plug 'yuezk/vim-js'
@@ -168,6 +169,20 @@ EOF
 
 highlight LspDiagnosticsUnderlineError gui=underline
 highlight LspDiagnosticsUnderlineWarning gui=underline
+highlight SignColumn guibg=undefined
+
+" red
+highlight LspDiagnosticsError guifg=#e27878
+" yellow
+highlight LspDiagnosticsWarning guifg=#e2a478
+" blue
+highlight LspDiagnosticsInformationSign guifg=#84a0c6
+highlight LspDiagnosticsHintSign guifg=#84a0c6
+
+sign define LspDiagnosticsErrorSign text=● texthl=LspDiagnosticsError linehl= numhl=
+sign define LspDiagnosticsWarningSign text=● texthl=LspDiagnosticsWarning linehl= numhl=
+sign define LspDiagnosticsInformationSign text=● texthl=LspDiagnosticsInformation linehl= numhl=
+sign define LspDiagnosticsHintSign text=● texthl=LspDiagnosticsHint linehl= numhl=
 
 filetype plugin indent on
 
