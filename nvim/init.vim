@@ -26,6 +26,7 @@ Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'neovim/nvim-lspconfig' 
 Plug 'voldikss/vim-floaterm'
+Plug 'mhinz/vim-startify'
 
 " JS and TypeScript
 Plug 'yuezk/vim-js'
@@ -114,6 +115,7 @@ noremap <C-l> <C-w>l
 inoremap <c-c> <esc>
 nnoremap <leader><tab> <c-^>
 nnoremap <silent> <leader>f :FZF<cr>
+nnoremap <silent> <leader>g  :FloatermNew --autoclose=2 lazygit<cr>
 
 map <leader><space> :noh<cr>
 nmap <leader>s :w<cr>
@@ -147,6 +149,8 @@ autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 autocmd BufEnter * lua require'lsp_extra'.check_start_ts_lsp()
+
+autocmd User Startified setlocal buflisted
 
 " Completion
 
