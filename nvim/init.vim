@@ -84,15 +84,18 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
+" Use the plain haskell-langauge-server without the wrapper.
+" I think it should work with nix.
 lua <<EOF
 require'nvim_lsp'.hls.setup{
-  init_options = {
-    languageServerHaskell = {
-      hlintOn = true;
-      formattingProvider = "ormolu";
-      diagnosticsOnChange = false;
-    }
-  }
+ cmd = {"haskell-language-server", "--lsp"};
+ init_options = {
+   languageServerHaskell = {
+     hlintOn = true;
+     formattingProvider = "ormolu";
+     diagnosticsOnChange = false;
+   }
+ }
 }
 EOF
 
@@ -139,10 +142,6 @@ nnoremap <silent> gh    <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g.    <cmd>lua vim.lsp.buf.code_action()<CR>
-" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
