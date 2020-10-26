@@ -77,6 +77,7 @@ set encoding=utf-8
 set termguicolors
 set statusline=%f%m\ \(Line\ %l/%L,\ Col\ %c\)
 set signcolumn=yes
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 " These are needed for 256 colors to work in tmux,
 " I don't know why.
