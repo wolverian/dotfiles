@@ -1,7 +1,8 @@
 {
   "editor.fontSize": 19,
-  "editor.lineHeight": 20,
-  "editor.fontFamily": "PragmataPro Liga",
+  "editor.lineHeight": 23,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontWeight": 400,
   "editor.cursorBlinking": "solid",
   "editor.roundedSelection": false,
   "editor.codeLens": false,
