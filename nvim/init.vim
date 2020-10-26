@@ -27,7 +27,6 @@ Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'neovim/nvim-lspconfig' 
 Plug 'voldikss/vim-floaterm'
-Plug 'mhinz/vim-startify'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " JS and TypeScript
@@ -150,17 +149,17 @@ autocmd InsertEnter,WinLeave * set nocursorline
 " Auto-format *.hs files prior to saving them
 autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
+" autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 autocmd BufEnter * lua require'lsp_extra'.check_start_ts_lsp()
-
-autocmd User Startified setlocal buflisted
 
 " Completion
 
 let g:completion_chain_complete_list = [
   \{'complete_items': ['lsp', 'buffer']}
 \]
+
+let g:completion_trigger_keyword_length = 2
 
 autocmd BufEnter * lua require'completion'.on_attach()
 set completeopt=menuone,noinsert,noselect
