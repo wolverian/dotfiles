@@ -149,7 +149,7 @@ autocmd InsertEnter,WinLeave * set nocursorline
 
 " Auto-format *.hs files prior to saving them
 autocmd BufWritePre *.hs lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+" autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
 " autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 autocmd BufEnter * lua require'lsp_extra'.check_start_ts_lsp()
