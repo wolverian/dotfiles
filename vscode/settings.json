@@ -66,22 +66,6 @@
         "workbench.action.files.save"
       ]
     },
-    // {
-    //   "before": ["<C-j>"],
-    //   "after": ["<C-w>", "j"]
-    // },
-    // {
-    //   "before": ["<C-k>"],
-    //   "after": ["<C-w>", "k"]
-    // },
-    // {
-    //   "before": ["<C-h>"],
-    //   "after": ["<C-w>", "h"]
-    // },
-    // {
-    //   "before": ["<C-l>"],
-    //   "after": ["<C-w>", "l"]
-    // },
     {
       "before": [
         "[",
@@ -115,7 +99,6 @@
   "git.enabled": true,
   "explorer.openEditors.visible": 0,
   "terminal.integrated.fontSize": 14,
-  "workbench.fontAliasing": "auto",
   "typescript.tsserver.log": "verbose",
   "haskell.ghcMod.check": "onSave",
   "window.title": "${activeEditorMedium}${separator}${rootName}",
@@ -125,7 +108,7 @@
     "**/.psc-package": true,
     "**/output": true
   },
-  "workbench.colorTheme": "Iceberg",
+  "workbench.colorTheme": "Iceberg Light",
   "workbench.editor.enablePreview": false,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
@@ -230,5 +213,7 @@
   },
   "window.zoomLevel": 0,
   "C_Cpp.updateChannel": "Insiders",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "workbench.fontAliasing": "auto",
+  "editor.renderWhitespace": "none"
 }
