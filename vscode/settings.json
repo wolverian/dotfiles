@@ -14,6 +14,8 @@
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "editor.scrollBeyondLastLine": true,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
   "editor.minimap.enabled": false,
   "editor.minimap.showSlider": "mouseover",
   "editor.minimap.renderCharacters": false,
@@ -30,7 +32,6 @@
   "git.autofetch": false,
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
-  "vim.statusBarColorControl": false,
   "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.leader": "<space>",
   "vim.incsearch": true,
@@ -108,7 +109,7 @@
     "**/.psc-package": true,
     "**/output": true
   },
-  "workbench.colorTheme": "Iceberg Light",
+  "workbench.colorTheme": "Dracula",
   "workbench.editor.enablePreview": false,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
@@ -122,21 +123,10 @@
     "suppressUpdateNotice": true,
     "suppressWelcomeNotice": false
   },
-  "workbench.colorCustomizations": {
-    "focusBorder": "#5caddb",
-    "list.activeSelectionForeground": "#fff",
-    "list.activeSelectionBackground": "#4f5564",
-    "tab.activeBorder": "#5caddb",
-    "tab.activeBorderTop": "#5caddb",
-    "editorGroup.focusedEmptyBorder": "#6caddb",
-    "panel.border": "#5caddb",
-    "panelTitle.activeBorder": "#5caddb"
-  },
   "markdown.preview.fontFamily": "Georgia, serif",
   "markdown.preview.fontSize": 18,
   "workbench.startupEditor": "none",
   "gitlens.currentLine.enabled": false,
-  "editor.renderLineHighlight": "line",
   "editor.matchBrackets": "never",
   "gitlens.keymap": "chorded",
   "editor.selectionHighlight": false,
@@ -183,7 +173,6 @@
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "eslint.alwaysShowStatus": true,
-  "editor.suggest.maxVisibleSuggestions": 15,
   "files.exclude": {
     "**/.classpath": true,
     "**/.project": true,
@@ -215,5 +204,8 @@
   "C_Cpp.updateChannel": "Insiders",
   "editor.formatOnSave": true,
   "workbench.fontAliasing": "auto",
-  "editor.renderWhitespace": "none"
+  "editor.renderWhitespace": "none",
+  "[purescript]": {
+    "editor.defaultFormatter": "nwolverson.ide-purescript"
+  }
 }
