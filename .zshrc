@@ -39,7 +39,7 @@ export RBENV_ROOT=/usr/local/var/rbenv
 # of course
 export EDITOR='nvim'
 export LESSEDIT='nvim'
-export PAGER='bat -p'
+export PAGER='less'
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 alias vi=nvim
