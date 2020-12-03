@@ -27,6 +27,8 @@
   "editor.occurrencesHighlight": false,
   "editor.renderIndentGuides": false,
   "editor.acceptSuggestionOnEnter": "on",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "hidden",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "files.trimTrailingWhitespace": true,
   "git.autofetch": false,
@@ -109,7 +111,6 @@
     "**/.psc-package": true,
     "**/output": true
   },
-  "workbench.colorTheme": "Dracula",
   "workbench.editor.enablePreview": false,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
@@ -204,5 +205,6 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  }
+  },
+  "workbench.colorTheme": "Dracula"
 }
