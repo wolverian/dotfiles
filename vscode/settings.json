@@ -181,16 +181,7 @@
   },
   "java.semanticHighlighting.enabled": true,
   "search.useGlobalIgnoreFiles": true,
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
   "editor.parameterHints.enabled": false,
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
   "editor.lightbulb.enabled": false,
   "editor.renderLineHighlightOnlyWhenFocus": true,
   "editor.suggest.localityBonus": true,
@@ -207,5 +198,11 @@
   "editor.renderWhitespace": "none",
   "[purescript]": {
     "editor.defaultFormatter": "nwolverson.ide-purescript"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   }
 }
