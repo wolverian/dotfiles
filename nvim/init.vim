@@ -20,6 +20,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tikhomirov/vim-glsl'
@@ -104,7 +105,7 @@ botright cwindow
 " botright lwindow
 
 syntax enable
-colorscheme iceberg
+colorscheme dracula
 
 "
 " Mappings
