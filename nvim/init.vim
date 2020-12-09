@@ -21,7 +21,7 @@ Plug 'idris-hackers/idris-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'LnL7/vim-nix'
@@ -85,7 +85,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 " Use the plain haskell-langauge-server without the wrapper.
 " I think it should work with nix.
 lua <<EOF
-require'nvim_lsp'.hls.setup{
+require'lspconfig'.hls.setup{
  cmd = {"haskell-language-server", "--lsp"};
  init_options = {
    languageServerHaskell = {
@@ -136,7 +136,7 @@ let g:jsx_ext_required = 0
 
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K    <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gh    <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
+nnoremap <silent> gh    <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g.    <cmd>lua vim.lsp.buf.code_action()<CR>

@@ -96,7 +96,7 @@ function M.publishDiagnostics(_, _, result, client_id)
     return
   end
 
-  util.buf_clear_diagnostics(bufnr)
+  vim.lsp.diagnostic.clear(bufnr)
 
   for _, diagnostic in ipairs(result.diagnostics) do
     if diagnostic.severity == nil then
@@ -110,12 +110,9 @@ function M.publishDiagnostics(_, _, result, client_id)
   end
 
 
-  util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
-  util.buf_diagnostics_underline(bufnr, result.diagnostics)
-
-  -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
-
-  util.buf_diagnostics_signs(bufnr, result.diagnostics)
+  vim.lsp.diagnostic.save(result.diagnostics, bufnr)
+  vim.lsp.diagnostic.set_underline(result.diagnostics, bufnr)
+  vim.lsp.diagnostic.set_signs(result.diagnostics, bufnr)
 
   vim.fn.setloclist(0, {}, ' ', {
     title = 'Language Server';
