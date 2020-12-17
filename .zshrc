@@ -69,9 +69,9 @@ pa() {
 
 precmd () { vcs_info }
 
-PS1='
-%F{green}%~%f%F{yellow}%(1j. ●.)%f ${vcs_info_msg_0_}
-%F{yellow}λ%f '
+# PS1='
+# %F{green}%~%f%F{yellow}%(1j. ●.)%f ${vcs_info_msg_0_}
+# %F{yellow}λ%f '
 
 remove_merged_branches () {
   git branch --merged | egrep -v "(^\*|master|dev|production)" | xargs git branch -d
@@ -82,3 +82,4 @@ source ~/bin/path.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"
