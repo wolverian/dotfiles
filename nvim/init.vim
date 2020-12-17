@@ -69,21 +69,18 @@ set showmatch
 set ignorecase
 set smartcase
 set nonumber
-" set numberwidth=3
+set relativenumber
+set numberwidth=2
+set nowrap
 set gdefault
 set cursorline
 set noshowmode
 set path=$PWD/**
 set encoding=utf-8
 set termguicolors
-set statusline=%f%m\ \(Line\ %l/%L,\ Col\ %c\)
+set statusline=%f\ %m\ %=%y\ Line\ %l:%L\ Col\ %c
 set signcolumn=yes
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
-
-" These are needed for 256 colors to work in tmux,
-" I don't know why.
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Use the plain haskell-langauge-server without the wrapper.
 " I think it should work with nix.
@@ -190,5 +187,6 @@ sign define LspDiagnosticsHintSign text=● texthl=LspDiagnosticsHint linehl= nu
 filetype plugin indent on
 
 command! Vcopen vertical copen|normal <C-W>=
+command! Purty silent !purty --write %
 
 set secure
