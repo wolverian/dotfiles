@@ -69,8 +69,9 @@ set showmatch
 set ignorecase
 set smartcase
 set nonumber
-set relativenumber
+set norelativenumber
 set numberwidth=2
+set signcolumn=number
 set nowrap
 set gdefault
 set cursorline
@@ -79,7 +80,6 @@ set path=$PWD/**
 set encoding=utf-8
 set termguicolors
 set statusline=%f\ %m\ %=%y\ Line\ %l:%L\ Col\ %c
-set signcolumn=yes
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 " Use the plain haskell-langauge-server without the wrapper.
@@ -183,6 +183,10 @@ sign define LspDiagnosticsErrorSign text=● texthl=LspDiagnosticsError linehl= 
 sign define LspDiagnosticsWarningSign text=● texthl=LspDiagnosticsWarning linehl= numhl=
 sign define LspDiagnosticsInformationSign text=● texthl=LspDiagnosticsInformation linehl= numhl=
 sign define LspDiagnosticsHintSign text=● texthl=LspDiagnosticsHint linehl= numhl=
+
+" The indentation this does is not in line with Purty
+" let g:purescript_disable_indent = 1
+let g:purescript_indent_where = 0
 
 filetype plugin indent on
 
