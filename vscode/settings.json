@@ -13,7 +13,7 @@
   "editor.snippetSuggestions": "none",
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
-  "editor.scrollBeyondLastLine": true,
+  "editor.scrollBeyondLastLine": false,
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.vertical": "hidden",
   "editor.minimap.enabled": false,
@@ -27,11 +27,10 @@
   "editor.occurrencesHighlight": false,
   "editor.renderIndentGuides": false,
   "editor.acceptSuggestionOnEnter": "on",
-  "editor.scrollbar.vertical": "hidden",
-  "editor.scrollbar.horizontal": "hidden",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "files.trimTrailingWhitespace": true,
   "git.autofetch": false,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/Users/contractor1/bin/nvim-osx64/bin/nvim",
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
   "vim.neovimPath": "/usr/local/bin/nvim",
@@ -151,8 +150,6 @@
   "problems.autoReveal": false,
   "window.openFoldersInNewWindow": "on",
   "window.openFilesInNewWindow": "on",
-  "gitlens.views.fileHistory.enabled": true,
-  "gitlens.views.lineHistory.enabled": true,
   "workbench.activityBar.visible": false,
   "workbench.editor.limit.enabled": true,
   "workbench.enableExperiments": false,
@@ -163,7 +160,6 @@
   "debug.showInlineBreakpointCandidates": false,
   "debug.showInStatusBar": "never",
   "debug.toolBarLocation": "hidden",
-  "gitlens.advanced.telemetry.enabled": false,
   "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.limit.perEditorGroup": true,
@@ -192,7 +188,6 @@
   "[java]": {
     "editor.defaultFormatter": "richardwillis.vscode-spotless-gradle"
   },
-  "window.zoomLevel": 0,
   "C_Cpp.updateChannel": "Insiders",
   "editor.formatOnSave": true,
   "workbench.fontAliasing": "auto",
@@ -206,5 +201,5 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "workbench.colorTheme": "Dracula"
+  "workbench.colorTheme": "Iceberg"
 }

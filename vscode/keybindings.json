@@ -8,13 +8,23 @@
   {
     "key": "space f",
     "command": "workbench.action.quickOpen",
-    "when": "!editorTextFocus"
+    "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+space",
-    "command": "editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+    "key": "space s",
+    "command": "workbench.action.files.save",
+    "when": "neovim.mode == normal && editorTextFocus"
   },
+  {
+    "key": "[ q",
+    "command": "editor.action.marker.nextInFiles",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  //{
+  //  "key": "ctrl+space",
+  //  "command": "editor.action.triggerSuggest",
+  //  "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+  //},
   {
     "key": "ctrl+[",
     "command": "closeFindWidget",
@@ -25,29 +35,30 @@
   //   "command": "closeParameterHints",
   //   "when": "parameterHintsVisible"
   // },
-  {
-    "key": "ctrl+a shift+5",
-    "command": "workbench.action.splitEditorRight"
-  },
-  {
-    "key": "ctrl+a n",
-    "command": "workbench.action.nextEditor"
-  },
+  //{
+  //  "key": "ctrl+a n",
+  //  "command": "workbench.action.nextEditor"
+  //},
   {
     "key": "cmd+shift+]",
     "command": "-workbench.action.nextEditor"
   },
-  {
-    "key": "ctrl+a p",
-    "command": "workbench.action.previousEditor"
-  },
+  //{
+  //  "key": "ctrl+a p",
+  //  "command": "workbench.action.previousEditor"
+  //},
   {
     "key": "cmd+shift+[",
     "command": "-workbench.action.previousEditor"
   },
+  //{
+  //  "key": "ctrl+a ;",
+  //  "command": "workbench.action.openNextRecentlyUsedEditor"
+  //},
   {
-    "key": "ctrl+a ;",
-    "command": "workbench.action.openNextRecentlyUsedEditor"
+    "key": "ctrl+h",
+    "command": "deleteLeft",
+    "when": "editorTextFocus && neovim.mode == 'insert'"
   },
   {
     "key": "ctrl+[",
@@ -79,22 +90,22 @@
     "command": "workbench.action.closeQuickOpen",
     "when": "inQuickOpen"
   },
-  {
-    "key": "ctrl+a k",
-    "command": "workbench.action.navigateUp"
-  },
-  {
-    "key": "ctrl+a j",
-    "command": "workbench.action.navigateDown"
-  },
-  {
-    "key": "ctrl+a h",
-    "command": "workbench.action.navigateLeft"
-  },
-  {
-    "key": "ctrl+a l",
-    "command": "workbench.action.navigateRight"
-  },
+  //{
+  //  "key": "ctrl+a k",
+  //  "command": "workbench.action.navigateUp"
+  //},
+  //{
+  //  "key": "ctrl+a j",
+  //  "command": "workbench.action.navigateDown"
+  //},
+  //{
+  //  "key": "ctrl+a h",
+  //  "command": "workbench.action.navigateLeft"
+  //},
+  //{
+  //  "key": "ctrl+a l",
+  //  "command": "workbench.action.navigateRight"
+  //},
   {
     "key": "ctrl+a p",
     "command": "workbench.action.previousPanelView",
@@ -105,22 +116,22 @@
     "command": "workbench.action.nextPanelView",
     "when": "panelFocus"
   },
-  {
-    "key": "ctrl+a shift+j",
-    "command": "workbench.action.moveEditorToBelowGroup"
-  },
-  {
-    "key": "ctrl+a shift+k",
-    "command": "workbench.action.moveEditorToAboveGroup"
-  },
-  {
-    "key": "ctrl+a shift+h",
-    "command": "workbench.action.moveEditorToLeftGroup"
-  },
-  {
-    "key": "ctrl+a shift+l",
-    "command": "workbench.action.moveEditorToRightGroup"
-  },
+  //{
+  //  "key": "ctrl+a shift+j",
+  //  "command": "workbench.action.moveEditorToBelowGroup"
+  //},
+  //{
+  //  "key": "ctrl+a shift+k",
+  //  "command": "workbench.action.moveEditorToAboveGroup"
+  //},
+  //{
+  //  "key": "ctrl+a shift+h",
+  //  "command": "workbench.action.moveEditorToLeftGroup"
+  //},
+  //{
+  //  "key": "ctrl+a shift+l",
+  //  "command": "workbench.action.moveEditorToRightGroup"
+  //},
   {
     "key": "cmd+s",
     "command": "-workbench.action.files.save"
