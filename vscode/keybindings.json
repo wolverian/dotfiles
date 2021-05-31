@@ -36,30 +36,9 @@
   //   "when": "parameterHintsVisible"
   // },
   //{
-  //  "key": "ctrl+a n",
-  //  "command": "workbench.action.nextEditor"
-  //},
-  {
-    "key": "cmd+shift+]",
-    "command": "-workbench.action.nextEditor"
-  },
-  //{
-  //  "key": "ctrl+a p",
-  //  "command": "workbench.action.previousEditor"
-  //},
-  {
-    "key": "cmd+shift+[",
-    "command": "-workbench.action.previousEditor"
-  },
-  //{
   //  "key": "ctrl+a ;",
   //  "command": "workbench.action.openNextRecentlyUsedEditor"
   //},
-  {
-    "key": "ctrl+h",
-    "command": "deleteLeft",
-    "when": "editorTextFocus && neovim.mode == 'insert'"
-  },
   {
     "key": "ctrl+[",
     "command": "closeMarkersNavigation",
