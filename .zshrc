@@ -1,3 +1,9 @@
+autoload -U compinit
+compinit
+
+autoload -U colors
+colors
+
 # Unbreak history
 export HISTSIZE=100000
 export HISTFILE="$HOME/.zsh_history"
