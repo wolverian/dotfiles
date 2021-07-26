@@ -27,7 +27,12 @@ Plug 'neovimhaskell/haskell-vim'
 " Plug 'neovim/nvim-lspconfig' 
 " Plug 'voldikss/vim-floaterm'
 " Plug 'norcalli/nvim-colorizer.lua'
-Plug 'jeffkreeftmeijer/vim-dim'
+" Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'shaunsingh/moonlight.nvim'
+" Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'akinsho/nvim-bufferline.lua'
 
 call plug#end()
 
@@ -53,9 +58,9 @@ set nowrap
 " set gdefault
 " set cursorline
 " set noshowmode
-" set termguicolors
+set termguicolors
 
-colorscheme dim
+colorscheme moonlight
 
 syntax enable
 
@@ -64,5 +69,18 @@ inoremap <c-c> <esc>
 nnoremap <leader><tab> <c-^>
 noremap <leader><space> :noh<cr>
 noremap <leader>s :w<cr>
+
+" nvim-tree
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <silent><Tab> :BufferLineCycleNext<CR>
+nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
+
+lua << EOF
+
+vim.g.moonlight_borders = true
+require('moonlight').set()
+
+require("bufferline").setup{}
+EOF
 
 filetype plugin indent on
