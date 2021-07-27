@@ -2,37 +2,21 @@ autocmd!
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'tpope/vim-sensible'
-" Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-scriptease'
-" Plug 'tpope/vim-vinegar'
-" Plug 'tpope/vim-obsession'
-" Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-unimpaired'
-" Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
-" Plug 'idris-hackers/idris-vim'
 Plug 'vmchale/dhall-vim'
-" Plug 'cocopon/iceberg.vim'
-" Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'junegunn/fzf'
-" Plug 'junegunn/fzf.vim'
-" Plug 'tikhomirov/vim-glsl'
-" Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
-" Plug 'neovim/nvim-lspconfig' 
-" Plug 'voldikss/vim-floaterm'
-" Plug 'norcalli/nvim-colorizer.lua'
-" Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'neovim/nvim-lspconfig' 
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'shaunsingh/moonlight.nvim'
-" Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/nvim-bufferline.lua'
+Plug 'hrsh7th/nvim-compe'
 
 call plug#end()
 
@@ -75,12 +59,59 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <silent><Tab> :BufferLineCycleNext<CR>
 nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
 
+" compe
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+
 lua << EOF
+
+vim.o.completeopt = "menuone,noselect"
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 2;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  resolve_timeout = 800;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  -- documentation = {
+  --   border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
+  --   winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+  --   max_width = 120,
+  --   min_width = 60,
+  --   max_height = math.floor(vim.o.lines * 0.3),
+  --   min_height = 1,
+  -- };
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = false;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = false;
+    ultisnips = false;
+    luasnip = false;
+  };
+}
+
 
 vim.g.moonlight_borders = true
 require('moonlight').set()
 
-require("bufferline").setup{}
+require("bufferline").setup({})
+
+require'lspinstall'.setup()
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  require'lspconfig'[server].setup{}
+end
+
 EOF
 
 filetype plugin indent on
