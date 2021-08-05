@@ -22,6 +22,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'TimUntersberger/neogit'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -67,6 +69,8 @@ nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
 " compe
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+
+nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
 
 lua << EOF
 require('lualine').setup({
@@ -152,7 +156,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 end
 
@@ -177,6 +181,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+require('telescope').setup({})
 EOF
 
 filetype plugin indent on
