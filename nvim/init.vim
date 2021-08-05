@@ -20,6 +20,8 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'TimUntersberger/neogit'
+Plug 'mfussenegger/nvim-jdtls'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
@@ -166,6 +168,15 @@ for _, server in pairs(servers) do
 end
 
 require('neogit').setup({})
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+
 EOF
 
 filetype plugin indent on
