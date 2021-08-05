@@ -14,7 +14,6 @@ Plug 'kabouzeid/nvim-lspinstall'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'shaunsingh/moonlight.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hoob3rt/lualine.nvim'
@@ -24,6 +23,7 @@ Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'sindrets/diffview.nvim'
 
 call plug#end()
 
@@ -61,8 +61,7 @@ nnoremap <leader><tab> <c-^>
 noremap <leader><space> :noh<cr>
 noremap <leader>s :w<cr>
 
-" nvim-tree
-nnoremap <C-n> :NvimTreeToggle<CR>
+" bufferline
 nnoremap <silent><Tab> :BufferLineCycleNext<CR>
 nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
 
@@ -70,7 +69,7 @@ nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 
-nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>f <cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({previewer = false}))<cr>
 
 lua << EOF
 require('lualine').setup({
@@ -81,11 +80,10 @@ require('lualine').setup({
     lualine_a = {},
     lualine_b = {'filename'},
     lualine_c = {'branch'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
-  extensions = {'nvim-tree'}
 })
 
 vim.o.completeopt = "menuone,noselect"
@@ -171,7 +169,9 @@ for _, server in pairs(servers) do
   }
 end
 
-require('neogit').setup({})
+require('neogit').setup({
+  integrations = { diffview = true }
+})
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -181,7 +181,13 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-require('telescope').setup({})
+require('telescope').setup({
+  defaults = {
+    layout_strategy = "center"
+  }
+})
+
+require'diffview'.setup({})
 EOF
 
 filetype plugin indent on
