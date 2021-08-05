@@ -18,6 +18,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hoob3rt/lualine.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'TimUntersberger/neogit'
 
 call plug#end()
 
@@ -163,6 +165,7 @@ for _, server in pairs(servers) do
   }
 end
 
+require('neogit').setup({})
 EOF
 
 filetype plugin indent on
