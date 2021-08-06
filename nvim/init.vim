@@ -75,9 +75,11 @@ lua << EOF
 require('lualine').setup({
   options = {
     theme = 'moonlight',
+    component_separators = {'', ''},
+    section_separators = {'', ''},
   },
   sections = {
-    lualine_a = {},
+    lualine_a = {'mode'},
     lualine_b = {'filename'},
     lualine_c = {'branch'},
     lualine_x = {'filetype'},
