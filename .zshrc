@@ -22,19 +22,9 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 alias vi=nvim
 alias vim=nvim
-alias v='nvim $(fzf)'
-alias vm='nvim -O $(fzf -m)'
-alias la="fd"
 alias g="git"
 alias t="tmux"
-alias d="dirs -v"
-alias json-pretty="pbpaste | jq"
-alias notes="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/notes && vim"
-alias clock="tty-clock -c -f %d.%m.%Y"
-alias pp="mpc toggle"
-alias clock="tty-clock -c -f %d.%m.%Y"
 alias gd="g b | fzf | xargs git b -d"
-alias f='vim $(fzf)'
 
 source ~/bin/path.sh
 
