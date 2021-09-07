@@ -109,10 +109,6 @@ require'compe'.setup {
 }
 vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 
-
--- vim.g.moonlight_borders = true
--- require('moonlight').set()
-
 require'lspinstall'.setup()
 
 local nvim_lsp = require('lspconfig')
