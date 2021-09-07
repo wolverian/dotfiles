@@ -30,17 +30,20 @@ highlight FoldColumn   ctermfg=7    ctermbg=8
 highlight Pmenu        ctermfg=15   ctermbg=8
 highlight PmenuSel     ctermfg=8    ctermbg=15
 highlight SpellCap     ctermfg=7    ctermbg=8
-highlight StatusLine   ctermfg=15   ctermbg=8    cterm=bold
+highlight StatusLine   ctermfg=0    ctermbg=8
 highlight StatusLineNC ctermfg=7    ctermbg=8    cterm=NONE
-highlight VertSplit    ctermfg=7    ctermbg=8    cterm=NONE
+highlight VertSplit    ctermfg=0    ctermbg=0    cterm=NONE
 highlight SignColumn                ctermbg=0
 
 highlight Constant       ctermfg=7
 highlight Identifier     ctermfg=15
 highlight PreProc        ctermfg=15 cterm=bold
-highlight Special        ctermfg=2
+highlight Special        ctermfg=NONE
 highlight Statement      ctermfg=15 cterm=bold
 highlight Title          ctermfg=15 cterm=bold
-highlight Type           ctermfg=15
-highlight Underlined     cterm=underline ctermfg=15
+highlight Underlined     ctermfg=NONE cterm=underline
+highlight String         ctermfg=NONE
+
+" Accents
 highlight Keyword        ctermfg=4
+highlight Type           ctermfg=2
