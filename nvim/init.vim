@@ -14,16 +14,13 @@ Plug 'kabouzeid/nvim-lspinstall'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'shaunsingh/moonlight.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'akinsho/nvim-bufferline.lua'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'TimUntersberger/neogit'
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'sindrets/diffview.nvim'
 
 call plug#end()
 
@@ -46,12 +43,11 @@ set nonumber
 set numberwidth=2
 set signcolumn=number
 set nowrap
-" set gdefault
-" set cursorline
-" set noshowmode
-set termguicolors
+set notermguicolors
+set splitright
+set splitbelow
 
-colorscheme moonlight
+colorscheme anttih
 
 syntax enable
 
@@ -61,10 +57,6 @@ nnoremap <leader><tab> <c-^>
 noremap <leader><space> :noh<cr>
 noremap <leader>s :w<cr>
 
-" bufferline
-nnoremap <silent><Tab> :BufferLineCycleNext<CR>
-nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
-
 " compe
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
@@ -72,16 +64,18 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 nnoremap <leader>f <cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({previewer = false}))<cr>
 
 lua << EOF
+require'nvim-web-devicons'.setup({})
+
 require('lualine').setup({
   options = {
-    theme = 'moonlight',
+    theme = '16color',
     component_separators = {'', ''},
     section_separators = {'', ''},
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'filename'},
-    lualine_c = {'branch'},
+    lualine_b = {{'filename', path = 1}, {'diagnostics', sources = {"nvim_lsp"} }},
+    lualine_c = {},
     lualine_x = {'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
@@ -113,19 +107,11 @@ require'compe'.setup {
     luasnip = false;
   };
 }
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 
 
-vim.g.moonlight_borders = true
-require('moonlight').set()
-
-require("bufferline").setup({
-  options = {
-    max_name_length = 25,
-    tab_size = 25,
-    show_close_icon = false,
-    show_buffer_close_icons = false
-  }
-})
+-- vim.g.moonlight_borders = true
+-- require('moonlight').set()
 
 require'lspinstall'.setup()
 
@@ -160,20 +146,22 @@ local on_attach = function(client, bufnr)
 
 end
 
-local servers = require'lspinstall'.installed_servers()
+-- local servers = require'lspinstall'.installed_servers()
+local servers = { "purescript" }
 
 for _, server in pairs(servers) do
   require'lspconfig'[server].setup {
     on_attach = on_attach,
+    settings = {
+      purescript = {
+        codegenTargets = { "corefn" }
+      }
+    },
     flags = {
       debounce_text_changes = 150,
     }
   }
 end
-
-require('neogit').setup({
-  integrations = { diffview = true }
-})
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -188,8 +176,6 @@ require('telescope').setup({
     layout_strategy = "center"
   }
 })
-
-require'diffview'.setup({})
 EOF
 
 filetype plugin indent on
