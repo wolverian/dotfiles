@@ -14,7 +14,7 @@ highlight DiffDelete     ctermfg=0    ctermbg=1
 highlight DiffText       ctermfg=0    ctermbg=11   cterm=bold
 
 " Invert selected lines in visual mode
-highlight Visual         ctermfg=NONE ctermbg=NONE cterm=inverse
+highlight Visual         ctermfg=0 ctermbg=15
 
 " Highlight search matches in black, with a yellow background
 highlight Search         ctermfg=0    ctermbg=11
@@ -35,14 +35,15 @@ highlight StatusLineNC ctermfg=7    ctermbg=8    cterm=NONE
 highlight VertSplit    ctermfg=0    ctermbg=0    cterm=NONE
 highlight SignColumn                ctermbg=0
 
-highlight Constant       ctermfg=7
+highlight Constant       ctermfg=6
+highlight Boolean        ctermfg=6
 highlight Identifier     ctermfg=15
 highlight PreProc        ctermfg=15 cterm=bold
 highlight Special        ctermfg=NONE
 highlight Statement      ctermfg=15 cterm=bold
 highlight Title          ctermfg=15 cterm=bold
 highlight Underlined     ctermfg=NONE cterm=underline
-highlight String         ctermfg=NONE
+highlight String         ctermfg=5
 
 " Accents
 highlight Keyword        ctermfg=4
