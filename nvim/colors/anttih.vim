@@ -6,6 +6,15 @@ endif
 
 let colors_name = "anttih"
 
+" Black	  0 8
+" Red	    1 9
+" Green	  2 10
+" Yellow  3 11
+" Blue    4 12
+" Magenta	5 13
+" Cyan    6 14
+" White   7 15
+
 " In diffs, added lines are green, changed lines are yellow, deleted lines are
 " red, and changed text (within a changed line) is bright yellow and bold.
 highlight DiffAdd        ctermfg=0    ctermbg=2
@@ -36,15 +45,16 @@ highlight VertSplit    ctermfg=0    ctermbg=0    cterm=NONE
 highlight SignColumn                ctermbg=0
 
 highlight Constant       ctermfg=6
+highlight Function       ctermfg=15 cterm=NONE
 highlight Boolean        ctermfg=6
-highlight Identifier     ctermfg=15
-highlight PreProc        ctermfg=15 cterm=bold
+highlight Identifier     ctermfg=15 cterm=NONE
+highlight PreProc        ctermfg=15 cterm=NONE
 highlight Special        ctermfg=NONE
-highlight Statement      ctermfg=15 cterm=bold
-highlight Title          ctermfg=15 cterm=bold
+highlight Statement      ctermfg=15 cterm=NONE
+highlight Title          ctermfg=15 cterm=NONE
 highlight Underlined     ctermfg=NONE cterm=underline
-highlight String         ctermfg=5
+highlight String         ctermfg=NONE
 
 " Accents
 highlight Keyword        ctermfg=4
-highlight Type           ctermfg=2
+highlight Type           ctermfg=15

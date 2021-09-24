@@ -27,6 +27,8 @@ call plug#end()
 language en_US
 
 set encoding=utf-8
+set autoread
+set autowrite
 set expandtab
 set tabstop=2
 set softtabstop=2
@@ -73,7 +75,7 @@ require('lualine').setup({
     section_separators = {'', ''},
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {},
     lualine_b = {{'filename', path = 1}, {'diagnostics', sources = {"nvim_lsp"} }},
     lualine_c = {},
     lualine_x = {'filetype'},
