@@ -20,6 +20,8 @@ Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'cocopon/iceberg.vim'
+Plug 'windwp/nvim-autopairs'
 
 call plug#end()
 
@@ -44,11 +46,11 @@ set nonumber
 set numberwidth=2
 set signcolumn=number
 set nowrap
-set notermguicolors
+set termguicolors
 set splitright
 set splitbelow
 
-colorscheme anttih
+colorscheme iceberg
 
 syntax enable
 
@@ -69,7 +71,7 @@ require'nvim-web-devicons'.setup({})
 
 require('lualine').setup({
   options = {
-    theme = '16color',
+    theme = 'iceberg_dark',
     component_separators = {'', ''},
     section_separators = {'', ''},
   },
@@ -173,6 +175,16 @@ require('telescope').setup({
     layout_strategy = "center"
   }
 })
+
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
+
+require("nvim-autopairs.completion.compe").setup({
+  map_cr = true, --  map <CR> on insert mode
+  auto_select = true,  -- auto select first item
+})
+
 EOF
 
 filetype plugin indent on
