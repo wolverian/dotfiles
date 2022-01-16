@@ -9,17 +9,8 @@ Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'neovimhaskell/haskell-vim'
-" Plug 'neovim/nvim-lspconfig' 
-" Plug 'kabouzeid/nvim-lspinstall'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hrsh7th/nvim-compe'
-Plug 'hoob3rt/lualine.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'mfussenegger/nvim-jdtls'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'cocopon/iceberg.vim'
 Plug 'windwp/nvim-autopairs'
 
@@ -49,6 +40,9 @@ set nowrap
 set termguicolors
 set splitright
 set splitbelow
+set cursorline
+set grepprg=rg\ --line-number
+set completeopt=menuone,noselect
 
 colorscheme iceberg
 
@@ -58,31 +52,20 @@ let mapleader = " "
 inoremap <c-c> <esc>
 nnoremap <leader><tab> <c-^>
 noremap <leader>s :w<cr>
+noremap <C-k> <C-w>k
+noremap <C-j> <C-w>j
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+" Silent grepping that automatically opens the quickfix window
+command! -nargs=+ Rg execute 'silent grep! <args>' | copen 10
 
 " compe
 " inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 
 lua << EOF
-require'nvim-web-devicons'.setup({})
 
--- require('lualine').setup({
---   options = {
---     theme = 'iceberg_dark',
---     component_separators = {'', ''},
---     section_separators = {'', ''},
---   },
---   sections = {
---     lualine_a = {},
---     lualine_b = {{'filename', path = 1}, {'diagnostics', sources = {"nvim_diagnostic"} }},
---     lualine_c = {},
---     lualine_x = {'filetype'},
---     lualine_y = {'progress'},
---     lualine_z = {'location'}
---   },
--- })
-
-vim.o.completeopt = "menuone,noselect"
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -107,6 +90,7 @@ require'compe'.setup {
     luasnip = false;
   };
 }
+
 vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 
 require'nvim-treesitter.configs'.setup {
