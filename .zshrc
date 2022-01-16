@@ -26,9 +26,10 @@ alias g="git"
 alias t="tmux"
 alias gd="g b | fzf | xargs git b -d"
 
-source ~/bin/path.sh
+_fzf_compgen_path() {
+  fd --type f "$1"
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
