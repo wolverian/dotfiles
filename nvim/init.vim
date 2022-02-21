@@ -9,7 +9,6 @@ Plug 'purescript-contrib/purescript-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'vmchale/dhall-vim'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'cocopon/iceberg.vim'
 Plug 'windwp/nvim-autopairs'
@@ -43,6 +42,7 @@ set splitbelow
 set cursorline
 set grepprg=rg\ --line-number
 set completeopt=menuone,noselect
+set clipboard+=unnamedplus
 
 colorscheme iceberg
 
@@ -52,46 +52,21 @@ let mapleader = " "
 inoremap <c-c> <esc>
 nnoremap <leader><tab> <c-^>
 noremap <leader>s :w<cr>
+" can't use the default <C-l> because that is used below
+noremap <leader><leader> :noh<cr>
 noremap <C-k> <C-w>k
 noremap <C-j> <C-w>j
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
+" Select the first completion automatically to prevent hitting <C-n> twice
+" to get an autocompletion
+inoremap <expr> <C-n> pumvisible() ? "\<C-n>" : "\<C-n><C-n>"
+
 " Silent grepping that automatically opens the quickfix window
 command! -nargs=+ Rg execute 'silent grep! <args>' | copen 10
 
-" compe
-" inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-
 lua << EOF
-
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 2;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  resolve_timeout = 800;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  source = {
-    path = true;
-    buffer = true;
-    calc = false;
-    nvim_diagnostic = true;
-    nvim_lua = true;
-    vsnip = false;
-    ultisnips = false;
-    luasnip = false;
-  };
-}
-
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -101,14 +76,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-require('nvim-autopairs').setup({
-  disable_filetype = { "TelescopePrompt" , "vim" },
-})
-
-require("nvim-autopairs.completion.compe").setup({
-  map_cr = true, --  map <CR> on insert mode
-  auto_select = true,  -- auto select first item
-})
+require('nvim-autopairs').setup()
 
 EOF
 
