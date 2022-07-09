@@ -22,12 +22,12 @@
   home.packages = with pkgs; [
     ripgrep
     tmux
+    ranger
     sd
     fd
     ghc
     cabal-install
     git
-    gcc
   ];
 
   # does not seem to work
@@ -37,10 +37,17 @@
 
   programs.zsh.initExtra = ''
     export EDITOR=nvim
+    bindkey -e
+
+    e () {
+      nvim -c "'\"" "$@"
+    }
   '';
 
   home.shellAliases = {
     g = "git";
+    t = "tmux";
+    gd = "git branch | fzf | xargs git b -d";
   };
 
   programs.tmux.enable = true;
@@ -55,8 +62,6 @@
 
     set-window-option -g mode-keys vi # vi key
     set-option -g status-keys emacs
-    # set-window-option -g utf8 on # utf8 support
-    # set-window-option -g main-pane-width 110
 
     setw -g window-status-separator "  "
     set-window-option -g window-status-format "#W#F"
@@ -83,9 +88,6 @@
     bind-key w choose-tree -ZwN
     bind-key k switch-client -l
     bind-key -r o select-pane -t :.+
-    bind-key / run-shell -b "~/dotfiles/scripts/select-window.sh"
-    bind-key P run-shell -b "mpc toggle > /dev/null"
-    bind-key N run-shell -b "mpc next > /dev/null"
   '';
 
   programs.zsh.enable = true;
@@ -104,6 +106,7 @@
     l = "log --graph --abbrev-commit --date=relative";
     r = "!git l -20";
   };
+
   programs.git.extraConfig = {
     user = { name = "Antti Holvikari"; email = "antti@anttih.com"; };
     branch = { autosetuprebase = "always"; };
