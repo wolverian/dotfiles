@@ -25,8 +25,6 @@
     ranger
     sd
     fd
-    ghc
-    cabal-install
     git
   ];
 
