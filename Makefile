@@ -1,4 +1,4 @@
-NIXADDR ?= 192.168.64.5
+NIXADDR ?= unset
 NIXPORT ?= 22
 NIXUSER ?= antti
 NIXBLOCKDEVICE ?= vda

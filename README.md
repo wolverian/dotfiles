@@ -6,5 +6,5 @@
 * `mv /etc/nixos/dotfiles /home/antti/dotfiles && chown antti:users -R /home/antti/dotfiles`
 * `rm /etc/nixos/configuration.nix`
 * Set password for `antti` with `sudo passwd antti`
-* ssh to the VM `ssh antti@<ip>`
-* scp the ssh private and public key to the machine and then `ssh-add ~/.ssh/<key>`
+* scp the private and public key to the machine
+* `ssh-add ~/.ssh/<key>`
