@@ -48,45 +48,48 @@
     gd = "git branch | fzf | xargs git b -d";
   };
 
-  programs.tmux.enable = true;
-  programs.tmux.extraConfig = ''
-    set -g prefix C-a
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      set -g prefix C-a
 
-    set -g mouse on
-    set -g focus-events on
+      set -g mouse on
+      set -g focus-events on
 
-    bind C-p previous-window
-    bind C-n next-window
+      bind C-p previous-window
+      bind C-n next-window
 
-    set-window-option -g mode-keys vi # vi key
-    set-option -g status-keys emacs
+      set-window-option -g mode-keys vi
+      set-option -g status-keys emacs
 
-    setw -g window-status-separator "  "
-    set-window-option -g window-status-format "#W#F"
-    set-window-option -g status-style fg=black
-    set-window-option -g window-status-style fg=white
-    set-window-option -g window-status-current-style fg=brightwhite
-    set-window-option -g window-status-current-format "#W"
+      # setw -g window-status-separator "  "
+      # set-window-option -g window-status-format "#W#F"
+      # set-window-option -g status-style fg=black
+      # set-window-option -g window-status-style fg=white
+      # set-window-option -g window-status-current-style fg=brightwhite
+      # set-window-option -g window-status-current-format "#W"
 
-    set -g status off
-    set -g status-left "#[fg=black,bg=NONE]###S  #[default]"
-    set -g status-right '#[fg=white] %d.%m %H:%M #[default]'
+      # set -g status off
+      # set -g status-left "#[fg=black,bg=NONE]###S  #[default]"
+      # set -g status-right '#[fg=white] %d.%m %H:%M #[default]'
 
-    set -g status-left-length 32
+      set -g status-left-length 32
 
-    set -g default-terminal "screen-256color"
-    set -ga terminal-overrides ",xterm-256color:Tc"
+      set -g default-terminal "screen-256color"
+      set -ga terminal-overrides ",xterm-256color:Tc"
 
-    set -sg escape-time 0
+      set -sg escape-time 0
 
-    set-option -g history-limit 10000
+      set-option -g history-limit 10000
 
-    # disable the preview window
-    bind-key s choose-tree -ZsN
-    bind-key w choose-tree -ZwN
-    bind-key k switch-client -l
-    bind-key -r o select-pane -t :.+
-  '';
+      # disable the preview window
+      bind-key s choose-tree -ZsN
+      bind-key w choose-tree -ZwN
+      bind-key k switch-client -l
+      bind-key -r o select-pane -t :.+
+    '';
+  };
+
 
   programs.zsh.enable = true;
   programs.zsh.enableSyntaxHighlighting = false;
