@@ -62,21 +62,21 @@
       set-window-option -g mode-keys vi
       set-option -g status-keys emacs
 
-      # setw -g window-status-separator "  "
-      # set-window-option -g window-status-format "#W#F"
-      # set-window-option -g status-style fg=black
-      # set-window-option -g window-status-style fg=white
-      # set-window-option -g window-status-current-style fg=brightwhite
-      # set-window-option -g window-status-current-format "#W"
+      setw -g window-status-separator "  "
+      set-window-option -g status-style bg=black
+      set-window-option -g window-status-style fg=brightblack
+      set-window-option -g window-status-current-style fg=brightwhite,bold
 
-      # set -g status off
-      # set -g status-left "#[fg=black,bg=NONE]###S  #[default]"
-      # set -g status-right '#[fg=white] %d.%m %H:%M #[default]'
+      # Do not show window number
+      set-window-option -g window-status-current-format "#W#F
+      set-window-option -g window-status-format "#W#F"
+
+      set -g status-right ""
 
       set -g status-left-length 32
 
-      set -g default-terminal "screen-256color"
-      set -ga terminal-overrides ",xterm-256color:Tc"
+      # set -g default-terminal "screen-256color"
+      # set -ga terminal-overrides ",xterm-256color:Tc"
 
       set -sg escape-time 0
 
