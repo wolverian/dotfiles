@@ -97,8 +97,8 @@
   programs.zsh.enableSyntaxHighlighting = false;
 
   programs.direnv.enable = true;
+  programs.direnv.enableZshIntegration = true;
   programs.direnv.nix-direnv.enable = true;
-  programs.direnv.nix-direnv.enableFlakes = true;
 
   programs.git.enable = true;
   programs.git.aliases = {
