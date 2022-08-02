@@ -68,7 +68,7 @@
       set-window-option -g window-status-current-style fg=brightwhite,bold
 
       # Do not show window number
-      set-window-option -g window-status-current-format "#W#F
+      set-window-option -g window-status-current-format "#W#F"
       set-window-option -g window-status-format "#W#F"
 
       set -g status-right ""
@@ -79,6 +79,8 @@
       # set -ga terminal-overrides ",xterm-256color:Tc"
 
       set -sg escape-time 0
+
+      unbind -T copy-mode-vi MouseDragEnd1Pane
 
       set-option -g history-limit 10000
 
