@@ -145,6 +145,7 @@
       nvim-treesitter
       iceberg-vim
       nvim-autopairs
+      indent-blankline-nvim
     ];
 
     extraConfig = ''
