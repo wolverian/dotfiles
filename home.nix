@@ -26,6 +26,7 @@
     sd
     fd
     git
+    universal-ctags
   ];
 
   # does not seem to work
