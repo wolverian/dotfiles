@@ -179,7 +179,7 @@
       set smartcase
       set nonumber
       set numberwidth=2
-      set signcolumn=number
+      set signcolumn=yes
       set nowrap
       set termguicolors
       set splitright
@@ -212,8 +212,20 @@
 
       filetype plugin indent on
 
+      hi SignColumn guibg=none
+      hi DiagnosticSignError guibg=none
+      hi DiagnosticSignWarn guibg=none
+      hi DiagnosticSignHint guibg=none
+      hi DiagnosticSignInfo guibg=none
+
       lua << EOF
       vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap=true, silent=true })
+
+      local signs = { Error = "┃ ", Warn = "┃ ", Hint = "┃ ", Info =  "┃ " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl })
+      end
 
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
          vim.lsp.diagnostic.on_publish_diagnostics, {
