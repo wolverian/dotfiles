@@ -27,6 +27,7 @@
     fd
     git
     universal-ctags
+    nodePackages.typescript-language-server
   ];
 
   # does not seem to work
@@ -146,6 +147,16 @@
       iceberg-vim
       nvim-autopairs
       indent-blankline-nvim
+      { plugin = nvim-lspconfig;
+        type = "lua";
+        config = ''
+          require('lspconfig').tsserver.setup {
+            on_attach = function (client, bufnr)
+              vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, { noremap=true, silent=true, buffer=bufnr })
+            end
+          }
+        '';
+      }
     ];
 
     extraConfig = ''
@@ -200,6 +211,18 @@
       command! -nargs=+ Rg execute 'silent grep! <args>' | copen 10
 
       filetype plugin indent on
+
+      lua << EOF
+      vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap=true, silent=true })
+
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+         vim.lsp.diagnostic.on_publish_diagnostics, {
+           underline = false,
+           virtual_text = false,
+           update_in_insert = false,
+         }
+      )
+      EOF
     '';
   };
 
