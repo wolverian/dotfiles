@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -135,17 +135,18 @@
     vimAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      vim-nix
       vim-surround
       vim-commentary
       vim-repeat
-      purescript-vim
-      typescript-vim
-      dhall-vim
-      haskell-vim
-      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
-      iceberg-vim
       nvim-autopairs
+      iceberg-vim
+
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+
+      # these don't have treesitter grammars yet
+      purescript-vim
+      dhall-vim
+
       { plugin = nvim-lspconfig;
         type = "lua";
         config = ''
@@ -218,28 +219,7 @@
       hi DiagnosticSignInfo guibg=none
 
       lua << EOF
-      vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap=true, silent=true })
-
-      local signs = { "Error", "Warn", "Hint", "Info" }
-      for i, type in ipairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = " ┃", texthl = hl })
-      end
-
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-         vim.lsp.diagnostic.on_publish_diagnostics, {
-           underline = false,
-           virtual_text = false,
-           update_in_insert = false,
-         }
-      )
-
-      require'nvim-treesitter.configs'.setup {
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        }
-      }
+      ${lib.strings.fileContents ./neovim/config.lua}
       EOF
     '';
   };
