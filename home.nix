@@ -143,10 +143,9 @@
       typescript-vim
       dhall-vim
       haskell-vim
-      nvim-treesitter
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       iceberg-vim
       nvim-autopairs
-      indent-blankline-nvim
       { plugin = nvim-lspconfig;
         type = "lua";
         config = ''
@@ -221,10 +220,10 @@
       lua << EOF
       vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap=true, silent=true })
 
-      local signs = { Error = "┃ ", Warn = "┃ ", Hint = "┃ ", Info =  "┃ " }
-      for type, icon in pairs(signs) do
+      local signs = { "Error", "Warn", "Hint", "Info" }
+      for i, type in ipairs(signs) do
         local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl })
+        vim.fn.sign_define(hl, { text = " ┃", texthl = hl })
       end
 
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -234,6 +233,13 @@
            update_in_insert = false,
          }
       )
+
+      require'nvim-treesitter.configs'.setup {
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        }
+      }
       EOF
     '';
   };
