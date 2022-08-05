@@ -26,8 +26,6 @@
     sd
     fd
     git
-    universal-ctags
-    nodePackages.typescript-language-server
   ];
 
   # does not seem to work
