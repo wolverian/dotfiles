@@ -150,10 +150,16 @@
       { plugin = nvim-lspconfig;
         type = "lua";
         config = ''
+          local on_attach = function (client, bufnr)
+            vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, { noremap=true, silent=true, buffer=bufnr })
+          end
+
           require('lspconfig').tsserver.setup {
-            on_attach = function (client, bufnr)
-              vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, { noremap=true, silent=true, buffer=bufnr })
-            end
+            on_attach = on_attach
+          }
+
+          require('lspconfig').hls.setup {
+            on_attach = on_attach
           }
         '';
       }
