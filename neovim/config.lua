@@ -15,8 +15,9 @@ local function get_lsp_diagnostics(bufnr)
 end
 
 function StatusLine()
-  local diagnostics = get_lsp_diagnostics(0)
-  local default = " %#StatusLine# %f"
+  local bufnr = 0
+  local diagnostics = get_lsp_diagnostics(bufnr)
+  local default = " %#StatusLeftFile# %f%m %#StatusBase#"
   if diagnostics.errors > 0 then
     return "%#StatusLeftLspError# " .. diagnostics.errors .. default
   elseif diagnostics.warnings > 0 then
@@ -25,26 +26,27 @@ function StatusLine()
     return "%#StatusLeftLspInfo# " .. diagnostics.info .. default
   elseif diagnostics.hints > 0 then
     return "%#StatusLeftLspHint# " .. diagnostics.hints .. default
-  elseif vim.lsp.buf.server_ready() then
-    return "%#StatusLeftLspOk# OK" .. default
+  elseif #vim.lsp.buf_get_clients(bufnr) > 0 then
+    return "%#StatusLeftLspOk# ✓" .. default
   else
-    return default
+    return "%#StatusLeftFile# %f%m %#StatusBase#"
   end
 end
 
 function StatusLineInactive()
-  local default = "%#StatusLineNC# %f"
+  local default = "%#StatusLineNC# %f%m"
   return default
 end
 
 -- These are just hard-coded colors from iceberg
-vim.cmd "hi StatusLeftLspError guifg=black guibg=#e27878"
-vim.cmd "hi StatusLeftLspWarn guifg=black guibg=#e2a478"
-vim.cmd "hi StatusLeftLspInfo guifg=black guibg=#89b8c2"
-vim.cmd "hi StatusLeftLspHint guifg=black guibg=#6b7089"
-vim.cmd "hi StatusLeftLspOk guifg=black guibg=#668e3d"
+vim.cmd "hi StatusLeftLspError guifg=#161821 guibg=#e27878"
+vim.cmd "hi StatusLeftLspWarn guifg=#161821 guibg=#e2a478"
+vim.cmd "hi StatusLeftLspInfo guifg=#161821 guibg=#89b8c2"
+vim.cmd "hi StatusLeftLspHint guifg=#161821 guibg=#6b7089"
+vim.cmd "hi StatusLeftLspOk guifg=#161821 guibg=#b4be82"
 
-vim.o.statusline = "%!luaeval('status_line()')"
+vim.cmd "hi StatusLeftFile guifg=#6b7089 guibg=#2e313f"
+vim.cmd "hi StatusBase guifg=#3e445e guibg=#0f1117"
 
 vim.api.nvim_exec([[
   augroup Statusline
