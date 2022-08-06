@@ -26,6 +26,8 @@
     sd
     fd
     git
+
+    sumneko-lua-language-server
   ];
 
   # does not seem to work
