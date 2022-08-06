@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 
 local signs = { "Error", "Warn", "Hint", "Info" }
-for i, type in ipairs(signs) do
+for _, type in ipairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = " ┃", texthl = hl })
 end
@@ -17,7 +17,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
    }
 )
 
-local on_attach = function (client, bufnr)
+local on_attach = function (_, bufnr)
   local opts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
