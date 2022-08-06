@@ -206,12 +206,6 @@
 
       filetype plugin indent on
 
-      hi SignColumn guibg=none
-      hi DiagnosticSignError guibg=none
-      hi DiagnosticSignWarn guibg=none
-      hi DiagnosticSignHint guibg=none
-      hi DiagnosticSignInfo guibg=none
-
       lua << EOF
       ${lib.strings.fileContents ./neovim/config.lua}
       EOF
