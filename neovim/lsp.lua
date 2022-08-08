@@ -7,6 +7,8 @@ for _, type in ipairs(signs) do
 end
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { noremap=true, silent=true })
+vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, { noremap=true, silent=true })
+vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, { noremap=true, silent=true })
 
 -- Tame the UI
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
