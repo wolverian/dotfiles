@@ -110,6 +110,7 @@
       # these don't have treesitter grammars yet
       purescript-vim
       dhall-vim
+      nvim-jdtls
 
       { plugin = nvim-lspconfig;
         type = "lua";
