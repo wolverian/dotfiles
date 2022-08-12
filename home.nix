@@ -17,6 +17,7 @@
   home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
+    bat
     ripgrep
     ranger
     sd
@@ -92,8 +93,13 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
+
+      # for CTRL-T widget
+      fileWidgetCommand = "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git";
+      fileWidgetOptions = ["--preview 'bat -p -f {}'"];
+
       tmux.enableShellIntegration = true;
-      tmux.shellIntegrationOptions = ["-p"];
+      tmux.shellIntegrationOptions = [ "-p80%,80%" ];
     };
 
     starship = {
