@@ -1,6 +1,0 @@
-[submodule ".vim/bundle/vim-git"]
-	path = .vim/bundle/vim-git
-	url = git://github.com/tpope/vim-git.git
-[submodule "dircolors-solarized"]
-	path = dircolors-solarized
-	url = git://github.com/huyz/dircolors-solarized.git
