@@ -16,9 +16,6 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
   home.packages = with pkgs; [
     ripgrep
     ranger
@@ -30,151 +27,162 @@
     sumneko-lua-language-server
   ];
 
-  # does not seem to work
-  programs.zsh.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
-  programs.zsh.initExtra = ''
-    export EDITOR=nvim
-    bindkey -e
-
-    e () {
-      nvim -c "'\"" "$@"
-    }
-  '';
-
   home.shellAliases = {
     g = "git";
     t = "tmux";
     gd = "git branch | fzf | xargs git b -d";
   };
 
-  programs.tmux = {
-    enable = true;
-    extraConfig = lib.strings.fileContents ./tmux.conf;
-    tmuxp.enable = true;
+  programs = {
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+
+    zsh = {
+      enable = true;
+      enableSyntaxHighlighting = false;
+      # does not seem to work
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
+      initExtra = ''
+        export EDITOR=nvim
+        bindkey -e
+
+        e () {
+          nvim -c "'\"" "$@"
+        }
+      '';
+    };
+
+    tmux = {
+      enable = true;
+      extraConfig = lib.strings.fileContents ./tmux.conf;
+      tmuxp.enable = true;
+    };
+
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
+    
+    git = {
+      enable = true;
+      aliases = {
+        s = "status --short";
+        b = "branch";
+        c = "commit -v";
+        co = "checkout";
+        a = "add";
+        au = "add -u";
+        d = "diff";
+        dc = "diff --cached";
+        l = "log --graph --abbrev-commit --date=relative";
+        r = "!git l -20";
+      };
+      extraConfig = {
+        user = { name = "Antti Holvikari"; email = "antti@anttih.com"; };
+        branch = { autosetuprebase = "always"; };
+        format = { pretty = "format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"; };
+        core = { pager = "less"; };
+        pull = { rebase = "true"; };
+      };
+    };
+
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+      tmux.enableShellIntegration = true;
+      tmux.shellIntegrationOptions = ["-p"];
+    };
+
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    neovim = {
+      enable = true;
+      vimAlias = true;
+
+      plugins = with pkgs.vimPlugins; [
+        vim-surround
+        vim-commentary
+        vim-repeat
+        nvim-autopairs
+        iceberg-vim
+
+        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+
+        # these don't have treesitter grammars yet
+        purescript-vim
+        dhall-vim
+
+        nvim-jdtls
+
+        { plugin = nvim-lspconfig;
+          type = "lua";
+          config = lib.strings.fileContents ./neovim/lsp.lua;
+        }
+      ];
+    };
   };
 
+  programs.neovim.extraConfig = ''
+    language en_US
 
-  programs.zsh.enable = true;
-  programs.zsh.enableSyntaxHighlighting = false;
+    set encoding=utf-8
+    set autoread
+    set autowrite
+    set expandtab
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+    set cmdheight=1
+    set showtabline=1
+    set hidden
+    set hls
+    set vb
+    set showmatch
+    set ignorecase
+    set smartcase
+    set nonumber
+    set numberwidth=2
+    set signcolumn=yes
+    set nowrap
+    set termguicolors
+    set splitright
+    set splitbelow
+    set cursorline
+    set grepprg=rg\ --line-number
+    set completeopt=menuone,noselect
+    set clipboard+=unnamedplus
 
-  programs.direnv.enable = true;
-  programs.direnv.enableZshIntegration = true;
-  programs.direnv.nix-direnv.enable = true;
+    colorscheme iceberg
+    syntax enable
 
-  programs.git.enable = true;
-  programs.git.aliases = {
-    s = "status --short";
-    b = "branch";
-    c = "commit -v";
-    co = "checkout";
-    a = "add";
-    au = "add -u";
-    d = "diff";
-    dc = "diff --cached";
-    l = "log --graph --abbrev-commit --date=relative";
-    r = "!git l -20";
-  };
+    let mapleader = " "
+    inoremap <c-c> <esc>
+    nnoremap <leader><tab> <c-^>
+    noremap <leader>s :w<cr>
 
-  programs.git.extraConfig = {
-    user = { name = "Antti Holvikari"; email = "antti@anttih.com"; };
-    branch = { autosetuprebase = "always"; };
-    format = { pretty = "format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"; };
-    core = { pager = "less"; };
-    pull = { rebase = "true"; };
-  };
+    noremap <leader><leader> :noh<cr>
+    noremap <C-k> <C-w>k
+    noremap <C-j> <C-w>j
+    noremap <C-l> <C-w>l
+    noremap <C-h> <C-w>h
 
-  programs.fzf.enable = true;
-  programs.fzf.enableZshIntegration = true;
-  programs.fzf.tmux.enableShellIntegration = true;
-  programs.fzf.tmux.shellIntegrationOptions = ["-p"];
+    " Select the first completion automatically to prevent hitting <C-n> twice
+    " to get an autocompletion
+    inoremap <expr> <C-n> pumvisible() ? "\<C-n>" : "\<C-n><C-n>"
+    
+    " Silent grepping that automatically opens the quickfix window
+    command! -nargs=+ Rg execute 'silent grep! <args>' | copen 10
 
-  programs.starship.enable = true;
-  programs.starship.enableZshIntegration = true;
+    filetype plugin indent on
 
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-
-    plugins = with pkgs.vimPlugins; [
-      vim-surround
-      vim-commentary
-      vim-repeat
-      nvim-autopairs
-      iceberg-vim
-
-      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
-
-      # these don't have treesitter grammars yet
-      purescript-vim
-      dhall-vim
-      nvim-jdtls
-
-      { plugin = nvim-lspconfig;
-        type = "lua";
-        config = lib.strings.fileContents ./neovim/lsp.lua;
-      }
-    ];
-
-    extraConfig = ''
-      language en_US
-
-      set encoding=utf-8
-      set autoread
-      set autowrite
-      set expandtab
-      set tabstop=2
-      set softtabstop=2
-      set shiftwidth=2
-      set cmdheight=1
-      set showtabline=1
-      set hidden
-      set hls
-      set vb
-      set showmatch
-      set ignorecase
-      set smartcase
-      set nonumber
-      set numberwidth=2
-      set signcolumn=yes
-      set nowrap
-      set termguicolors
-      set splitright
-      set splitbelow
-      set cursorline
-      set grepprg=rg\ --line-number
-      set completeopt=menuone,noselect
-      set clipboard+=unnamedplus
-
-      colorscheme iceberg
-      syntax enable
-
-      let mapleader = " "
-      inoremap <c-c> <esc>
-      nnoremap <leader><tab> <c-^>
-      noremap <leader>s :w<cr>
-
-      noremap <leader><leader> :noh<cr>
-      noremap <C-k> <C-w>k
-      noremap <C-j> <C-w>j
-      noremap <C-l> <C-w>l
-      noremap <C-h> <C-w>h
-
-      " Select the first completion automatically to prevent hitting <C-n> twice
-      " to get an autocompletion
-      inoremap <expr> <C-n> pumvisible() ? "\<C-n>" : "\<C-n><C-n>"
-      
-      " Silent grepping that automatically opens the quickfix window
-      command! -nargs=+ Rg execute 'silent grep! <args>' | copen 10
-
-      filetype plugin indent on
-
-      lua << EOF
-      ${lib.strings.fileContents ./neovim/config.lua}
-      EOF
-    '';
-  };
-
+    lua << EOF
+    ${lib.strings.fileContents ./neovim/config.lua}
+    EOF
+  '';
 }
