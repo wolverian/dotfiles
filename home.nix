@@ -21,7 +21,6 @@
 
   home.packages = with pkgs; [
     ripgrep
-    tmux
     ranger
     sd
     fd
@@ -29,8 +28,6 @@
     jq
 
     sumneko-lua-language-server
-
-    tmuxp
   ];
 
   # does not seem to work
@@ -55,46 +52,8 @@
 
   programs.tmux = {
     enable = true;
-    extraConfig = ''
-      set -g prefix C-a
-
-      set -g mouse on
-      set -g focus-events on
-
-      bind C-p previous-window
-      bind C-n next-window
-
-      set-window-option -g mode-keys vi
-      set-option -g status-keys emacs
-
-      setw -g window-status-separator "  "
-      set-window-option -g status-style bg=black
-      set-window-option -g window-status-style fg=brightblack
-      set-window-option -g window-status-current-style fg=brightwhite,bold
-
-      # Do not show window number
-      set-window-option -g window-status-current-format "#W#F"
-      set-window-option -g window-status-format "#W#F"
-
-      set -g status-right ""
-
-      set -g status-left-length 32
-
-      # set -g default-terminal "screen-256color"
-      # set -ga terminal-overrides ",xterm-256color:Tc"
-
-      set -sg escape-time 0
-
-      unbind -T copy-mode-vi MouseDragEnd1Pane
-
-      set-option -g history-limit 10000
-
-      # disable the preview window
-      bind-key s choose-tree -ZsN
-      bind-key w choose-tree -ZwN
-      bind-key k switch-client -l
-      bind-key -r o select-pane -t :.+
-    '';
+    extraConfig = lib.strings.fileContents ./tmux.conf;
+    tmuxp.enable = true;
   };
 
 
@@ -129,6 +88,8 @@
 
   programs.fzf.enable = true;
   programs.fzf.enableZshIntegration = true;
+  programs.fzf.tmux.enableShellIntegration = true;
+  programs.fzf.tmux.shellIntegrationOptions = ["-p"];
 
   programs.starship.enable = true;
   programs.starship.enableZshIntegration = true;
