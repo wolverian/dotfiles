@@ -26,8 +26,11 @@
     sd
     fd
     git
+    jq
 
     sumneko-lua-language-server
+
+    tmuxp
   ];
 
   # does not seem to work
