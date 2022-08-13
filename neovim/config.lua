@@ -34,19 +34,9 @@ function StatusLine()
 end
 
 function StatusLineInactive()
-  local default = "%#StatusLineNC# %f%m"
+  local default = "%#StatusLeftFile# %f%m %#StatusBase#"
   return default
 end
-
--- These are just hard-coded colors from iceberg
-vim.cmd "hi StatusLeftLspError guifg=#161821 guibg=#e27878"
-vim.cmd "hi StatusLeftLspWarn guifg=#161821 guibg=#e2a478"
-vim.cmd "hi StatusLeftLspInfo guifg=#161821 guibg=#89b8c2"
-vim.cmd "hi StatusLeftLspHint guifg=#161821 guibg=#6b7089"
-vim.cmd "hi StatusLeftLspOk guifg=#161821 guibg=#b4be82"
-
-vim.cmd "hi StatusLeftFile guifg=#6b7089 guibg=#2e313f"
-vim.cmd "hi StatusBase guifg=#3e445e guibg=#0f1117"
 
 vim.api.nvim_exec([[
   augroup Statusline

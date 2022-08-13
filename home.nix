@@ -116,9 +116,20 @@
         vim-commentary
         vim-repeat
         nvim-autopairs
-        iceberg-vim
+        {
+          plugin = nvim-colorizer-lua;
+          type = "lua";
+          config = "require'colorizer'.setup()";
+        }
+        # iceberg-vim
 
         (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+
+        (pkgs.vimUtils.buildVimPluginFrom2Nix {
+          pname = "icecube";
+          version = "1.0.0";
+          src = ./neovim/icecube;
+        })
 
         # these don't have treesitter grammars yet
         purescript-vim
@@ -164,7 +175,7 @@
     set completeopt=menuone,noselect
     set clipboard+=unnamedplus
 
-    colorscheme iceberg
+    colorscheme icecube
     syntax enable
 
     let mapleader = " "
