@@ -146,60 +146,13 @@
   };
 
   programs.neovim.extraConfig = ''
-    language en_US
+    lua << EOF
+    ${lib.strings.fileContents ./neovim/config.lua}
+    EOF
 
-    set encoding=utf-8
-    set autoread
-    set autowrite
-    set expandtab
-    set tabstop=2
-    set softtabstop=2
-    set shiftwidth=2
-    set cmdheight=1
-    set showtabline=1
-    set hidden
-    set hls
-    set vb
-    set showmatch
-    set ignorecase
-    set smartcase
-    set nonumber
-    set numberwidth=2
-    set signcolumn=yes
-    set nowrap
-    set termguicolors
-    set splitright
-    set splitbelow
-    set cursorline
-    set grepprg=rg\ --line-number
-    set completeopt=menuone,noselect
-    set clipboard+=unnamedplus
-
-    colorscheme icecube
-    syntax enable
-
-    let mapleader = " "
-    inoremap <c-c> <esc>
-    nnoremap <leader><tab> <c-^>
-    noremap <leader>s :w<cr>
-
-    noremap <leader><leader> :noh<cr>
-    noremap <C-k> <C-w>k
-    noremap <C-j> <C-w>j
-    noremap <C-l> <C-w>l
-    noremap <C-h> <C-w>h
-
-    " Select the first completion automatically to prevent hitting <C-n> twice
-    " to get an autocompletion
-    inoremap <expr> <C-n> pumvisible() ? "\<C-n>" : "\<C-n><C-n>"
-    
     " Silent grepping that automatically opens the quickfix window
     command! -nargs=+ Rg execute 'silent grep! <args>' | copen 10
 
     filetype plugin indent on
-
-    lua << EOF
-    ${lib.strings.fileContents ./neovim/config.lua}
-    EOF
   '';
 }

@@ -38,6 +38,65 @@ function StatusLineInactive()
   return default
 end
 
+local function set_opts(opts)
+  for name, val in pairs(opts) do
+    vim.api.nvim_set_option(name, val)
+  end
+end
+
+local opts = {
+  encoding = "utf-8",
+  autoread = true,
+  autowrite = true,
+  expandtab = true,
+  tabstop = 2,
+  softtabstop = 2,
+  shiftwidth = 2,
+  cmdheight = 1,
+  showtabline = 1,
+  hidden = true,
+  hls = true,
+  vb = true,
+  showmatch = true,
+  ignorecase = true,
+  smartcase = true,
+  number = false,
+  numberwidth = 2,
+  signcolumn = "yes",
+  wrap = false,
+  termguicolors = true,
+  splitright = true,
+  splitbelow = true,
+  cursorline = true,
+  grepprg = "rg --line-number",
+  completeopt = "menuone,noselect",
+  clipboard = "unnamedplus",
+}
+
+set_opts(opts)
+
+vim.g.mapleader = " "
+vim.api.nvim_command("language en_US")
+vim.api.nvim_command("colorscheme icecube")
+vim.api.nvim_command("syntax enable")
+
+vim.api.nvim_set_keymap('n', '<leader>s', ':w<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>', ':noh<cr>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<c-c>', '<esc>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader><tab>', '<c-^>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true })
+
+vim.keymap.set('i', '<C-n>', function ()
+    return vim.fn.pumvisible() == 1 and '<C-n>' or '<C-n><C-n>'
+end, {
+    expr = true,
+    noremap = true,
+    desc = "Select the first completion automatically to prevent hitting <C-n> twice to get an autocompletion"
+})
+
 vim.api.nvim_exec([[
   augroup Statusline
   au!

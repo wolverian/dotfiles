@@ -10,7 +10,7 @@ local black = "#0f1117"
 local grey = "#1e2132"
 
 local _colors = {
-  highlight("Normal", { bg = defaultBg, fg = "#c6c8d1" }),
+  highlight("Normal", { bg = "NONE", fg = "#c6c8d1" }),
   highlight("NormalNC", { bg = grey, fg = "#c6c8d1" }),
 
   highlight("ColorColumn", { bg = grey, fg = "NONE" }),
