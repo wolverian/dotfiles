@@ -75,7 +75,7 @@ local _colors = {
   highlight("Todo", { bg = "#45493e", fg = "#b4be82" }),
   highlight("Type", { fg = "#84a0c6" }),
   highlight("Underlined", { underline = true, fg = "#84a0c6" }),
-  highlight("VertSplit", { bg = grey, fg = grey }),
+  highlight("VertSplit", { bg = black, fg = black }),
   highlight("Visual", { bg = "#272c42", fg = "NONE" }),
   highlight("VisualNOS", { bg = "#272c42", fg = "NONE" }),
   highlight("WildMenu", { bg = "#d4d5db", fg = "#17171b" }),
