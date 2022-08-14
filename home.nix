@@ -116,12 +116,11 @@
         vim-commentary
         vim-repeat
         nvim-autopairs
-        {
-          plugin = nvim-colorizer-lua;
-          type = "lua";
-          config = "require'colorizer'.setup()";
-        }
-        # iceberg-vim
+        # {
+        #   plugin = nvim-colorizer-lua;
+        #   type = "lua";
+        #   config = "require'colorizer'.setup()";
+        # }
 
         (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
 
