@@ -32,6 +32,7 @@
     g = "git";
     t = "tmux";
     gd = "git branch | fzf | xargs git b -d";
+    la = "ls -la";
   };
 
   programs = {
