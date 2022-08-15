@@ -38,42 +38,32 @@ function StatusLineInactive()
   return default
 end
 
-local function set_opts(opts)
-  for name, val in pairs(opts) do
-    vim.api.nvim_set_option(name, val)
-  end
-end
-
-local opts = {
-  encoding = "utf-8",
-  autoread = true,
-  autowrite = true,
-  expandtab = true,
-  tabstop = 2,
-  softtabstop = 2,
-  shiftwidth = 2,
-  cmdheight = 1,
-  showtabline = 1,
-  hidden = true,
-  hls = true,
-  vb = true,
-  showmatch = true,
-  ignorecase = true,
-  smartcase = true,
-  number = false,
-  numberwidth = 2,
-  signcolumn = "yes",
-  wrap = false,
-  termguicolors = true,
-  splitright = true,
-  splitbelow = true,
-  cursorline = true,
-  grepprg = "rg --line-number",
-  completeopt = "menuone,noselect",
-  clipboard = "unnamedplus",
-}
-
-set_opts(opts)
+vim.opt.encoding = "utf-8"
+vim.opt.autoread = true
+vim.opt.autowrite = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.cmdheight = 1
+vim.opt.showtabline = 1
+vim.opt.hidden = true
+vim.opt.hls = true
+vim.opt.vb = true
+vim.opt.showmatch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.number = false
+vim.opt.numberwidth = 2
+vim.opt.signcolumn = "yes"
+vim.opt.wrap = false
+vim.opt.termguicolors = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.cursorline = true
+vim.opt.grepprg = "rg --line-number"
+vim.opt.completeopt = "menuone,noselect"
+vim.opt.clipboard = "unnamedplus"
 
 vim.g.mapleader = " "
 vim.api.nvim_command("language en_US")
