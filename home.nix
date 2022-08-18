@@ -152,6 +152,7 @@
         vim-commentary
         vim-repeat
         nvim-autopairs
+        telescope-nvim
         # {
         #   plugin = nvim-colorizer-lua;
         #   type = "lua";
