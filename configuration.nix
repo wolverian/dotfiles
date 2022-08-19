@@ -45,16 +45,6 @@
     openssh.enable = true;
     openssh.passwordAuthentication = true;
     openssh.permitRootLogin = "yes";
-
-    xserver = {
-      enable = false;
-      # autorun = false;
-      # windowManager.i3.enable = true;
-      # displayManager.defaultSession = "none+i3";
-      # displayManager.lightdm.enable = true;
-      # displayManager.autoLogin.enable = false;
-      # displayManager.autoLogin.user = "antti";
-    };
   };
 
   networking.firewall.allowedTCPPorts = [ 22 ];
