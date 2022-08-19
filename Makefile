@@ -2,7 +2,8 @@ NIXADDR ?= unset
 NIXPORT ?= 22
 NIXUSER ?= antti
 NIXBLOCKDEVICE ?= vda
-NIXHOST ?= dev
+# Currently either home or work
+NIXHOST ?= unset
 
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 

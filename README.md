@@ -1,3 +1,5 @@
+## Setting up a new VM
+
 * Boot a new VM using the nixos live CD with root password set to "root"
 * Check the ip number of the VM: `ifconfig`
 * Update the Makefile with the ip and then run `make vm/bootstrap` in the _host_
@@ -9,3 +11,10 @@
 * Set password for `antti` with `sudo passwd antti`
 * scp the private and public key to the machine
 * `ssh-add ~/.ssh/<key>`
+
+## Rebuilding
+
+```
+$ sudo nixos-rebuild switch --flake .#<host>
+```
+
