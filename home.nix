@@ -50,6 +50,8 @@
         export EDITOR=nvim
         bindkey -e
 
+        setopt nosharehistory
+
         e () {
           nvim -c "'\"" "$@"
         }
