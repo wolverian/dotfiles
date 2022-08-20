@@ -107,34 +107,35 @@
       enable = true;
       enableZshIntegration = true;
       settings = {
-        format = lib.concatStrings [
-          "$username"
-          "$hostname"
-          "$shlvl"
-          "$kubernetes"
-          "$directory"
-          "$git_branch"
-          "$git_commit"
-          "$git_state"
-          "$git_status"
-          "$hg_branch"
-          "$docker_context"
-          "$package"
-          "$cmake"
-          "$nix_shell"
-          "$memory_usage"
-          "$env_var"
-          "$custom"
-          "$cmd_duration"
-          "$line_break"
-          "$jobs"
-          "$battery"
-          "$time"
-          "$status"
-          "$character"
-        ];
-        package.disabled = true;
-        aws.disabled = true;
+        # format = lib.concatStrings [
+        #   "$username"
+        #   "$hostname"
+        #   "$shlvl"
+        #   "$kubernetes"
+        #   "$directory"
+        #   "$git_branch"
+        #   "$git_commit"
+        #   "$git_state"
+        #   "$git_status"
+        #   "$hg_branch"
+        #   "$docker_context"
+        #   "$package"
+        #   "$cmake"
+        #   "$nix_shell"
+        #   "$memory_usage"
+        #   "$env_var"
+        #   "$custom"
+        #   "$cmd_duration"
+        #   "$line_break"
+        #   "$jobs"
+        #   "$battery"
+        #   "$time"
+        #   "$status"
+        #   "$character"
+        # ];
+        git_status.disabled = true;
+        git_commit.disabled = true;
+        git_branch.disabled = true;
         directory = {
           truncation_length = 8;
           truncate_to_repo = true;
