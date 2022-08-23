@@ -1,6 +1,7 @@
 { pkgs, lib }: {
   enable = true;
   vimAlias = true;
+  package = pkgs.neovim-nightly;
 
   plugins = with pkgs.vimPlugins; [
     vim-commentary
