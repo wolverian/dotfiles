@@ -64,6 +64,7 @@ vim.opt.cursorline = true
 vim.opt.grepprg = "rg --line-number"
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard = "unnamedplus"
+vim.opt.mouse = "nv"
 
 vim.g.mapleader = " "
 vim.api.nvim_command("language en_US")
