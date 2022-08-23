@@ -20,7 +20,11 @@
         inherit system;
         modules = [
           ./configuration.nix
-          home-manager.nixosModules.home-manager {
+          {
+            nixpkgs.overlays = overlays;
+          }
+          home-manager.nixosModules.home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.antti = {
@@ -34,8 +38,11 @@
         modules = [
           ./desktop.nix
           ./configuration.nix
-          ({ nixpkgs.overlays = overlays;})
-          home-manager.nixosModules.home-manager {
+          {
+            nixpkgs.overlays = overlays;
+          }
+          home-manager.nixosModules.home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.antti = {
