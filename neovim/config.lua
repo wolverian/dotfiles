@@ -80,6 +80,15 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true })
 
+local telescope = require('telescope.builtin')
+
+vim.api.nvim_set_keymap('n', '<C-t>', '', {
+  noremap = true,
+  callback = function ()
+    telescope.find_files()
+  end
+})
+
 vim.keymap.set('i', '<C-n>', function ()
     return vim.fn.pumvisible() == 1 and '<C-n>' or '<C-n><C-n>'
 end, {
