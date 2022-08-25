@@ -8,6 +8,7 @@ end
 local defaultBg = "#161821"
 local black = "#0f1117"
 local grey = "#1e2132"
+local lightBlue = "#8b98b6"
 
 local _colors = {
   highlight("Normal", { bg = "NONE", fg = "#c6c8d1" }),
@@ -63,8 +64,6 @@ local _colors = {
   highlight("SpellLocal", { fg = "NONE" }),
   highlight("SpellRare", { fg = "NONE" }),
   highlight("Statement", { fg = "#84a0c6" }),
-  highlight("StatusLine", { reverse = true, bg = "#17171b", fg = black }),
-  highlight("StatusLineNC", { reverse = true, bg = "#3e445e", fg = black }),
   highlight("StorageClass", { fg = "#84a0c6" }),
   highlight("String", { fg = "#89b8c2" }),
   highlight("Structure", { fg = "#84a0c6" }),
@@ -75,7 +74,7 @@ local _colors = {
   highlight("Todo", { bg = "#45493e", fg = "#b4be82" }),
   highlight("Type", { fg = "#84a0c6" }),
   highlight("Underlined", { underline = true, fg = "#84a0c6" }),
-  highlight("VertSplit", { bg = black, fg = black }),
+  highlight("WinSeparator", { bg = "NONE", fg = "#84a0c6" }),
   highlight("Visual", { bg = "#272c42", fg = "NONE" }),
   highlight("VisualNOS", { bg = "#272c42", fg = "NONE" }),
   highlight("WildMenu", { bg = "#d4d5db", fg = "#17171b" }),
@@ -141,7 +140,9 @@ local _colors = {
   highlight("TSVariable", { fg = "#c6c8d1" }),
   highlight("TSVariableBuiltin", { fg = "#84a0c6" }),
 
-  -- Statusline custom highlight group
+  -- Statusline
+  highlight("StatusLine", { fg = black, bg = lightBlue }),
+  highlight("StatusLineNC", { reverse = true, bg = "#3e445e", fg = black }),
   highlight("StatusLeftFile",     { fg = "#6b7089", bg = "#2e313f" }),
   highlight("StatusBase",         { fg = "#3e445e", bg = "#0f1117" }),
   highlight("StatusLeftLspError", { fg = defaultBg, bg = "#e27878"}),
@@ -149,6 +150,9 @@ local _colors = {
   highlight("StatusLeftLspInfo",  { fg = defaultBg, bg = "#89b8c2"}),
   highlight("StatusLeftLspHint",  { fg = defaultBg, bg = "#6b7089"}),
   highlight("StatusLeftLspOk",    { fg = defaultBg, bg = "#b4be82"}),
+
+  highlight("WinBar", { fg = black, bg = lightBlue }),
+  highlight("WinBarNC", { fg = black, bg = lightBlue })
 }
 
 function M.colors()

@@ -15,9 +15,17 @@ local function get_lsp_diagnostics(bufnr)
 end
 
 function StatusLine()
+  return vim.fn.getcwd()
+end
+
+vim.api.nvim_exec([[
+  set statusline=%!luaeval('StatusLine()')
+]], false)
+
+function WinBar()
   local bufnr = 0
   local diagnostics = get_lsp_diagnostics(bufnr)
-  local default = " %#StatusLeftFile# %f%m %#StatusBase#"
+  local default = " %#WinBar# %f%m"
   if diagnostics.errors > 0 then
     return "%#StatusLeftLspError# " .. diagnostics.errors .. default
   elseif diagnostics.warnings > 0 then
@@ -29,12 +37,12 @@ function StatusLine()
   elseif #vim.lsp.buf_get_clients(bufnr) > 0 then
     return "%#StatusLeftLspOk# ✓" .. default
   else
-    return "%#StatusLeftFile# %f%m %#StatusBase#"
+    return "%#WinBar# %f%m"
   end
 end
 
-function StatusLineInactive()
-  local default = "%#StatusLeftFile# %f%m %#StatusBase#"
+function WinBarInactive()
+  local default = "%#WinBarNC# %f%m"
   return default
 end
 
@@ -65,6 +73,7 @@ vim.opt.grepprg = "rg --line-number"
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "nv"
+vim.opt.laststatus = 3
 
 vim.g.mapleader = " "
 vim.api.nvim_command("language en_US")
@@ -98,12 +107,13 @@ end, {
 })
 
 vim.api.nvim_exec([[
-  augroup Statusline
+  augroup WinBar
   au!
-  au WinEnter,BufEnter * setlocal statusline=%!luaeval('StatusLine()')
-  au WinLeave,BufLeave * setlocal statusline=%!luaeval('StatusLineInactive()')
+  au WinEnter,BufEnter * setlocal winbar=%!luaeval('WinBar()')
+  au WinLeave,BufLeave * setlocal winbar=%!luaeval('WinBarInactive()')
   augroup END
 ]], false)
+
 
 require('nvim-treesitter.configs').setup {
   highlight = {
