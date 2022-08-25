@@ -18,7 +18,8 @@ function StatusBar()
   local bufnr = 0
   local diagnostics = get_lsp_diagnostics(bufnr)
   -- return vim.fn.getcwd()
-  local default = " %#StatusLeftFile# %f%m %#StatusBase#"
+  local cwd = vim.fn.getcwd()
+  local default = " %#StatusLeftFile# " .. cwd .. " %#StatusBase#"
   if diagnostics.errors > 0 then
     return "%#StatusLeftLspError# " .. diagnostics.errors .. default
   elseif diagnostics.warnings > 0 then
@@ -30,7 +31,7 @@ function StatusBar()
   elseif #vim.lsp.buf_get_clients(bufnr) > 0 then
     return "%#StatusLeftLspOk# ✓" .. default
   else
-    return "%#StatusLeftFile# %f%m %#StatusBase#"
+    return "%#StatusLeftFile# " .. cwd .. " %#StatusBase#"
   end
 end
 
