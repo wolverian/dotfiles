@@ -141,7 +141,8 @@ local _colors = {
   highlight("TSVariableBuiltin", { fg = "#84a0c6" }),
 
   -- Statusline
-  highlight("StatusLine", { fg = black, bg = lightBlue }),
+  highlight("StatusLine", { reverse = true, bg = "#17171b", fg = black }),
+  -- highlight("StatusLine", { fg = black, bg = lightBlue }),
   highlight("StatusLineNC", { reverse = true, bg = "#3e445e", fg = black }),
   highlight("StatusLeftFile",     { fg = "#6b7089", bg = "#2e313f" }),
   highlight("StatusBase",         { fg = "#3e445e", bg = "#0f1117" }),
@@ -152,7 +153,6 @@ local _colors = {
   highlight("StatusLeftLspOk",    { fg = defaultBg, bg = "#b4be82"}),
 
   highlight("WinBar", { fg = black, bg = lightBlue }),
-  highlight("WinBarNC", { fg = black, bg = lightBlue })
 }
 
 function M.colors()

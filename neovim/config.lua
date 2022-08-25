@@ -14,18 +14,11 @@ local function get_lsp_diagnostics(bufnr)
   return result
 end
 
-function StatusLine()
-  return vim.fn.getcwd()
-end
-
-vim.api.nvim_exec([[
-  set statusline=%!luaeval('StatusLine()')
-]], false)
-
-function WinBar()
+function StatusBar()
   local bufnr = 0
   local diagnostics = get_lsp_diagnostics(bufnr)
-  local default = " %#WinBar# %f%m"
+  -- return vim.fn.getcwd()
+  local default = " %#StatusLeftFile# %f%m %#StatusBase#"
   if diagnostics.errors > 0 then
     return "%#StatusLeftLspError# " .. diagnostics.errors .. default
   elseif diagnostics.warnings > 0 then
@@ -37,14 +30,21 @@ function WinBar()
   elseif #vim.lsp.buf_get_clients(bufnr) > 0 then
     return "%#StatusLeftLspOk# ✓" .. default
   else
-    return "%#WinBar# %f%m"
+    return "%#StatusLeftFile# %f%m %#StatusBase#"
   end
 end
 
-function WinBarInactive()
-  local default = "%#WinBarNC# %f%m"
-  return default
+function StatusBarInactive()
+  return "%#StatusLeftFile# %f%m %#StatusBase#"
 end
+
+vim.api.nvim_exec([[
+  augroup StatusBar
+  au!
+  au WinEnter,BufEnter * setlocal statusline=%!luaeval('StatusBar()')
+  au WinLeave,BufLeave * setlocal statusline=%!luaeval('StatusBarInactive()')
+  augroup END
+]], false)
 
 vim.opt.encoding = "utf-8"
 vim.opt.autoread = true
@@ -74,6 +74,7 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "nv"
 vim.opt.laststatus = 3
+vim.opt.winbar = "%#WinBar# %f"
 
 vim.g.mapleader = " "
 vim.api.nvim_command("language en_US")
@@ -105,15 +106,6 @@ end, {
     noremap = true,
     desc = "Select the first completion automatically to prevent hitting <C-n> twice to get an autocompletion"
 })
-
-vim.api.nvim_exec([[
-  augroup WinBar
-  au!
-  au WinEnter,BufEnter * setlocal winbar=%!luaeval('WinBar()')
-  au WinLeave,BufLeave * setlocal winbar=%!luaeval('WinBarInactive()')
-  augroup END
-]], false)
-
 
 require('nvim-treesitter.configs').setup {
   highlight = {
