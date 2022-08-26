@@ -17,8 +17,6 @@ end
 function WinBar()
   local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
   local diagnostics = get_lsp_diagnostics(bufnr)
-  -- return vim.fn.getcwd()
-  local cwd = vim.fn.getcwd()
   local default = " %#WinBar# %t"
   if diagnostics.errors > 0 then
     return "%#StatusLeftLspError# " .. diagnostics.errors .. default
@@ -28,7 +26,7 @@ function WinBar()
     return "%#StatusLeftLspInfo# " .. diagnostics.info .. default
   elseif diagnostics.hints > 0 then
     return "%#StatusLeftLspHint# " .. diagnostics.hints .. default
-  elseif #vim.lsp.buf_get_clients(bufnr) > 0 then
+  elseif #vim.lsp.get_active_clients({ bufnr = bufnr }) > 0 then
     return "%#StatusLeftLspOk# ✓" .. default
   else
     return "%#WinBar# %t"
@@ -55,15 +53,10 @@ function StatusBar()
   end
 end
 
-function StatusBarInactive()
-  return "%#StatusLeftFile# %f%m %#StatusBase#"
-end
-
 vim.api.nvim_exec([[
   augroup StatusBar
   au!
   au WinEnter,BufEnter * setlocal statusline=%!luaeval('StatusBar()')
-  au WinLeave,BufLeave * setlocal statusline=%!luaeval('StatusBarInactive()')
   augroup END
 ]], false)
 
