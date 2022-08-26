@@ -14,10 +14,30 @@ local function get_lsp_diagnostics(bufnr)
   return result
 end
 
-function StatusBar()
-  local bufnr = 0
+function WinBar()
+  local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
   local diagnostics = get_lsp_diagnostics(bufnr)
   -- return vim.fn.getcwd()
+  local cwd = vim.fn.getcwd()
+  local default = " %#WinBar# %t"
+  if diagnostics.errors > 0 then
+    return "%#StatusLeftLspError# " .. diagnostics.errors .. default
+  elseif diagnostics.warnings > 0 then
+    return "%#StatusLeftLspWarn# " .. diagnostics.warnings .. default
+  elseif diagnostics.info > 0 then
+    return "%#StatusLeftLspInfo# " .. diagnostics.info .. default
+  elseif diagnostics.hints > 0 then
+    return "%#StatusLeftLspHint# " .. diagnostics.hints .. default
+  elseif #vim.lsp.buf_get_clients(bufnr) > 0 then
+    return "%#StatusLeftLspOk# ✓" .. default
+  else
+    return "%#WinBar# %t"
+  end
+end
+
+function StatusBar()
+  -- Get diagnostics for all buffers
+  local diagnostics = get_lsp_diagnostics(nil)
   local cwd = vim.fn.getcwd()
   local default = " %#StatusLeftFile# " .. cwd .. " %#StatusBase#"
   if diagnostics.errors > 0 then
@@ -28,7 +48,7 @@ function StatusBar()
     return "%#StatusLeftLspInfo# " .. diagnostics.info .. default
   elseif diagnostics.hints > 0 then
     return "%#StatusLeftLspHint# " .. diagnostics.hints .. default
-  elseif #vim.lsp.buf_get_clients(bufnr) > 0 then
+  elseif #vim.lsp.get_active_clients() > 0 then
     return "%#StatusLeftLspOk# ✓" .. default
   else
     return "%#StatusLeftFile# " .. cwd .. " %#StatusBase#"
@@ -75,7 +95,7 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "nv"
 vim.opt.laststatus = 3
-vim.opt.winbar = "%#WinBar# %f"
+vim.opt.winbar = "%!luaeval('WinBar()')"
 
 vim.g.mapleader = " "
 vim.api.nvim_command("language en_US")
