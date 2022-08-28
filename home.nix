@@ -26,6 +26,7 @@
     jq
 
     sumneko-lua-language-server
+    nodePackages.purescript-language-server
   ];
 
   home.shellAliases = {
