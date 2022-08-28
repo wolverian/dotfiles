@@ -17,19 +17,19 @@ end
 function WinBar()
   local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
   local diagnostics = get_lsp_diagnostics(bufnr)
-  local default = " %#WinBar# %t"
+  local filename = "%#WinBar# %f"
   if diagnostics.errors > 0 then
-    return "%#StatusLeftLspError# " .. diagnostics.errors .. default
+    return "%#StatusLeftLspError# " .. diagnostics.errors .. " " .. filename
   elseif diagnostics.warnings > 0 then
-    return "%#StatusLeftLspWarn# " .. diagnostics.warnings .. default
+    return "%#StatusLeftLspWarn# " .. diagnostics.warnings .. " " .. filename
   elseif diagnostics.info > 0 then
-    return "%#StatusLeftLspInfo# " .. diagnostics.info .. default
+    return "%#StatusLeftLspInfo# " .. diagnostics.info .. " " .. filename
   elseif diagnostics.hints > 0 then
-    return "%#StatusLeftLspHint# " .. diagnostics.hints .. default
+    return "%#StatusLeftLspHint# " .. diagnostics.hints .. " " .. filename
   elseif #vim.lsp.get_active_clients({ bufnr = bufnr }) > 0 then
-    return "%#StatusLeftLspOk# ✓" .. default
+    return "%#StatusLeftLspOk# ✓ " .. filename
   else
-    return "%#WinBar# %t"
+    return filename
   end
 end
 
