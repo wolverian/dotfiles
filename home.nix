@@ -17,6 +17,7 @@
   home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
+    bash
     bat
     ripgrep
     ranger
@@ -24,6 +25,8 @@
     fd
     git
     jq
+    wget
+    file
 
     sumneko-lua-language-server
     nodePackages.purescript-language-server
