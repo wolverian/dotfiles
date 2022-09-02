@@ -24,6 +24,12 @@
       src = ./neovim/icecube;
     })
 
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "vim-unison";
+      version = "1.0.0";
+      src = ./neovim/vim-unison;
+    })
+
     # these don't have treesitter grammars yet
     purescript-vim
     dhall-vim
