@@ -30,6 +30,17 @@
       src = ./neovim/vim-unison;
     })
 
+    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "nvim-osc52";
+      version = "1.0.0";
+      src = pkgs.fetchFromGitHub {
+        owner = "ojroques";
+        repo = "nvim-osc52";
+        rev = "6ebd6f3fec198b7b4d7aedd2b0619cd05ebcbaac";
+        sha256 = "sha256-cMrUaQomxQpyORq33nwn6TK2Lj/4/jJ7y7Swy8aiD0s=";
+      };
+    })
+
     # these don't have treesitter grammars yet
     purescript-vim
     dhall-vim

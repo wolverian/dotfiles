@@ -104,6 +104,8 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true })
 
+vim.keymap.set('x', '<leader>c', require('osc52').copy_visual)
+
 local telescope = require('telescope.builtin')
 
 vim.api.nvim_set_keymap('n', '<C-t>', '', {
