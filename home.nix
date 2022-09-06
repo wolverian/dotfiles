@@ -27,6 +27,7 @@
     jq
     wget
     file
+    links2
 
     sumneko-lua-language-server
     nodePackages.purescript-language-server
