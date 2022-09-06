@@ -34,22 +34,23 @@ function WinBar()
 end
 
 function StatusBar()
-  -- Get diagnostics for all buffers
-  local diagnostics = get_lsp_diagnostics(nil)
-  local cwd = vim.fn.getcwd()
-  local default = " %#StatusLeftFile# " .. cwd .. " %#StatusBase#"
+  local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
+  local diagnostics = get_lsp_diagnostics(bufnr)
+  local projectName = vim.fs.basename(vim.fn.getcwd())
+  local default = "%#StatusLeftFile# " .. projectName .. " %#StatusBase#"
+  local filePath = "%#WinBar# %t%m %y "
   if diagnostics.errors > 0 then
-    return "%#StatusLeftLspError# " .. diagnostics.errors .. default
+    return default .. filePath .. "%#StatusLeftLspError# LSP: " .. diagnostics.errors .. " %#StatusBase#"
   elseif diagnostics.warnings > 0 then
-    return "%#StatusLeftLspWarn# " .. diagnostics.warnings .. default
+    return default .. filePath .. "%#StatusLeftLspWarn# LSP: " .. diagnostics.warnings .. " %#StatusBase#"
   elseif diagnostics.info > 0 then
-    return "%#StatusLeftLspInfo# " .. diagnostics.info .. default
+    return default .. filePath .. "%#StatusLeftLspInfo# LSP: " .. diagnostics.info .. " %#StatusBase#"
   elseif diagnostics.hints > 0 then
-    return "%#StatusLeftLspHint# " .. diagnostics.hints .. default
+    return default .. filePath .. "%#StatusLeftLspHint# LSP: " .. diagnostics.hints .. " %#StatusBase#"
   elseif #vim.lsp.get_active_clients() > 0 then
-    return "%#StatusLeftLspOk# ✓" .. default
+    return default .. filePath .. "%#StatusLeftLspOk# LSP: ✓ " .. "%#StatusBase#"
   else
-    return "%#StatusLeftFile# " .. cwd .. " %#StatusBase#"
+    return default .. filePath .. "%#StatusBase#"
   end
 end
 
@@ -87,8 +88,8 @@ vim.opt.grepprg = "rg --line-number"
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "nv"
-vim.opt.laststatus = 3
-vim.opt.winbar = "%!luaeval('WinBar()')"
+vim.opt.laststatus = 2
+-- vim.opt.winbar = "%!luaeval('WinBar()')"
 
 vim.g.mapleader = " "
 vim.api.nvim_command("language en_US")
