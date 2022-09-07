@@ -37,6 +37,11 @@ lspconfig.purescriptls.setup {
   on_attach = on_attach
 }
 
+lspconfig.jdtls.setup {
+  cmd = { 'jdt-language-server', '-configuration', '/home/antti/.cache/jdtls/config', '-data', '/home/antti/.cache/jdtls/workspace' },
+  on_attach = on_attach
+}
+
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   settings = {

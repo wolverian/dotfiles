@@ -35,6 +35,8 @@
     sumneko-lua-language-server
     nodePackages.typescript-language-server
     nodePackages.purescript-language-server
+
+    (import ./jdt-language-server.nix pkgs)
   ];
 
   home.shellAliases = {
