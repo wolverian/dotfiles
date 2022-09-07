@@ -17,7 +17,6 @@
   home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
-    bash
     bat
     ripgrep
     ranger
@@ -29,7 +28,12 @@
     file
     links2
 
+    # bash is needed in some scripts
+    bash
+
+    # LSP servers
     sumneko-lua-language-server
+    nodePackages.typescript-language-server
     nodePackages.purescript-language-server
   ];
 
