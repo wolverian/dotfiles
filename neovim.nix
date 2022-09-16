@@ -5,7 +5,13 @@
 
   plugins = with pkgs.vimPlugins; [
     vim-commentary
-    nvim-autopairs
+
+    ({
+      plugin = nvim-autopairs;
+      type = "lua";
+      config = "require'nvim-autopairs'.setup()";
+    })
+
     telescope-nvim
 
     # I think this causes some slowness, but it's useful sometimes.
