@@ -145,8 +145,8 @@
           "$status"
           "$character"
         ];
-        # git_status.disabled = true;
-        # git_commit.disabled = true;
+        git_status.disabled = true;
+        git_commit.disabled = true;
         # git_branch.disabled = true;
         directory = {
           truncation_length = 8;
