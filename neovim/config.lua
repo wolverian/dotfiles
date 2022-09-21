@@ -104,6 +104,7 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true })
+vim.api.nvim_set_keymap('n', '<tab>', ':bn<cr>', { noremap = true })
 
 vim.keymap.set('x', '<leader>c', require('osc52').copy_visual)
 
@@ -131,3 +132,12 @@ require('nvim-treesitter.configs').setup {
   }
 }
 
+require('bufferline').setup({
+  options = {
+    diagnostics = "nvim_lsp"
+  }
+})
+require('nvim-autopairs').setup()
+require('nvim-surround').setup()
+require('nvim-web-devicons').setup()
+-- require('colorizer').setup()
