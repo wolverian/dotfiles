@@ -116,6 +116,13 @@ vim.api.nvim_set_keymap('n', '<C-t>', '', {
   end
 })
 
+vim.api.nvim_set_keymap('n', '<leader>b', '', {
+  noremap = true,
+  callback = function ()
+    telescope.buffers()
+  end
+})
+
 vim.keymap.set('i', '<C-n>', function ()
     return vim.fn.pumvisible() == 1 and '<C-n>' or '<C-n><C-n>'
 end, {
