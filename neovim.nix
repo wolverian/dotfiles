@@ -6,9 +6,9 @@
   plugins = with pkgs.vimPlugins; [
     vim-commentary
     nvim-web-devicons
-    bufferline-nvim
     nvim-autopairs
     telescope-nvim
+    diffview-nvim
 
     # I think this causes some slowness, but it's useful sometimes.
     # Maybe move to a devShell for the custom theme?
