@@ -21,7 +21,8 @@
         inherit system;
         specialArgs = { inherit user; };
         modules = [
-          ./hosts/vm/configuration.nix
+          ./hosts/vm
+          ./hosts/configuration.nix
           {
             nixpkgs.overlays = overlays;
           }
@@ -40,8 +41,9 @@
         inherit system;
         specialArgs = { inherit user; };
         modules = [
-          ./hosts/vm/configuration.nix
+          ./hosts/vm
           ./modules/desktop.nix
+          ./hosts/configuration.nix
           {
             nixpkgs.overlays = overlays;
           }
