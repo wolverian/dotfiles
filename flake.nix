@@ -15,11 +15,13 @@
       overlays = [
         inputs.neovim-nightly-overlay.overlay
       ];
+      user = "antti";
       system = "aarch64-linux";
       home = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit user; };
         modules = [
-          ./configuration.nix
+          ./hosts/vm/configuration.nix
           {
             nixpkgs.overlays = overlays;
           }
@@ -27,7 +29,8 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.antti = {
+            home-manager.extraSpecialArgs = { inherit user; };
+            home-manager.users.${user} = {
               imports = [(import ./home.nix)];
             };
           }
@@ -35,9 +38,10 @@
       };
       work = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit user; };
         modules = [
-          ./desktop.nix
-          ./configuration.nix
+          ./hosts/vm/configuration.nix
+          ./modules/desktop.nix
           {
             nixpkgs.overlays = overlays;
           }
@@ -45,8 +49,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.antti = {
-              imports = [(import ./home.nix)];
+            home-manager.extraSpecialArgs = { inherit user; };
+            home-manager.users.${user} = {
+              imports = [(import ./home.nix)] ++ [(import ./hosts/work/home.nix)];
             };
           }
         ];

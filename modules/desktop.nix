@@ -2,10 +2,10 @@
   services = {
     xserver = {
       enable = true;
-      autorun = false;
+      autorun = true;
       # windowManager.i3.enable = true;
 
-      desktopManager.plasma5.enable = true;
+      desktopManager.mate.enable = true;
       # displayManager.defaultSession = "plasma5";
 
       displayManager.lightdm.enable = true;
