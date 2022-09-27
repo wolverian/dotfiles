@@ -34,7 +34,12 @@ lspconfig.hls.setup {
 }
 
 lspconfig.purescriptls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  settings = {
+    purescript = {
+      formatter = "purs-tidy"
+    }
+  }
 }
 
 lspconfig.jdtls.setup {
