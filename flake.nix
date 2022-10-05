@@ -58,9 +58,30 @@
           }
         ];
       };
+
+      lenovo = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit user; };
+        modules = [
+          ./hosts/lenovo
+          ./hosts/configuration.nix
+          {
+            nixpkgs.overlays = overlays;
+          }
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit user; };
+            home-manager.users.${user} = {
+              imports = [(import ./home.nix)] ++ [(import ./hosts/lenovo/home.nix)];
+            };
+          }
+        ];
+      };
     in {
       nixosConfigurations = {
-        inherit home work;
+        inherit home work lenovo;
       };
     };
 }

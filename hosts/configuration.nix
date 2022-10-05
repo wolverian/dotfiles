@@ -24,7 +24,7 @@
   users.users.root.initialPassword = "root";
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
   };
   security.sudo.wheelNeedsPassword = false;
@@ -44,6 +44,10 @@
   networking.firewall.allowPing = true;
 
   programs.ssh.startAgent = true;
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = ["JetBrainsMono"]; })
+  ];
 
   system.stateVersion = "22.05"; # Did you read the comment?
 }

@@ -15,6 +15,7 @@
     wget
     file
     links2
+    bitwarden-cli
 
     # bash is needed in some scripts
     bash
