@@ -14,44 +14,47 @@ local function get_lsp_diagnostics(bufnr)
   return result
 end
 
-function WinBar()
-  local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
-  local diagnostics = get_lsp_diagnostics(bufnr)
-  local filename = "%#WinBar# %f"
-  if diagnostics.errors > 0 then
-    return "%#StatusLeftLspError# " .. diagnostics.errors .. " " .. filename
-  elseif diagnostics.warnings > 0 then
-    return "%#StatusLeftLspWarn# " .. diagnostics.warnings .. " " .. filename
-  elseif diagnostics.info > 0 then
-    return "%#StatusLeftLspInfo# " .. diagnostics.info .. " " .. filename
-  elseif diagnostics.hints > 0 then
-    return "%#StatusLeftLspHint# " .. diagnostics.hints .. " " .. filename
-  elseif #vim.lsp.get_active_clients({ bufnr = bufnr }) > 0 then
-    return "%#StatusLeftLspOk# ✓ " .. filename
-  else
-    return filename
-  end
-end
-
 function StatusBar()
   local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
   local diagnostics = get_lsp_diagnostics(bufnr)
   local projectName = vim.fs.basename(vim.fn.getcwd())
-  local default = "%#StatusLeftFile# " .. projectName .. " %#StatusBase#"
-  local filePath = "%#WinBar# %t%m %y "
-  if diagnostics.errors > 0 then
-    return default .. filePath .. "%#StatusLeftLspError# LSP: " .. diagnostics.errors .. " %#StatusBase#"
-  elseif diagnostics.warnings > 0 then
-    return default .. filePath .. "%#StatusLeftLspWarn# LSP: " .. diagnostics.warnings .. " %#StatusBase#"
-  elseif diagnostics.info > 0 then
-    return default .. filePath .. "%#StatusLeftLspInfo# LSP: " .. diagnostics.info .. " %#StatusBase#"
-  elseif diagnostics.hints > 0 then
-    return default .. filePath .. "%#StatusLeftLspHint# LSP: " .. diagnostics.hints .. " %#StatusBase#"
-  elseif #vim.lsp.get_active_clients() > 0 then
-    return default .. filePath .. "%#StatusLeftLspOk# LSP: ✓ " .. "%#StatusBase#"
-  else
-    return default .. filePath .. "%#StatusBase#"
+  local default = "%#StatusEdge# " .. projectName .. " %#StatusBase#"
+  local filePath = "%#StatusGradient# %t%q%m "
+
+  local errors = function ()
+    if diagnostics.errors > 0 then
+      return "%#StatusLeftLspError#  " .. diagnostics.errors .. " %#StatusBase#"
+    else
+      return ""
+    end
   end
+
+  local warnings = function ()
+    if diagnostics.warnings > 0 then
+      return "%#StatusLeftLspWarn#  " .. diagnostics.warnings .. " %#StatusBase#"
+    else
+      return ""
+    end
+  end
+
+  local infos = function ()
+    if diagnostics.info > 0 then
+      return "%#StatusLeftLspInfo#  " .. diagnostics.info .. " %#StatusBase#"
+    else
+      return ""
+    end
+  end
+
+  local hints = function ()
+    if diagnostics.hints > 0 then
+      return "%#StatusLeftLspHint# " .. diagnostics.hints .. " %#StatusBase#"
+    else
+      return ""
+    end
+  end
+
+  local right = "%=%#StatusGradient# " .. vim.bo.filetype .. " %#StatusEdge# line %l/%L "
+  return default .. filePath .. hints() .. infos() .. warnings() .. errors() .. "%#StatusBase#" .. right
 end
 
 vim.api.nvim_exec([[
@@ -89,7 +92,6 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "nv"
 vim.opt.laststatus = 2
--- vim.opt.winbar = "%!luaeval('WinBar()')"
 
 vim.g.mapleader = " "
 vim.api.nvim_command("language en_US")
