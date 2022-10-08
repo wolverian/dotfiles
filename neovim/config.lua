@@ -1,69 +1,3 @@
-local function get_lsp_diagnostics(bufnr)
-  local result = {}
-  local levels = {
-    errors = vim.diagnostic.severity.ERROR,
-    warnings = vim.diagnostic.severity.WARN,
-    info = vim.diagnostic.severity.INFO,
-    hints = vim.diagnostic.severity.HINT,
-  }
-
-  for k, level in pairs(levels) do
-    result[k] = #vim.diagnostic.get(bufnr, { severity = level })
-  end
-
-  return result
-end
-
-function StatusBar()
-  local bufnr = vim.fn.winbufnr(vim.g.statusline_winid)
-  local diagnostics = get_lsp_diagnostics(bufnr)
-  local projectName = vim.fs.basename(vim.fn.getcwd())
-  local default = "%#StatusEdge# " .. projectName .. " %#StatusBase#"
-  local filePath = "%#StatusGradient# %t%q%m "
-
-  local errors = function ()
-    if diagnostics.errors > 0 then
-      return "%#StatusLeftLspError#  " .. diagnostics.errors .. " %#StatusBase#"
-    else
-      return ""
-    end
-  end
-
-  local warnings = function ()
-    if diagnostics.warnings > 0 then
-      return "%#StatusLeftLspWarn#  " .. diagnostics.warnings .. " %#StatusBase#"
-    else
-      return ""
-    end
-  end
-
-  local infos = function ()
-    if diagnostics.info > 0 then
-      return "%#StatusLeftLspInfo#  " .. diagnostics.info .. " %#StatusBase#"
-    else
-      return ""
-    end
-  end
-
-  local hints = function ()
-    if diagnostics.hints > 0 then
-      return "%#StatusLeftLspHint# " .. diagnostics.hints .. " %#StatusBase#"
-    else
-      return ""
-    end
-  end
-
-  local right = "%=%#StatusGradient# " .. vim.bo.filetype .. " %#StatusEdge# line %l/%L "
-  return default .. filePath .. hints() .. infos() .. warnings() .. errors() .. "%#StatusBase#" .. right
-end
-
-vim.api.nvim_exec([[
-  augroup StatusBar
-  au!
-  au WinEnter,BufEnter * setlocal statusline=%!luaeval('StatusBar()')
-  augroup END
-]], false)
-
 vim.opt.encoding = "utf-8"
 vim.opt.autoread = true
 vim.opt.autowrite = true
@@ -144,3 +78,14 @@ require('nvim-autopairs').setup()
 require('nvim-surround').setup()
 require('nvim-web-devicons').setup()
 -- require('colorizer').setup()
+require('lualine').setup({
+  options = { theme = "iceberg_dark" },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diagnostics'},
+    lualine_c = {{'filename', path = 1}},
+    lualine_x = {'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  }
+})

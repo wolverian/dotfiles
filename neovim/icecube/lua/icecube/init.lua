@@ -149,16 +149,6 @@ local _colors = {
   highlight("TSTypeBuiltin", { fg = blue }),
   highlight("TSVariable", { fg = defaultFg }),
   highlight("TSVariableBuiltin", { fg = blue }),
-
-  -- Statusline
-  highlight("StatusBase",         { fg = defaultFg, bg = grey }),
-  highlight("StatusEdge",     { fg = defaultFg, bg = edgeGrey }),
-  highlight("StatusGradient",     { fg = defaultFg, bg = grey4 }),
-  highlight("StatusLeftLspError", { fg = defaultBg, bg = red}),
-  highlight("StatusLeftLspWarn",  { fg = defaultBg, bg = yellow}),
-  highlight("StatusLeftLspInfo",  { fg = defaultBg, bg = cyan}),
-  highlight("StatusLeftLspHint",  { fg = defaultBg, bg = "#6b7089"}),
-  -- highlight("StatusLeftLspOk",    { fg = defaultBg, bg = green}),
 }
 
 function M.colors()
