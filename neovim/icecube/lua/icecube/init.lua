@@ -77,6 +77,8 @@ local _colors = {
   highlight("StorageClass", { fg = blue }),
   highlight("String", { fg = cyan }),
   highlight("Structure", { fg = blue }),
+  highlight("StatusLine", { bg = black, fg = black, reverse = true }),
+  highlight("StatusLineNC", { bg = black, fg = black, reverse = false }),
   highlight("TabLine", { bg = black, fg = "#3e445e" }),
   highlight("TabLineFill", { reverse = true, bg = "#3e445e", fg = black }),
   highlight("TabLineSel", { bg = defaultBg, fg = "#9a9ca5" }),
