@@ -41,7 +41,12 @@
         "type:pointer" = {
           natural_scroll = "enabled";
         };
+        "type:touchpad" = {
+          tap = "enabled";
+          natural_scroll = "enabled";
+        };
         "type:keyboard"= {
+          xkb_options = "caps:ctrl_modifier";
           repeat_delay = "200";
           repeat_rate = "50";
         };
@@ -100,7 +105,7 @@
       layer = "top";
       position = "top";
       height = 30;
-      output = ["DP-1"];
+      output = ["DP-1" "eDP-1"];
       modules-left = ["sway/workspaces"];
       modules-center = ["sway/window"];
       modules-right = ["network" "cpu" "memory" "battery" "clock" "tray"];
