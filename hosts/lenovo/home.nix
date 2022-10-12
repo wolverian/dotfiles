@@ -5,7 +5,8 @@
     firefox
     alacritty
     rofi
-    mako
+    brightnessctl
+    logitech-udev-rules
   ];
 
   home = {
