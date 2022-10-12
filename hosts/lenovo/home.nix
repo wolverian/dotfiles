@@ -28,7 +28,7 @@
       gaps = {
         inner = 0;
         outer = 0;
-        smartBorders = "off";
+        smartBorders = "on";
       };
 
       seat = {
