@@ -25,7 +25,7 @@ vim.opt.grepprg = "rg --line-number"
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "nv"
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 
 vim.g.mapleader = " "
 vim.api.nvim_command("language en_US")
@@ -79,13 +79,34 @@ require('nvim-surround').setup()
 require('nvim-web-devicons').setup()
 -- require('colorizer').setup()
 require('lualine').setup({
-  options = { theme = "iceberg_dark" },
+  options = {
+    theme = "iceberg_dark",
+    globalstatus = true,
+    component_separators = '┃',
+    section_separators = { left = '', right = '' },
+  },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diagnostics'},
-    lualine_c = {{'filename', path = 1}},
-    lualine_x = {'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_a = {{ 'mode', separator = { left = '' }, right_padding = 2 }},
+    lualine_b = {'branch'},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {'filetype'},
+    lualine_z = {{ 'location', separator = { right = '' }, left_padding = 2 }}
+  },
+  winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {{'filename', path = 1}, 'diagnostics'},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  inactive_winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {{'filename', path = 1}, 'diagnostics'},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
   }
 })
