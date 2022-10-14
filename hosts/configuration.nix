@@ -35,6 +35,7 @@
     openssh.permitRootLogin = "yes";
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
+    mpd.enable = true;
   };
 
   virtualisation.docker.enable = true;

@@ -206,6 +206,8 @@
     '';
   };
 
+  programs.ncmpcpp.enable = true;
+
   programs.alacritty = {
     enable = true;
     settings = {
