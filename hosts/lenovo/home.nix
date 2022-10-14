@@ -71,7 +71,7 @@
         "${modifier}+Escape" = "exec swaymsg exit";
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+space" = "exec ${menu}";
-        "${modifier}+Shift+a" = "exec swaylock -i ~/.config/wall";
+        "${modifier}+Shift+q" = "exec swaylock -i ~/.config/wall";
         "${modifier}+f" = "fullscreen toggle";
         "${modifier}+l" = "focus right";
         "${modifier}+h" = "focus left";
