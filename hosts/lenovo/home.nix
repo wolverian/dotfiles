@@ -6,6 +6,7 @@
     alacritty
     rofi
     brightnessctl
+    bitwarden-cli
     logitech-udev-rules
   ];
 
