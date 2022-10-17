@@ -83,15 +83,15 @@ require('lualine').setup({
     theme = "iceberg_dark",
     globalstatus = true,
     component_separators = '┃',
-    section_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = {{ 'mode', separator = { left = '' }, right_padding = 2 }},
+    lualine_a = {{ 'mode', separator = { left = '' }, right_padding = 2 }},
     lualine_b = {'branch'},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {'filetype'},
-    lualine_z = {{ 'location', separator = { right = '' }, left_padding = 2 }}
+    lualine_z = {{ 'location', separator = { right = '' }, left_padding = 2 }}
   },
   winbar = {
     lualine_a = {},
